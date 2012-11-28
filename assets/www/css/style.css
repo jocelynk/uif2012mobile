@@ -1,0 +1,128 @@
+@font-face
+{
+    font-family:lato;
+    src:url('../fonts/Lato-Reg.ttf');; 
+}
+
+@font-face
+{
+    font-family:nobile;
+    src:url('../fonts/nobile.ttf');
+}
+
+
+
+body
+{
+    font-family:lato;
+}
+
+h1, h2, h3, h4
+{
+    font-family:nobile;
+}
+
+
+.pagewrap {
+    width: 980px;
+    height:100%;
+    margin: 0 auto;
+    background-color:white;
+
+}
+
+#header {
+    height: 100px;
+    width:100%;
+    background-color:#000;
+}
+
+.container {
+    width: 600px;
+    float: left;
+}
+
+#logo
+{
+    height:100px;
+    width:129px; 
+    position:relative;
+    /*   float:left;*/
+}
+
+#content
+{
+    min-height:100%;
+    height:auto !important;
+    height:100%;
+    padding-bottom:60px;
+}
+
+#navbar
+{
+    position:relative;
+    height:60px;
+    background-color:#A68800;
+    text-align:center;
+}
+
+#navbar li
+{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    list-style-type:none;
+    display:inline;
+    /*    background-color:silver;*/
+    /*    border:1px white solid;*/
+    width:33.3%;
+}
+
+#navbar li:nth-child(2)
+{
+    left:33.3%;
+}
+
+#navbar li:nth-child(3)
+{
+    left:66.6%;
+}
+
+#navbar li:nth-child(2), #navbar li:nth-child(3)
+{
+    border-left: 1px solid black;
+}
+
+#navbar li.active
+{
+    background-color:#FFD200;
+}
+
+#navbar li.active a
+{
+    color:#4577D4;
+}
+
+#navbar li a
+{
+    position:inherit;
+    left:0;
+    right:0;
+    top:35%;
+}
+
+
+#footer {
+    width:100%;
+    bottom:0;
+    position:absolute;
+    background-color:black;
+    clear: both;
+    height:60px;
+}
+
+a
+{
+    color:white;
+}

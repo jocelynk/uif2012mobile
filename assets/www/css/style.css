@@ -15,6 +15,7 @@
 body
 {
     font-family:lato;
+    background-color:#FFD200;
 }
 
 h1, h2, h3, h4
@@ -62,7 +63,7 @@ h1, h2, h3, h4
 {
     position:relative;
     height:60px;
-    background-color:#A68800;
+    background-color:#4577D4;
     text-align:center;
 }
 
@@ -179,4 +180,5 @@ h1, h2, h3, h4
 a
 {
     color:white;
+    text-decoration:none;
 }

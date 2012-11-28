@@ -7,7 +7,7 @@
     <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" /> -->
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="css/media-queries.css"/>
-    
+
 
 </head>
 
@@ -19,25 +19,41 @@
     <div class="pagewrap">
 
         <div class="container">
+
+
             <div id="header">
-                <img id="logo" src="img/uif-logo.gif"/>
+                <a id="link-home" href="#home"><img id="logo" src="img/uif-logo.gif"/></a>
                 <div id="sign-in"> <a>Sign In</a></div>
                 <div id="logout"> <a>Log Out</a></div>
-                
+
                 <span> | </span>
-                
+
                 <!-- <button id="sign-in"> Sign In! </button> -->
             </div>
             <ul id="navbar">
-                <li class="active"><a> Check-In </a></li>
-                <li><a> Students </a></li>
-                <li><a> Events </a></li>
+                <li><a id="link-checkin" href="#checkin"> Check-In </a></li>
+                <li><a id="link-students" href="#students"> Students </a></li>
+                <li class="active"><a id="link-events" href="#events"> Events </a></li>
             </ul>
 
 
             <div id="content">
-                 <div class="push"></div>
+
+                <div id ="home" class="content">
+                </div>
+
+                <div id ="checkin" class="panel">
+                </div>
+
+                <div id ="students" class="panel">
+                </div>
+
+                <div id ="events" class="panel">
+                </div>
+
+
             </div>
+
 
 
             <div id="footer">
@@ -47,8 +63,12 @@
                     <li><a> Contact UIF 2012 Team </a></li>
                 </ul>
             </div>
+
+            <!-- end of container -->
         </div>
 
+
+        <!-- end of pagewrap -->
     </div> 
 
 

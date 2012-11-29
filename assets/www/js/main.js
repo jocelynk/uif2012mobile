@@ -13,19 +13,10 @@ function getToken() {
     console.log(email);
     $.ajax({
       url: "http://128.237.74.78:3000/getToken",
-      dataType: "jsonp",
-      beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")},
-      type: "GET",
-      //processData: false,
-      beforeSend: function(jqXHR, settings) {
-          //$('#test').append(settings.url);
-         alert(settings.url);
-      },
-      contentType: "application/json",
+      type: "POST",
       data: {"email": email, "password": password},
       success: function(data) {
         console.log("DATA");
-        alert(data);
         console.log(data);
         if(typeof data.token !== 'undefined') {
             authDetails["token"] = data.token;
@@ -55,15 +46,7 @@ function destroyToken() {
 
     $.ajax({
       url: "http://128.237.74.78:3000/destroyToken",
-      dataType: "jsonp",
-      beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")},
-      type: "GET",
-      //processData: false,
-      beforeSend: function(jqXHR, settings) {
-          //$('#test').append(settings.url);
-         console.log(settings.url);
-      },
-      contentType: "application/json",
+      type: "DELETE",
       data: {"id": token},
       success: function(data) {
         console.log(data);
@@ -131,6 +114,10 @@ var scanCode = function() {
 }
 
 $(document).ready(function() {
+    $.ajaxSetup({
+       headers: {"X-Requested-With": "XMLHttpRequest"}
+
+    });
     if(!authDetails["authorized"]) {
        $('#logout').addClass('none');
        $('#nav').addClass('none');   

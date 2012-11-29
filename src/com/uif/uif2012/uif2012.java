@@ -19,17 +19,60 @@
 
 package com.uif.uif2012;
 
-import android.app.Activity;
+import org.apache.cordova.DroidGap;
+
 import android.os.Bundle;
-import org.apache.cordova.*;
+import android.util.Log;
 
 public class uif2012 extends DroidGap
 {
+	private static final boolean DEBUG = true;
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         super.loadUrl("file:///android_asset/www/index.html");
     }
+    
+    @Override
+    protected void onRestart(){
+    	super.onRestart();
+    	if (DEBUG)
+    		Log.v(TAG, "+ ON RESTART +");
+    	// saveState();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		if (DEBUG)
+			Log.v(TAG, "+ ON PAUSE +");
+		// saveState();
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		Log.v(TAG, "+ ON RESUME +");
+		//populateFields();
+	}
+	
+	@Override
+    protected void onStop(){
+    	super.onStop();
+    	if (DEBUG)
+    		Log.v(TAG, "+ ON STOP +");
+    	// saveState();
+	}
+	
+    @Override
+	public void onDestroy() {
+		Log.d(TAG, "Destroying View ...");
+		//mDbAdapter.close();
+		super.onDestroy();
+	}
+
+
 }
 

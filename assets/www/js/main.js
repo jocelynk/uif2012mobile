@@ -13,25 +13,20 @@ function getToken() {
     console.log(email);
     $.ajax({
       url: "http://128.237.74.78:3000/getToken",
-      dataType: "jsonp",
-      beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")},
-      type: "GET",
-      //processData: false,
-      beforeSend: function(jqXHR, settings) {
-          //$('#test').append(settings.url);
-         alert(settings.url);
-      },
-      contentType: "application/json",
+      type: "POST",
       data: {"email": email, "password": password},
       success: function(data) {
-        console.log("DATA");
-        alert(data);
-        console.log(data);
         if(typeof data.token !== 'undefined') {
             authDetails["token"] = data.token;
             authDetails["authorized"] = true;
-            console.log(data.token);
+            if('localStorage' in window && window['localStorage'] !== null) {
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('authorized', true);
+                localStorage.setItem('email', email);
+            }          
             window.location.replace("#events");
+            $('#password').val('');
+            $('#email').val('');
             $('#nav').removeClass('none');
             $('#sign-in').addClass('none');
             $('#logout').removeClass('none');
@@ -55,15 +50,7 @@ function destroyToken() {
 
     $.ajax({
       url: "http://128.237.74.78:3000/destroyToken",
-      dataType: "jsonp",
-      beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")},
-      type: "GET",
-      //processData: false,
-      beforeSend: function(jqXHR, settings) {
-          //$('#test').append(settings.url);
-         console.log(settings.url);
-      },
-      contentType: "application/json",
+      type: "DELETE",
       data: {"id": token},
       success: function(data) {
         console.log(data);
@@ -71,6 +58,12 @@ function destroyToken() {
             authDetails["token"] = '';
             authDetails["email"] = '';
             authDetails["authorized"] = false;
+            if('localStorage' in window && window['localStorage'] !== null) {
+                localStorage.removeItem('token')
+                localStorage.removeItem('authorized')
+                localStorage.removeItem('email')   
+            }
+            
             window.location.href = "#home";
             $('#nav').addClass('none');
             $('#sign-in').removeClass('none');
@@ -131,9 +124,25 @@ var scanCode = function() {
 }
 
 $(document).ready(function() {
-    if(!authDetails["authorized"]) {
+    $.ajaxSetup({
+       headers: {"X-Requested-With": "XMLHttpRequest"}
+
+    });
+    if('localStorage' in window && window['localStorage'] !== null) {
+        var temp = localStorage.getItem('token');
+        console.log(temp);
+        if(temp !== null) {
+            authDetails["authorized"] = true;
+            authDetails["token"] = temp;
+            authDetails["email"] = localStorage.getItem('email');
+        }
+    }
+    
+    if(authDetails["authorized"] === false) {
        $('#logout').addClass('none');
        $('#nav').addClass('none');   
+    } else {
+       $('#sign-in').addClass('none');
     }
     $('#login').submit(getToken);
         

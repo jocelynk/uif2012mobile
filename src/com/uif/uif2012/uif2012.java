@@ -40,7 +40,7 @@ public class uif2012 extends DroidGap
     	super.onRestart();
     	if (DEBUG)
     		Log.v(TAG, "+ ON RESTART +");
-    	// saveState();
+    	super.loadUrl("file:///android_asset/www/index.html");
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class uif2012 extends DroidGap
 	protected void onResume() {
 		super.onResume();
 		Log.v(TAG, "+ ON RESUME +");
-		//populateFields();
+		super.loadUrl("file:///android_asset/www/index.html");
 	}
 	
 	@Override

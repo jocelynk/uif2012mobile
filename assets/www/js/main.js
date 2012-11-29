@@ -16,13 +16,17 @@ function getToken() {
       type: "POST",
       data: {"email": email, "password": password},
       success: function(data) {
-        console.log("DATA");
-        console.log(data);
         if(typeof data.token !== 'undefined') {
             authDetails["token"] = data.token;
             authDetails["authorized"] = true;
-            console.log(data.token);
+            if('localStorage' in window && window['localStorage'] !== null) {
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('authorized', true);
+                localStorage.setItem('email', email);
+            }          
             window.location.replace("#events");
+            $('#password').val('');
+            $('#email').val('');
             $('#nav').removeClass('none');
             $('#sign-in').addClass('none');
             $('#logout').removeClass('none');
@@ -54,6 +58,12 @@ function destroyToken() {
             authDetails["token"] = '';
             authDetails["email"] = '';
             authDetails["authorized"] = false;
+            if('localStorage' in window && window['localStorage'] !== null) {
+                localStorage.removeItem('token')
+                localStorage.removeItem('authorized')
+                localStorage.removeItem('email')   
+            }
+            
             window.location.href = "#home";
             $('#nav').addClass('none');
             $('#sign-in').removeClass('none');
@@ -118,9 +128,21 @@ $(document).ready(function() {
        headers: {"X-Requested-With": "XMLHttpRequest"}
 
     });
-    if(!authDetails["authorized"]) {
+    if('localStorage' in window && window['localStorage'] !== null) {
+        var temp = localStorage.getItem('token');
+        console.log(temp);
+        if(temp !== null) {
+            authDetails["authorized"] = true;
+            authDetails["token"] = temp;
+            authDetails["email"] = localStorage.getItem('email');
+        }
+    }
+    
+    if(authDetails["authorized"] === false) {
        $('#logout').addClass('none');
        $('#nav').addClass('none');   
+    } else {
+       $('#sign-in').addClass('none');
     }
     $('#login').submit(getToken);
         

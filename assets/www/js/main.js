@@ -1,5 +1,121 @@
+//Authentication
+
 var authDetails =  {
-	token: ''	
+	token: '',
+	email: '',
+	authorized: false
+}
+
+function getToken() {
+	var email = $('#email').val();
+	authDetails["email"] = email;
+	var password = $('#password').val();
+	console.log(email);
+	$.ajax({
+      url: "http://128.237.74.78:3000/getToken",
+      dataType: "jsonp",
+      beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")},
+      type: "GET",
+      //processData: false,
+      //beforeSend: function(jqXHR, settings) {
+   	  	  //$('#test').append(settings.url);
+   	  //	 console.log(settings.url);
+   	  //},
+      contentType: "application/json",
+      data: {"email": "profh@cmu.edu", "password": "secret"},
+      success: function(data) {
+        console.log("DATA");
+        alert(data);
+        console.log(data);
+        if(typeof data.token !== 'undefined') {
+        	authDetails["token"] = data.token;
+        	authDetails["authorized"] = true;
+        	console.log(data.token);
+        	window.location.replace("#events");
+        	$('#nav').removeClass('none');
+        	$('#sign-in').addClass('none');
+        	$('#logout').removeClass('none');
+        } else {
+               $(".flash").html(data.message);
+               $(".flash").fadeIn("slow", function() { $(".flash").fadeOut(1600)})
+        }
+       
+        return false;
+      },
+      error: function(err) {
+        console.log("ERROR: ");
+        console.log(err);
+      }
+    });
+    return false;
+}
+
+function destroyToken() {
+    var token = authDetails["token"];
+
+    $.ajax({
+      url: "http://128.237.74.78:3000/destroyToken",
+      dataType: "jsonp",
+      beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")},
+      type: "GET",
+      //processData: false,
+      beforeSend: function(jqXHR, settings) {
+          //$('#test').append(settings.url);
+         console.log(settings.url);
+      },
+      contentType: "application/json",
+      data: {"id": token},
+      success: function(data) {
+        console.log(data);
+        if(typeof data.token !== 'undefined') {
+            authDetails["token"] = '';
+            authDetails["email"] = '';
+            authDetails["authorized"] = false;
+            window.location.href = "#home";
+            $('#nav').addClass('none');
+            $('#sign-in').removeClass('none');
+            $('#logout').addClass('none');
+        } else {
+               $(".flash").html(data.message);
+               $(".flash").fadeIn("slow", function() { $(".flash").fadeOut(1600)})
+        }
+       
+        return false;
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    });
+    return false;
+}
+
+//Nav Auth Links
+
+function authEvents() {
+	if(authDetails["authorized"]) {
+        window.location.replace("#events"); 
+    } else {
+        $(".flash").html(data.message);
+        $(".flash").fadeIn("slow", function() { $(".flash").fadeOut(1600)});
+    }
+}
+
+function authCheckin() {
+    if(authDetails["authorized"]) {
+        window.location.replace("#checkin"); 
+    } else {
+        $(".flash").html(data.message);
+        $(".flash").fadeIn("slow", function() { $(".flash").fadeOut(1600)});
+    }
+}
+
+function authStudents() {
+    if(authDetails["authorized"]) {
+        window.location.replace("#students"); 
+    } else {
+        $(".flash").html(data.message);
+        $(".flash").fadeIn("slow", function() { $(".flash").fadeOut(1600)});
+    }
 }
 
 var scanCode = function() {
@@ -15,34 +131,11 @@ var scanCode = function() {
 }
 
 $(document).ready(function() {
-		$('#login').submit(getToken);
+	//if(!authDetails["authorized"]) {
+	 //  $('#logout').addClass('none');
+	 //  $('#nav').addClass('none');   
+	//}
+	alert($('form'));
+	$('#login').submit(getToken);
+		
 })
-
-function test() {
-	$('#test2').html(authDetails["token"]);
-}
-
-function getToken() {
-	$.ajax({
-      url: "http://128.237.74.78:3000/test",
-      dataType: "jsonp",
-      beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")},
-      type: "GET",
-      //processData: false,
-      //beforeSend: function(jqXHR, settings) {
-   	  	  //$('#test').append(settings.url);
-   	  //	 console.log(settings.url);
-   	  //},
-      contentType: "application/json",
-      data: {"email": "profh@cmu.edu", "password": "secret"},
-      success: function(data) {
-        authDetails["token"] = data.token;
-        $('#test').html('<h1>'+data.token+'</h1>');
-        return false;
-      },
-      error: function(err) {
-        console.log(err);
-      }
-    });
-    return false;
-}

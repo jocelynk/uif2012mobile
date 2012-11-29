@@ -23,6 +23,19 @@ h1, h2, h3, h4
     font-family:nobile;
 }
 
+.none {
+  display: none;
+}
+
+.flash{
+width:759px;
+padding-top:8px;
+padding-bottom:8px;
+background-color: #fff;
+font-weight:bold;
+font-size:20px;-moz-border-radius: 6px;-webkit-border-radius: 6px;
+background-color: #ccc;
+}
 
 .pagewrap {
     width: 980px;
@@ -68,6 +81,10 @@ padding-bottom:60px;
     /*    background-color:#4577D4;*/
     /*background-color:transparent;*/
     text-align:center;
+}
+
+a:hover #logout {
+  cursor:hand;
 }
 
 #navbar li

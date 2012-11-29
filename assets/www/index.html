@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="format-detection" content="telephone=yes" />
-        <title>UIF Mobile</title> 
-	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" > 
-	    <link rel="stylesheet" href="css/reset.css"/>
-	    <link rel="stylesheet" href="css/style.css"/>
-	    <link rel="stylesheet" href="css/media-queries.css"/>
-	    <link rel="stylesheet" href="../css/font-awesome.css">       
-    </head>
-    <body>
-        <script type="text/javascript" src="cordova-2.2.0.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript" src="js/barcodescanner.js"></script>
-		<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-		<script type="text/javascript" src="server.js"></script>
-		<script type="text/javascript" src="js/active-navigation.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-       
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=yes" />
+    <title>UIF Mobile</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" > 
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/media-queries.css"/>
+    <link rel="stylesheet" href="../css/font-awesome.css">       
+</head>
+<body>
+    <script type="text/javascript" src="cordova-2.2.0.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/barcodescanner.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="server.js"></script>
+    <script type="text/javascript" src="js/active-navigation.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <link rel="stylesheet" href="jquery.ui.datepicker.mobile.css" /> 
+     <script src="jQuery.ui.datepicker.js"></script>
+     <script src="jquery.ui.datepicker.mobile.js"></script>
+    
+    
+    <script type="text/javascript">
+    app.initialize();
+    </script>
+
     <div class="pagewrap">
 
         <div class="container">
 
-
+            
+            <!-- //////////////////////////////////////// -->
+            <!-- ///////////// Top Navigation /////////// -->
+            <!-- //////////////////////////////////////// -->
             <div id="header">
                 <a id="link-home" href="#home"><img id="logo" src="img/uif-logo.gif"/></a>
                 <div id="sign-in"> <a href="#authentication">Sign In</a></div>
@@ -35,7 +43,7 @@
             </div>
             <div id="nav">
                 <ul id="navbar">
-                    <li id="a"><a id="link-checkin" href="javascript:void(0)" onclick="authCheckin();"> Check-In </a></li>
+                    <li><a id="link-checkin" href="javascript:void(0)" onclick="authCheckin();"> Check-In </a></li>
                     <li><a id="link-students" href="javascript:void(0)" onclick="authStudents();"> Students </a></li>
                     <li><a id="link-events" href="javascript:void(0)" onclick="authEvents();"> Events </a></li>
                 </ul>
@@ -44,32 +52,44 @@
 
 
             <div id ="home" class="content">
+                <h1>Welcome to Urban Impact</h1><h3>Mobile</h3>
             </div>
 
-	        <div id="authentication" class="panel">
-	        	<div class="content">
-		        	<form id="login">
-		        		<label for="email">Email:</label>
-		        		<input id="email" name="email" type="email" required/>
-		        		<label for="password">Password:</label>
-		        		<input id="password" name="password" type="password" required/>
-		        		<input type="submit" value="Submit" id="submit"/>
-		        	</form>
-		        	
-	        	</div>
-	        </div>
-	        
-            <!-- Check in Page -->
+            <!-- //////////////////////////////////////// -->
+            <!-- ///////////// Authentication /////////// -->
+            <!-- //////////////////////////////////////// -->
+            <div id="authentication" class="panel">
+                <div class="content">
+                    <form id="login">
+                        <label for="email">Email:</label>
+                        <input id="email" name="email" type="email" required/>
+                        <label for="password">Password:</label>
+                        <input id="password" name="password" type="password" required/>
+                        <input type="submit" value="Submit" id="submit"/>
+                    </form>
+
+                </div>
+            </div>
+
+            <!-- ///////////////////////////////// -->
+            <!-- ///////////// Checkin /////////// -->
+            <!-- ///////////////////////////////// -->
             <div id ="checkin" class="panel">
                 <div class="content">
-                    <h2>Checkin</h2>
-                    <p>Some content</p>
-                    <a href="#" class="btn" onclick="scanCode();">Scan Code</a> 
+                    <h2>Event Check-In</h2>
+                    <h3> Select A Date </h3>
+                    <input type="date" name="date" id="date" value=""  />
+                    
+                    <h3>Events For date </h3>
+                    <div><p><a href="#" class="btn" onclick="scanCode();">Scan Code</a> </p></div>
                 </div>
             </div>
 
 
-            <!-- Students Page -->
+
+            <!-- ////////////////////////////////// -->
+            <!-- ///////////// Students /////////// -->
+            <!-- ////////////////////////////////// -->
             <div id ="students" class="panel">
                 <div class="content">
                     <h2>Students</h2>
@@ -79,7 +99,9 @@
             </div>
 
 
-            <!-- Event Page -->
+            <!-- //////////////////////////////// -->
+            <!-- ///////////// Events /////////// -->
+            <!-- //////////////////////////////// -->
             <div id ="events" class="panel">
                 <div class="content">
                     <h2>Events</h2>
@@ -88,7 +110,7 @@
                         <i class="icon-plus icon-large"></i>
                         <h3> Add An Event </h3>
                     </div>
-                    
+
 
 
                     <div class="large-icon">
@@ -96,14 +118,16 @@
                         <h3> View Events </h3>
                     </div>
 
-                    
-
 
 
                 </div>
             </div>
 
 
+
+            <!-- //////////////////////////////// -->
+            <!-- ///////////// Footer /////////// -->
+            <!-- //////////////////////////////// -->
             <div id="footer">
                 <ul>
                     <li><a> About Us </a></li>
@@ -117,5 +141,5 @@
 
 <!-- end of pagewrap -->
 </div> 
-    </body>
+</body>
 </html>

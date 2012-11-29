@@ -1,40 +1,40 @@
 //Authentication
 
 var authDetails =  {
-	token: '',
-	email: '',
-	authorized: false
+    token: '',
+    email: '',
+    authorized: false
 }
 
 function getToken() {
-	var email = $('#email').val();
-	authDetails["email"] = email;
-	var password = $('#password').val();
-	console.log(email);
-	$.ajax({
+    var email = $('#email').val();
+    authDetails["email"] = email;
+    var password = $('#password').val();
+    console.log(email);
+    $.ajax({
       url: "http://128.237.74.78:3000/getToken",
       dataType: "jsonp",
       beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")},
       type: "GET",
       //processData: false,
-      //beforeSend: function(jqXHR, settings) {
-   	  	  //$('#test').append(settings.url);
-   	  //	 console.log(settings.url);
-   	  //},
+      beforeSend: function(jqXHR, settings) {
+          //$('#test').append(settings.url);
+         alert(settings.url);
+      },
       contentType: "application/json",
-      data: {"email": "profh@cmu.edu", "password": "secret"},
+      data: {"email": email, "password": password},
       success: function(data) {
         console.log("DATA");
         alert(data);
         console.log(data);
         if(typeof data.token !== 'undefined') {
-        	authDetails["token"] = data.token;
-        	authDetails["authorized"] = true;
-        	console.log(data.token);
-        	window.location.replace("#events");
-        	$('#nav').removeClass('none');
-        	$('#sign-in').addClass('none');
-        	$('#logout').removeClass('none');
+            authDetails["token"] = data.token;
+            authDetails["authorized"] = true;
+            console.log(data.token);
+            window.location.replace("#events");
+            $('#nav').removeClass('none');
+            $('#sign-in').addClass('none');
+            $('#logout').removeClass('none');
         } else {
                $(".flash").html(data.message);
                $(".flash").fadeIn("slow", function() { $(".flash").fadeOut(1600)})
@@ -92,7 +92,7 @@ function destroyToken() {
 //Nav Auth Links
 
 function authEvents() {
-	if(authDetails["authorized"]) {
+    if(authDetails["authorized"]) {
         window.location.replace("#events"); 
     } else {
         $(".flash").html(data.message);
@@ -131,11 +131,10 @@ var scanCode = function() {
 }
 
 $(document).ready(function() {
-	//if(!authDetails["authorized"]) {
-	 //  $('#logout').addClass('none');
-	 //  $('#nav').addClass('none');   
-	//}
-	alert($('form'));
-	$('#login').submit(getToken);
-		
+    if(!authDetails["authorized"]) {
+       $('#logout').addClass('none');
+       $('#nav').addClass('none');   
+    }
+    $('#login').submit(getToken);
+        
 })

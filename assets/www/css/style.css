@@ -356,3 +356,24 @@ padding-bottom: 30px;
     -o-transition: all .8s ease-in-out;
     transition: all .8s ease-in-out;
 }
+
+#login
+{
+    margin-top: 60px;
+    position:relative;
+    left:20%;
+    background-color: black;
+    padding:40px;
+    color:white;  
+}
+
+#login input:nth-child(2), input:nth-child(4)
+{
+    margin-bottom:30px;
+    height:30px;
+}
+
+#login-submit
+{
+    font-size:50px;
+}

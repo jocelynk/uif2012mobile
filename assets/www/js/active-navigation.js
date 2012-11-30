@@ -1,6 +1,6 @@
 $(document).ready(function()
 {
-    $("#navbar li").click(function()
+    $("#navbar li").click(function(auth_token)
     {
         $(this).addClass('active').siblings().removeClass('active');   
     }); 

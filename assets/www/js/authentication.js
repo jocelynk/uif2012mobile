@@ -24,7 +24,7 @@ function getToken() {
                 localStorage.setItem('authorized', true);
                 localStorage.setItem('email', email);
             }          
-            window.location.replace("#events");
+            window.location.replace("#checkin");
             $('#password').val('');
             $('#email').val('');
             $('#nav').removeClass('none');
@@ -96,6 +96,7 @@ function authEvents() {
 function authCheckin() {
     if(authDetails["authorized"]) {
         window.location.replace("#checkin"); 
+        getCurrentEvents(authDetails["token"]);
     } else {
         $(".flash").html(data.message);
         $(".flash").fadeIn("slow", function() { $(".flash").fadeOut(1600)});
@@ -125,8 +126,8 @@ var scanCode = function() {
 
 $(document).ready(function() {
     $.ajaxSetup({
-       headers: {"X-Requested-With": "XMLHttpRequest"}
-
+       headers: {"X-Requested-With": "XMLHttpRequest"},
+       cache: false
     });
     if('localStorage' in window && window['localStorage'] !== null) {
         var temp = localStorage.getItem('token');

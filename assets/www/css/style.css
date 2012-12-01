@@ -138,12 +138,14 @@ a:hover #logout {
 
 #sign-in, #logout
 {
-    float:left;
+/*    float:right;*/
     margin-left:30px;
     color:white;
-    top:30%;
-    position:relative;
+    right:20px;
+    top:8%;
+    position:absolute;
     font-size:130%;
+    z-index:3;
 }
 
 #sign-in a, #logout a

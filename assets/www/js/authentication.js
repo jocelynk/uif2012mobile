@@ -1,10 +1,23 @@
 //Authentication
 
+
 var authDetails =  {
     token: '',
     email: '',
     authorized: false
 }
+
+function resetAuthDetails() {
+    authDetails["token"] = '';
+    authDetails["email"] = '';
+    authDetails["authorized"] = false;
+    if('localStorage' in window && window['localStorage'] !== null) {
+        localStorage.removeItem('token')
+        localStorage.removeItem('authorized')
+        localStorage.removeItem('email')   
+    }           
+}
+
 
 function getToken() {
     var email = $('#email').val();
@@ -31,8 +44,8 @@ function getToken() {
             $('#sign-in').addClass('none');
             $('#logout').removeClass('none');
         } else {
-               $(".flash").html(data.message);
-               $(".flash").fadeIn("slow", function() { $(".flash").fadeOut(1600)})
+               $("#login_flash").html(data.message);
+               $("#login_flash").fadeIn("slow", function() { $("#login_flash").fadeOut(1600)})
         }
        
         return false;
@@ -55,22 +68,14 @@ function destroyToken() {
       success: function(data) {
         console.log(data);
         if(typeof data.token !== 'undefined') {
-            authDetails["token"] = '';
-            authDetails["email"] = '';
-            authDetails["authorized"] = false;
-            if('localStorage' in window && window['localStorage'] !== null) {
-                localStorage.removeItem('token')
-                localStorage.removeItem('authorized')
-                localStorage.removeItem('email')   
-            }
-            
+            resetAuthDetails();    
             window.location.href = "#home";
             $('#nav').addClass('none');
             $('#sign-in').removeClass('none');
             $('#logout').addClass('none');
         } else {
-               $(".flash").html(data.message);
-               $(".flash").fadeIn("slow", function() { $(".flash").fadeOut(1600)})
+            $(".flash").html(data.message);
+            $(".flash").fadeIn("slow", function() { $(".flash").fadeOut(1600)})
         }
        
         return false;
@@ -82,14 +87,13 @@ function destroyToken() {
     return false;
 }
 
-//Nav Auth Links
-
+//Nav Auth Links and Custom Click Links
 function authEvents() {
     if(authDetails["authorized"]) {
         window.location.replace("#events"); 
     } else {
-        $(".flash").html(data.message);
-        $(".flash").fadeIn("slow", function() { $(".flash").fadeOut(1600)});
+        $("#login_flash").html(data.message);
+        $("#login_flash").fadeIn("slow", function() {$("#login_flash").fadeOut(1600)});
     }
 }
 
@@ -98,8 +102,8 @@ function authCheckin() {
         window.location.replace("#checkin"); 
         getCurrentEvents(authDetails["token"]);
     } else {
-        $(".flash").html(data.message);
-        $(".flash").fadeIn("slow", function() { $(".flash").fadeOut(1600)});
+        $("#login_flash").html(data.message);
+        $("#login_flash").fadeIn("slow", function() { $("#login_flash").fadeOut(1600)});
     }
 }
 
@@ -107,23 +111,13 @@ function authStudents() {
     if(authDetails["authorized"]) {
         window.location.replace("#students"); 
     } else {
-        $(".flash").html(data.message);
-        $(".flash").fadeIn("slow", function() { $(".flash").fadeOut(1600)});
+        $("#login_flash").html(data.message);
+        $("#login_flash").fadeIn("slow", function() { $("#login_flash").fadeOut(1600)});
     }
 }
 
-var scanCode = function() {
-    window.plugins.barcodeScanner.scan(
-        function(result) {
-        document.write(result.text);
-        //alert("Scanned Code: " + result.text 
-               // + ". Format: " + result.format
-               // + ". Cancelled: " + result.cancelled);
-    }, function(error) {
-        alert("Scan failed: " + error);
-    });
-}
 
+//Page Ready
 $(document).ready(function() {
     $.ajaxSetup({
        headers: {"X-Requested-With": "XMLHttpRequest"},
@@ -138,7 +132,6 @@ $(document).ready(function() {
             authDetails["email"] = localStorage.getItem('email');
         }
     }
-    
     if(authDetails["authorized"] === false) {
        $('#logout').addClass('none');
        $('#nav').addClass('none');   

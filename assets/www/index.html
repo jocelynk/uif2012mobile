@@ -12,6 +12,7 @@
 </head>
 <body>
     <script type="text/javascript" src="cordova-2.2.0.js"></script>
+    <script type="text/javascript" src="js/date.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/barcodescanner.js"></script>
     <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
@@ -40,13 +41,13 @@
                 <a id="link-home" href="#home"><img id="logo" src="img/uif-logo.gif"/></a>
                 <div id="sign-in"> <a href="#authentication"><span>Sign In</span></a></div>
                 <div id="logout"> <a href="javascript:void(0)" onclick="destroyToken();">Log Out</a></div>
-                <div class="flash none"></div>
+                <div id ="login_flash" class="flash none"></div>
             </div>
             <div id="nav">
                 <ul id="navbar">
                     <li><a id="link-checkin" href="javascript:void(0)" onclick="authCheckin();"> Check-In </a></li>
                     <li><a id="link-students" href="javascript:void(0)" onclick="authStudents();"> Students </a></li>
-                    <li><a id="link-events" href="javascript:void(0)" onclick="authEvents();"> Events </a></li>
+                    <li><a id="link-events" href="javascript:void(0)" onclick="authEvents()"> Events </a></li>
                 </ul>
             </div>
 
@@ -81,19 +82,45 @@
                     <h2>Event Check-In</h2>
                     <div id="currentEvents">
                         <h4>Today's Events</h4>
+                        <div id = "events_table"></div>
                     </div>
                     <h3> Select A Date </h3>
                     <input type="date" name="date" id="date" value=""  />
 
                         <div class="hidden">
-                            <h3>Events For date </h3>
-                            <div><p><a href="#" class="btn" onclick="scanCode();">Scan Code</a> </p></div>
+                            <h3>Events For date </h3>                   
                         </div>
 
                     </div>
                 </div>
 
-
+         <!-- ////////////////////////////////// -->
+                <!-- ///////////// Scan Page /////////// -->
+                <!-- ////////////////////////////////// -->
+                <div id ="scan_page" class="panel">
+                    <div class="content">
+                        <div id ="barcode_flash" class="flash none"></div>
+                        <h3>Scanning for following Sections:</h2>
+                        <ul id="sections"></ul>
+                        <!--css to make this a separate box-->
+                        <hr/>
+                        <div>
+                            <ul id="barcodes">
+                            </ul>
+                        </div>
+                        <!--css to make this a separate section-->
+                        <div>
+                            <h4>Successfully Scanned Students</h4>
+                            <ul id="success_scan">
+                            </ul>
+                            <h4>Bad Barcodes</h4>
+                            <ul id="bad_barcodes">
+                            </ul>
+                        </div>
+                        <div><p><a href="javascript:void(0)" class="btn" onclick="scanCode();">Scan Code</a> </p></div>
+                        <div><p><a href="javascript:void(0)" class="btn" onclick="submitCodes();">Submit Codes</a> </p></div>
+                    </div>
+                </div>
 
                 <!-- ////////////////////////////////// -->
                 <!-- ///////////// Students /////////// -->

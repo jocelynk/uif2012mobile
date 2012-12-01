@@ -35,14 +35,14 @@ public class uif2012 extends DroidGap
         super.loadUrl("file:///android_asset/www/index.html");
     }
     
-    @Override
+    /*@Override
     protected void onRestart(){
     	super.onRestart();
     	if (DEBUG)
     		Log.v(TAG, "+ ON RESTART +");
-    	super.loadUrl("file:///android_asset/www/index.html");
-	}
-
+    	super.loadUrl("file:///android_asset/www/index.html#scan_page");
+	}*/
+/*
 	@Override
 	protected void onPause() {
 		super.onPause();
@@ -55,7 +55,7 @@ public class uif2012 extends DroidGap
 	protected void onResume() {
 		super.onResume();
 		Log.v(TAG, "+ ON RESUME +");
-		super.loadUrl("file:///android_asset/www/index.html");
+		super.loadUrl("file:///android_asset/www/index.html#scan_page");
 	}
 	
 	@Override
@@ -72,7 +72,7 @@ public class uif2012 extends DroidGap
 		//mDbAdapter.close();
 		super.onDestroy();
 	}
-
+*/
 
 }
 

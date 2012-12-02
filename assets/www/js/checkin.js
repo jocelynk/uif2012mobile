@@ -21,6 +21,7 @@ function getCurrentEvents(token) {
           data: {"auth_token": token},
           success: function(data) {
             $('#events_table').html('');
+            console.log(data); 
             var ev = $('<table/>')
             var headers = $('<thead />');
             headers.append('<tr><th>Date</th><th>Program</th><th>Sections</th><th>Start Time</th><th>End Time</th><th>Scan</th></tr>');

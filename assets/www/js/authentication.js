@@ -74,6 +74,7 @@ function destroyToken() {
             $('#sign-in').removeClass('none');
             $('#logout').addClass('none');
         } else {
+            console.log(data.message); 
             $(".flash").html(data.message);
             $(".flash").fadeIn("slow", function() { $(".flash").fadeOut(1600)})
         }
@@ -92,6 +93,7 @@ function authEvents() {
     if(authDetails["authorized"]) {
         window.location.replace("#events"); 
     } else {
+        console.log(data.message); 
         $("#login_flash").html(data.message);
         $("#login_flash").fadeIn("slow", function() {$("#login_flash").fadeOut(1600)});
     }
@@ -102,6 +104,7 @@ function authCheckin() {
         window.location.replace("#checkin"); 
         getCurrentEvents(authDetails["token"]);
     } else {
+        console.log("login error: " , data.message); 
         $("#login_flash").html(data.message);
         $("#login_flash").fadeIn("slow", function() { $("#login_flash").fadeOut(1600)});
     }

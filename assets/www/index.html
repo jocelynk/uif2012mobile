@@ -41,7 +41,7 @@
                 <a id="link-home" href="#home"><img id="logo" src="img/uif-logo.gif"/></a>
                 <div id="sign-in"> <a href="#authentication"><span>Sign In</span></a></div>
                 <div id="logout"> <a href="javascript:void(0)" onclick="destroyToken();">Log Out</a></div>
-                <div id ="login_flash" class="flash none"></div>
+        
             </div>
             <div id="nav">
                 <ul id="navbar">
@@ -61,6 +61,7 @@
             <!-- ///////////// Authentication /////////// -->
             <!-- //////////////////////////////////////// -->
             <div id="authentication" class="panel">
+                 <div id ="login_flash" class="flash none"></div>
                 <div class="content">
                     <form id="login">
                         <h3><label for="email">Email:</label></h3>
@@ -68,6 +69,7 @@
                         <h3><label for="password">Password:</label></h3>
                         <input id="password" name="password" type="password" required/>
                     </br>
+                    <button id="submit" type="submit"> Submit</button>
                     <input id="login-submit" type="submit" value="Submit" id="submit"/>
                 </form>
 
@@ -84,7 +86,7 @@
             <div class="content">
                 <h2>Event Check-In</h2>
                 <div id="currentEvents">
-                    <h4>Today's Events</h4>
+                    <h4 id="date_header">Today's Events</h4>
                     <div id = "events_table"></div>
                 </div>
                 <h3> Select A Date </h3>

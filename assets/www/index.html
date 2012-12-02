@@ -67,112 +67,115 @@
                         <input id="email" name="email" type="email" required/>
                         <h3><label for="password">Password:</label></h3>
                         <input id="password" name="password" type="password" required/>
-                        </br>
-                        <input id="login-submit" type="submit" value="Submit" id="submit"/>
-                    </form>
+                    </br>
+                    <input id="login-submit" type="submit" value="Submit" id="submit"/>
+                </form>
 
+            </div>
+        </div>
+
+
+
+
+        <!-- ///////////////////////////////// -->
+        <!-- ///////////// Checkin /////////// -->
+        <!-- ///////////////////////////////// -->
+        <div id ="checkin" class="panel">
+            <div class="content">
+                <h2>Event Check-In</h2>
+                <div id="currentEvents">
+                    <h4>Today's Events</h4>
+                    <div id = "events_table"></div>
+                </div>
+                <h3> Select A Date </h3>
+                <input type="date" name="date" id="date" value=""  />
+
+                <div class="hidden">
+                    <h3>Events For date </h3>                   
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ////////////////////////////////// -->
+        <!-- ///////////// Scan Page /////////// -->
+        <!-- ////////////////////////////////// -->
+        <div id ="scan_page" class="panel">
+            <div class="content">
+                <div id ="barcode_flash" class="flash none"></div>
+                <h3>Scanning for following Sections:</h2>
+                    <ul id="sections"></ul>
+                    <!--css to make this a separate box-->
+                    <hr/>
+                    <div>
+                        <ul id="barcodes">
+                        </ul>
+                    </div>
+                    <!--css to make this a separate section-->
+                    <div>
+                        <h4>Successfully Scanned Students</h4>
+                        <ul id="success_scan">
+                        </ul>
+                        <h4>Bad Barcodes</h4>
+                        <ul id="bad_barcodes">
+                        </ul>
+                    </div>
+                    <div><p><a href="javascript:void(0)" class="btn" onclick="scanCode();">Scan Code</a> </p></div>
+                    <div><p><a href="javascript:void(0)" class="btn" onclick="submitCodes();">Submit Codes</a> </p></div>
                 </div>
             </div>
 
-            <!-- ///////////////////////////////// -->
-            <!-- ///////////// Checkin /////////// -->
-            <!-- ///////////////////////////////// -->
-            <div id ="checkin" class="panel">
+            <!-- ////////////////////////////////// -->
+            <!-- ///////////// Students /////////// -->
+            <!-- ////////////////////////////////// -->
+            <div id ="students" class="panel">
                 <div class="content">
-                    <h2>Event Check-In</h2>
-                    <div id="currentEvents">
-                        <h4>Today's Events</h4>
-                        <div id = "events_table"></div>
-                    </div>
-                    <h3> Select A Date </h3>
-                    <input type="date" name="date" id="date" value=""  />
-
-                        <div class="hidden">
-                            <h3>Events For date </h3>                   
-                        </div>
-
-                    </div>
+                    <h2>Students</h2>
+                    <p>Some content</p>
+                    <!-- ... -->
                 </div>
-
-         <!-- ////////////////////////////////// -->
-                <!-- ///////////// Scan Page /////////// -->
-                <!-- ////////////////////////////////// -->
-                <div id ="scan_page" class="panel">
-                    <div class="content">
-                        <div id ="barcode_flash" class="flash none"></div>
-                        <h3>Scanning for following Sections:</h2>
-                        <ul id="sections"></ul>
-                        <!--css to make this a separate box-->
-                        <hr/>
-                        <div>
-                            <ul id="barcodes">
-                            </ul>
-                        </div>
-                        <!--css to make this a separate section-->
-                        <div>
-                            <h4>Successfully Scanned Students</h4>
-                            <ul id="success_scan">
-                            </ul>
-                            <h4>Bad Barcodes</h4>
-                            <ul id="bad_barcodes">
-                            </ul>
-                        </div>
-                        <div><p><a href="javascript:void(0)" class="btn" onclick="scanCode();">Scan Code</a> </p></div>
-                        <div><p><a href="javascript:void(0)" class="btn" onclick="submitCodes();">Submit Codes</a> </p></div>
-                    </div>
-                </div>
-
-                <!-- ////////////////////////////////// -->
-                <!-- ///////////// Students /////////// -->
-                <!-- ////////////////////////////////// -->
-                <div id ="students" class="panel">
-                    <div class="content">
-                        <h2>Students</h2>
-                        <p>Some content</p>
-                        <!-- ... -->
-                    </div>
-                </div>
-
-
-                <!-- //////////////////////////////// -->
-                <!-- ///////////// Events /////////// -->
-                <!-- //////////////////////////////// -->
-                <div id ="events" class="panel">
-                    <div class="content">
-                        <h2>Events</h2>
-
-                        <div class="large-icon">
-                            <i class="icon-plus icon-large"></i>
-                            <h3> Add An Event </h3>
-                        </div>
-
-
-
-                        <div class="large-icon">
-                            <i class="icon-list-alt icon-large"></i>
-                            <h3> View Events </h3>
-                        </div>
-
-
-
-                    </div>
-                </div>
-
-
-
-                <!-- //////////////////////////////// -->
-                <!-- ///////////// Footer /////////// -->
-                <!-- //////////////////////////////// -->
-                <div id="footer">
-                    <ul>
-                        <li><a> About Us </a></li>
-                        <li><a> Urban Impact </a></li>
-                        <li><a> Contact UIF 2012 Team </a></li>
-                    </ul>
-                </div>
-
-                <!-- end of container -->
             </div>
+
+
+            <!-- //////////////////////////////// -->
+            <!-- ///////////// Events /////////// -->
+            <!-- //////////////////////////////// -->
+            <div id ="events" class="panel">
+                <div class="content">
+                    <h2>Events</h2>
+
+                    <div class="large-icon">
+                        <i class="icon-plus icon-large"></i>
+                        <h3> Add An Event </h3>
+                    </div>
+
+
+
+                    <div class="large-icon">
+                        <i class="icon-list-alt icon-large"></i>
+                        <h3> View Events </h3>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+
+            <!-- //////////////////////////////// -->
+            <!-- ///////////// Footer /////////// -->
+            <!-- //////////////////////////////// -->
+            <div id="footer">
+                <ul>
+                    <li><a> About Us </a></li>
+                    <li><a> Urban Impact </a></li>
+                    <li><a> Contact UIF 2012 Team </a></li>
+                </ul>
+            </div>
+
+            <!-- end of container -->
+        </div>
 
 <!-- end of pagewrap -->
 </div> 

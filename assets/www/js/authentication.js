@@ -25,7 +25,7 @@ function getToken() {
     var password = $('#password').val();
     console.log(email);
     $.ajax({
-      url: "http://128.237.74.78:3000/getToken",
+      url: "http://128.237.254.224:3000/getToken",
       type: "POST",
       data: {"email": email, "password": password},
       success: function(data) {
@@ -62,7 +62,7 @@ function destroyToken() {
     var token = authDetails["token"];
 
     $.ajax({
-      url: "http://128.237.74.78:3000/destroyToken",
+      url: "http://128.237.254.224:3000/destroyToken",
       type: "DELETE",
       data: {"id": token},
       success: function(data) {

@@ -15,7 +15,7 @@ function resetEventDetails() {
 function getCurrentEvents(token) {
     console.log("getting current events")
     $.ajax({
-          url: "http://128.237.74.78:3000/getTodaysEvents.json",
+          url: "http://128.237.254.224:3000/getTodaysEvents.json",
           type: "GET",
           contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
           data: {"auth_token": token},

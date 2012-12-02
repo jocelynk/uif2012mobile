@@ -6,6 +6,7 @@ var eventDetails = {
     barcodes: []
 }
 
+
 function resetEventDetails() {
     eventDetails["barcodes"] = [];
     eventDetails["sections"] = [];
@@ -15,7 +16,7 @@ function resetEventDetails() {
 function getCurrentEvents(token) {
     console.log("getting current events")
     $.ajax({
-          url: "http://128.237.227.50:3000/getTodaysEvents.json",
+          url: "http://128.237.74.78:3000/getTodaysEvents.json",
           type: "GET",
           contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
           data: {"auth_token": token},
@@ -40,7 +41,7 @@ function getCurrentEvents(token) {
               var end_time = new Date(data[i]['event']['end_time']);
               row.append('<td>'+formatTime(start_time)+'</td>');
               row.append('<td>'+formatTime(end_time)+'</td>');
-              row.append('<td><a id="scan" href="javascript:void(0)" onclick="clickScan()" data-sections="'+data[i]['section']+'" data-event="'+data[i]['event']['id']+'">Scan</a></td>');
+              row.append('<td><a id="scan" href="javascript:void(0)" onclick="clickScan(this)" data-sections="'+data[i]['section']+'" data-event="'+data[i]['event']['id']+'">Scan</a></td>');
               ev_body.append(row);
             }
             ev.append(ev_body);
@@ -75,10 +76,11 @@ var scanCode = function() {
 }
 
 function clickScan() {
-     window.location.replace("#scan_page"); 
-     var scan = document.getElementById('scan');        
-     eventDetails["event_id"] = scan.dataset.event;
-     eventDetails["sections"] = scan.dataset.sections.split(',');
+    console.log(event.target);
+     var transition = new Transitioner();
+     transition.slideDown($('#scan_page'));
+     eventDetails["event_id"] = event.target.dataset.event;
+     eventDetails["sections"] = event.target.dataset.sections.split(',');
      $('#sections').html('');
      for(i in eventDetails["sections"]) {
         $('#sections').append('<li>'+eventDetails["sections"][i]+'</li>');
@@ -89,7 +91,7 @@ function submitCodes() {
      //var codes = [046088336251, 461749529271, 474160386673, 862100648575, 420693751780]
      if(eventDetails["barcodes"].length > 0) {
          $.ajax({
-          url: "http://128.237.227.50:3000/createAttendances",
+          url: "http://128.237.74.78:3000/createAttendances",
           type: "POST",
           data: {"barcodes": eventDetails["barcodes"], "event_id": eventDetails["event_id"]},
           success: function(data) {

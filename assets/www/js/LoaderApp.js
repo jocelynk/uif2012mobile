@@ -62,6 +62,7 @@ LoaderApp.prototype = {
          $("#link-checkin").click(function(e) {
           e.preventDefault();
           console.log(self);
+          getCurrentEvents(self.authentication.token);
           self.transitioner.slideDown(self.checkinDiv);
         });
        

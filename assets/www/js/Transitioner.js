@@ -3,6 +3,31 @@ var Transitioner = function(){
     
 }
 
+
+Transitioner.prototype.slideDown = function(newDiv, cb){
+        var oldDiv = $(document.getElementsByClassName('panelDown')[0]);
+        console.log(oldDiv.attr('id'));
+        if(oldDiv.attr('id') !== newDiv.attr('id')) {
+        oldDiv.removeClass('transition');
+        
+        setTimeout(function(){
+            newDiv.addClass('transition');
+            console.log(newDiv instanceof jQuery);
+            newDiv.removeClass('panelUp');
+            newDiv.addClass('panelDown');
+
+            oldDiv.addClass('transition');
+            oldDiv.removeClass('panelDown');
+            oldDiv.addClass('panelUp');
+            newDiv.one('webkitTransitionEnd', function(){
+                if (cb !== undefined)
+                    cb();
+            });
+            console.log(newDiv.attr('class'));
+        }, 0);
+       }
+}
+
 Transitioner.prototype.slideRight = function(oldLeft, oldRight, cb){
         oldLeft.removeClass('transition');
         oldLeft.addClass('left');

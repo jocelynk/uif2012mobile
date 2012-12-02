@@ -6,6 +6,7 @@ var eventDetails = {
     barcodes: []
 }
 
+
 function resetEventDetails() {
     eventDetails["barcodes"] = [];
     eventDetails["sections"] = [];
@@ -20,6 +21,7 @@ function getCurrentEvents(token) {
           contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
           data: {"auth_token": token},
           success: function(data) {
+          console.log(data);
             $('#events_table').html('');
             console.log(data); 
             var ev = $('<table/>')
@@ -31,7 +33,11 @@ function getCurrentEvents(token) {
             for (i in data) {
               var row = $('<tr />');
               todays_date = data[i]['event']['date']; 
+<<<<<<< HEAD
               // row.append('<td>'+data[i]['event']['date']+'</td>');
+=======
+              row.append('<td>'+data[i]['event']['date']+'</td>');
+>>>>>>> 6432f71155fd78feb50fd06864f3d5721388a930
               row.append('<td>'+data[i]['program']+'</td>');
               var section_list = $('<td/>');
               for(j in data[i]['section']) {
@@ -42,13 +48,17 @@ function getCurrentEvents(token) {
               var end_time = new Date(data[i]['event']['end_time']);
               row.append('<td>'+formatTime(start_time)+'</td>');
               row.append('<td>'+formatTime(end_time)+'</td>');
-              row.append('<td><a id="scan" href="javascript:void(0)" onclick="clickScan()" data-sections="'+data[i]['section']+'" data-event="'+data[i]['event']['id']+'">Scan</a></td>');
+              row.append('<td><a id="scan" href="javascript:void(0)" onclick="clickScan(this)" data-sections="'+data[i]['section']+'" data-event="'+data[i]['event']['id']+'">Scan</a></td>');
               ev_body.append(row);
             }
             ev.append(ev_body);
             $('#events_table').append(ev);
             $('#date_header').append(" "+todays_date);
+<<<<<<< HEAD
            
+=======
+           console.log(ev);
+>>>>>>> 6432f71155fd78feb50fd06864f3d5721388a930
             return false;
           },
           error: function(err) {
@@ -77,10 +87,12 @@ var scanCode = function() {
 }
 
 function clickScan() {
-     window.location.replace("#scan_page"); 
-     var scan = document.getElementById('scan');        
-     eventDetails["event_id"] = scan.dataset.event;
-     eventDetails["sections"] = scan.dataset.sections.split(',');
+console.log("asdfasdfasdf");
+    console.log(event.target);
+     var transition = new Transitioner();
+     transition.slideDown($('#scan_page'));
+     eventDetails["event_id"] = event.target.dataset.event;
+     eventDetails["sections"] = event.target.dataset.sections.split(',');
      $('#sections').html('');
      for(i in eventDetails["sections"]) {
         $('#sections').append('<li>'+eventDetails["sections"][i]+'</li>');

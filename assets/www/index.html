@@ -8,26 +8,49 @@
     <link rel="stylesheet" href="css/reset.css"/>
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="css/media-queries.css"/>
-    <link rel="stylesheet" href="../css/font-awesome.css">       
-</head>
-<body>
+    <link rel="stylesheet" href="css/font-awesome.css">       
     <script type="text/javascript" src="cordova-2.2.0.js"></script>
     <script type="text/javascript" src="js/date.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/barcodescanner.js"></script>
     <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="server.js"></script>
     <script type="text/javascript" src="js/active-navigation.js"></script>
-    <script type="text/javascript" src="js/authentication.js"></script>
+    <script type="text/javascript" src="js/Transitioner.js"></script>
+    <script type="text/javascript" src="js/Authentication.js"></script>
+    <script type="text/javascript" src="js/LoaderApp.js"></script>
     <script type="text/javascript" src="js/checkin.js"></script>
-    <link rel="stylesheet" href="jquery.ui.datepicker.mobile.css" /> 
-    <script src="jQuery.ui.datepicker.js"></script>
-    <script src="jquery.ui.datepicker.mobile.js"></script>
-
+    <!--link rel="stylesheet" href="jquery.ui.datepicker.mobile.css" /--> 
+    <!--script src="jQuery.ui.datepicker.js"></script-->
+    <!--script src="jquery.ui.datepicker.mobile.js"></script-->
+    <!--script type="text/javascript" src="server.js"></script-->
+ 
 
     <script type="text/javascript">
     app.initialize();
+        document.addEventListener('deviceready', function() {
+            
+                window.launch();
+        });
+        $(document).ready(function() {
+            console.log("asdf");
+             window.launch();
+        })
+
+        window.launch = function(){
+            $.ajaxSetup({
+               headers: {"X-Requested-With": "XMLHttpRequest"},
+               cache: false
+            });
+            //window.util = _UTIL;
+            //window.util.patchFnBind();
+            $(document.body).height('100%');
+            new LoaderApp();
+        }
+    
     </script>
+</head>
+<body>
+   
 
     <div class="pagewrap">
 
@@ -37,6 +60,7 @@
             <!-- //////////////////////////////////////// -->
             <!-- ///////////// Top Navigation /////////// -->
             <!-- //////////////////////////////////////// -->
+<<<<<<< HEAD
             <div id="header">
                 <a id="link-home" href="#home"><img id="logo" src="img/uif-logo.gif"/></a>
                 <div id="sign-in"> <a href="#authentication"><span>Sign In</span></a></div>
@@ -55,14 +79,37 @@
 
             <div id ="home" class="content">
                 <!-- <h1>Welcome to Urban Impact</h1><h3>Mobile</h3> -->
+=======
+                <div id="header">
+                    <a id="link-home" href="javascript:void(0)"><img id="logo" src="img/uif-logo.gif"/></a>
+                    <div id="sign-in"> <a href="javascript:void(0)"><span>Sign In</span></a></div>
+                    <div id="logout"> <a href="javascript:void(0)">Log Out</a></div>
+                </div>
+                <div id="nav">
+                    <ul id="navbar">
+                        <li><a id="link-checkin" href="javascript:void(0) "> Check-In </a></li>
+                        <li><a id="link-students" href="javascript:void(0) "> Students </a></li>
+                        <li><a id="link-events" href="javascript:void(0)"> Events </a></li>
+                    </ul>
+                </div>
+            <div id="home" class="panelDown transition">
+                <div class="content center">
+                    <h1>Welcome to Urban Impact</h1><h3>Mobile</h3>
+                </div>
+>>>>>>> 6432f71155fd78feb50fd06864f3d5721388a930
             </div>
 
             <!-- //////////////////////////////////////// -->
             <!-- ///////////// Authentication /////////// -->
             <!-- //////////////////////////////////////// -->
+<<<<<<< HEAD
             <div id="authentication" class="panel">
                  <div id ="login_flash" class="flash none"></div>
+=======
+            <div id="authentication" class="panelUp ">
+>>>>>>> 6432f71155fd78feb50fd06864f3d5721388a930
                 <div class="content">
+                <div id ="login_flash" class="flash none"></div>
                     <form id="login">
                         <h3><label for="email">Email:</label></h3>
                         <input id="email" name="email" type="email" required/>
@@ -76,6 +123,7 @@
             </div>
         </div>
 
+<<<<<<< HEAD
 
 
 
@@ -121,12 +169,66 @@
                         <h4>Bad Barcodes</h4>
                         <ul id="bad_barcodes">
                         </ul>
+=======
+            <!-- ///////////////////////////////// -->
+            <!-- ///////////// Checkin /////////// -->
+            <!-- ///////////////////////////////// -->
+            <div id ="checkin" class="panelUp">
+                <div id="append" class="content">
+                    <h2>Event Check-In</h2>
+                    <div id="currentEvents">
+                        <h4 id="date-header">Today's Events</h4>
+                        <div id ="events_table"></div>
+                    </div>    
+
+                 </div>
+            </div>
+            
+
+         <!-- ////////////////////////////////// -->
+                <!-- ///////////// Scan Page /////////// -->
+                <!-- ////////////////////////////////// -->
+                <div id ="scan_page" class="panelUp ">
+                    <div class="content">
+                        <div id ="barcode_flash" class="flash none"></div>
+                        <h3>Scanning for following Sections:</h2>
+                        <ul id="sections"></ul>
+                        <!--css to make this a separate box-->
+                        <hr/>
+                        <div>
+                            <ul id="barcodes">
+                            </ul>
+                        </div>
+                        <!--css to make this a separate section-->
+                        <div>
+                            <h4>Successfully Scanned Students</h4>
+                            <ul id="success_scan">
+                            </ul>
+                            <h4>Bad Barcodes</h4>
+                            <ul id="bad_barcodes">
+                            </ul>
+                        </div>
+                        <div><p><a href="javascript:void(0)" class="btn" onclick="scanCode();">Scan Code</a> </p></div>
+                        <div><p><a href="javascript:void(0)" class="btn" onclick="submitCodes();">Submit Codes</a> </p></div>
+                    </div>
+                </div>
+
+                <!-- ////////////////////////////////// -->
+                <!-- ///////////// Students /////////// -->
+                <!-- ////////////////////////////////// -->
+                <div id ="students" class="panelUp ">
+                    <div class="content">
+                        <h2>Students</h2>
+                        <p>Some content</p>
+                        <!-- ... -->
+>>>>>>> 6432f71155fd78feb50fd06864f3d5721388a930
                     </div>
                     <div><p><a href="javascript:void(0)" class="btn" onclick="scanCode();">Scan Code</a> </p></div>
                     <div><p><a href="javascript:void(0)" class="btn" onclick="submitCodes();">Submit Codes</a> </p></div>
                 </div>
             </div>
 
+<<<<<<< HEAD
             <!-- ////////////////////////////////// -->
             <!-- ///////////// Students /////////// -->
             <!-- ////////////////////////////////// -->
@@ -137,6 +239,20 @@
                     <!-- ... -->
                 </div>
             </div>
+=======
+
+                <!-- //////////////////////////////// -->
+                <!-- ///////////// Events /////////// -->
+                <!-- //////////////////////////////// -->
+                <div id ="events" class="panelUp ">
+                    <div class="content">
+                        <h2>Events</h2>
+
+                        <div class="large-icon">
+                            <i class="icon-plus icon-large"></i>
+                            <h3> Add An Event </h3>
+                        </div>
+>>>>>>> 6432f71155fd78feb50fd06864f3d5721388a930
 
 
             <!-- //////////////////////////////// -->

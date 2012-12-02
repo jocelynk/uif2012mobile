@@ -1,3 +1,14 @@
+* {
+    -webkit-backface-visibility: hidden;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-user-select: none;
+}
+
+
+input {
+    -webkit-user-select: text;
+}
+
 @font-face
 {
     font-family:lato;
@@ -42,13 +53,14 @@ h1, h2, h3, h4
     height:100%;
     margin: 0 auto;
     background-color:white;
-
+    
 }
 
 #header {
     height: 100px;
     width:100%;
     background-color:#000;
+    
 }
 
 .container {
@@ -224,7 +236,7 @@ a
 
 
 /*testing transitions*/
-.panel{
+.panelUp{
     min-width: 100%;
     height: 80%;
     overflow-y: auto;
@@ -234,13 +246,22 @@ a
     background: #000;
     box-shadow: 0px 4px 7px rgba(0,0,0,0.6);
     z-index: 2;
-    -webkit-transition: all .8s ease-in-out;
+    /*-webkit-transition: all .8s ease-in-out;
     -moz-transition: all .8s ease-in-out;
     -o-transition: all .8s ease-in-out;
-    transition: all .8s ease-in-out;
+    transition: all .8s ease-in-out;*/
 }
-.panel:target{
+
+.transition {
+  -webkit-transition: all .8s ease-in-out;
+   -moz-transition: all .8s ease-in-out;
+   -o-transition: all .8s ease-in-out;
+   transition: all .8s ease-in-out;
+}
+.panelDown{
     margin-top: 0%;
+    position:relative;
+    
     background-color: #ffcb00;
 }
 
@@ -252,6 +273,7 @@ a
 top: 0px;
 position: absolute;
 padding-bottom: 30px;
+
 
 }
 
@@ -377,7 +399,11 @@ padding-bottom: 30px;
 
 #login-submit
 {
+<<<<<<< HEAD
     font-size:15px;
+=======
+    font-size:50px;
+>>>>>>> 6432f71155fd78feb50fd06864f3d5721388a930
 }
 
 #events_table
@@ -385,11 +411,14 @@ padding-bottom: 30px;
 width:10px !important;
 }
 
+<<<<<<< HEAD
 
 
 
 
 
+=======
+>>>>>>> 6432f71155fd78feb50fd06864f3d5721388a930
 th {
     font-family:lato;
 	color: #fff;

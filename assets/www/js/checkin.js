@@ -45,9 +45,9 @@ function getCurrentEvents(token) {
               ev_body.append(row);
             }
             ev.append(ev_body);
-            $('#events_table').append(ev);
+            $('#append').append(ev);
            
-           
+           console.log(ev);
             return false;
           },
           error: function(err) {
@@ -76,6 +76,7 @@ var scanCode = function() {
 }
 
 function clickScan() {
+console.log("asdfasdfasdf");
     console.log(event.target);
      var transition = new Transitioner();
      transition.slideDown($('#scan_page'));

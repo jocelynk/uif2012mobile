@@ -1,3 +1,14 @@
+* {
+    -webkit-backface-visibility: hidden;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-user-select: none;
+}
+
+
+input {
+    -webkit-user-select: text;
+}
+
 @font-face
 {
     font-family:lato;
@@ -42,13 +53,14 @@ h1, h2, h3, h4
     height:100%;
     margin: 0 auto;
     background-color:white;
-
+    
 }
 
 #header {
     height: 100px;
     width:100%;
     background-color:#000;
+    
 }
 
 .container {
@@ -239,8 +251,15 @@ a
     -o-transition: all .8s ease-in-out;
     transition: all .8s ease-in-out;
 }
+
+.transition {
+  -webkit-transition: all .8s ease-in-out;
+   -moz-transition: all .8s ease-in-out;
+   -o-transition: all .8s ease-in-out;
+   transition: all .8s ease-in-out;
+}
 .panel:target{
-    margin-top: 0%;
+    margin-top: 67%;
     background-color: #ffcb00;
 }
 
@@ -252,6 +271,7 @@ a
 top: 0px;
 position: absolute;
 padding-bottom: 30px;
+overflow-x: hidden;
 
 }
 

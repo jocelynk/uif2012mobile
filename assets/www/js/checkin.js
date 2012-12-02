@@ -15,11 +15,12 @@ function resetEventDetails() {
 function getCurrentEvents(token) {
     console.log("getting current events")
     $.ajax({
-          url: "http://128.237.74.78:3000/getTodaysEvents.json",
+          url: "http://128.237.227.50:3000/getTodaysEvents.json",
           type: "GET",
           contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
           data: {"auth_token": token},
           success: function(data) {
+          console.log(data);
             $('#events_table').html('');
             var ev = $('<table/>')
             var headers = $('<thead />');
@@ -88,7 +89,7 @@ function submitCodes() {
      //var codes = [046088336251, 461749529271, 474160386673, 862100648575, 420693751780]
      if(eventDetails["barcodes"].length > 0) {
          $.ajax({
-          url: "http://128.237.74.78:3000/createAttendances",
+          url: "http://128.237.227.50:3000/createAttendances",
           type: "POST",
           data: {"barcodes": eventDetails["barcodes"], "event_id": eventDetails["event_id"]},
           success: function(data) {

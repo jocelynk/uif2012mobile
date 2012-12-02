@@ -28,8 +28,10 @@ function getCurrentEvents(token) {
             headers.append('<tr><th>Date</th><th>Program</th><th>Sections</th><th>Start Time</th><th>End Time</th><th>Scan</th></tr>');
             ev.append(headers);
             ev_body = $('<tbody/>');
+            var todays_date; 
             for (i in data) {
               var row = $('<tr />');
+              todays_date = data[i]['event']['date']; 
               row.append('<td>'+data[i]['event']['date']+'</td>');
               row.append('<td>'+data[i]['program']+'</td>');
               var section_list = $('<td/>');
@@ -45,8 +47,8 @@ function getCurrentEvents(token) {
               ev_body.append(row);
             }
             ev.append(ev_body);
-            $('#append').append(ev);
-           
+            $('#events_table').append(ev);
+            $('#date_header').append(" "+todays_date);
            console.log(ev);
             return false;
           },

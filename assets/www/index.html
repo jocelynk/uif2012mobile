@@ -64,7 +64,6 @@
                     <a id="link-home" href="javascript:void(0)"><img id="logo" src="img/uif-logo.gif"/></a>
                     <div id="sign-in"> <a href="javascript:void(0)"><span>Sign In</span></a></div>
                     <div id="logout"> <a href="javascript:void(0)">Log Out</a></div>
-                    <div id ="login_flash" class="flash none"></div>
                 </div>
                 <div id="nav">
                     <ul id="navbar">
@@ -84,6 +83,7 @@
             <!-- //////////////////////////////////////// -->
             <div id="authentication" class="panelUp ">
                 <div class="content">
+                <div id ="login_flash" class="flash none"></div>
                     <form id="login">
                         <h3><label for="email">Email:</label></h3>
                         <input id="email" name="email" type="email" required/>
@@ -103,7 +103,7 @@
                 <div id="append" class="content">
                     <h2>Event Check-In</h2>
                     <div id="currentEvents">
-                        <h4>Today's Events</h4>
+                        <h4 id="date-header">Today's Events</h4>
                         <div id ="events_table"></div>
                     </div>    
 

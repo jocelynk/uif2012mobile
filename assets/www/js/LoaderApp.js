@@ -37,65 +37,106 @@ LoaderApp.prototype = {
     $('#login').submit(function(e) { e.preventDefault(); self.authentication.getToken(self.authentication);});
   },
   nav: function() {
-  console.log(this.authentication.authorized);
     self = this;
-     $("#home").click(function(e) {
-          e.preventDefault();
-          self.transitioner.slideDown(self.homeDiv);
-        });
-    $("#sign-in").click(function(e) {
-          e.preventDefault();
-          self.transitioner.slideDown(self.authDiv);
-        });
-   document.getElementById("sign-in").addEventListener('touchstart', function(e) {
-          e.preventDefault();
-          self.transitioner.slideDown(self.authDiv);
-        }, false);
+    /*  $('ul#menu').slideToggle('fast', function() {
+
+              $('ul#menu').css({
+               
+              'height': 'auto',
+              'max-height': $(window).height() + 20
+              });
+        });*/
+    //for browser click events
+        //Questions to ask: why is self now Authentcation? b/c it's loading from there?  
     
-    //Questions to ask: why is self now Authentcation? b/c it's loading from there?  
-       $("#logout").click(function(e) {
-       console.log(self);
-          e.preventDefault();
-          self.authentication.destroyToken(self.authentication);
-        });
+    $("#home").click(function(e) {
+        e.preventDefault(); 
+        self.transitioner.slideDown(self.homeDiv);
+    });
+    
+    $("#sign-in").click(function(e) {
+        e.preventDefault();
+        self.transitioner.slideDown(self.authDiv);
+    });
+    
+    $("#logout").click(function(e) {
+        e.preventDefault();
+        self.authentication.destroyToken(self.authentication);
+     });
         
-         $("#link-checkin").click(function(e) {
-          e.preventDefault();
-          console.log(self);
-          getCurrentEvents(self.authentication.token);
-          self.transitioner.slideDown(self.checkinDiv);
-        });
+     $("#link-checkin").click(function(e) {
+        e.preventDefault();
+   
+        getCurrentEvents(self.authentication.token);
+        self.transitioner.slideDown(self.checkinDiv);
+      });
        
       $("#link-students").click(function(e) {
-          e.preventDefault();
-          console.log(self.authentication);
-          self.transitioner.slideDown(self.studentsDiv);
-        });
+        e.preventDefault();
+      
+        self.transitioner.slideDown(self.studentsDiv);
+      });
         
       $("#link-events").click(function(e) {
-          e.preventDefault();
-          self.transitioner.slideDown(self.eventsDiv);
-        });
+        e.preventDefault();      
+        self.transitioner.slideDown(self.eventsDiv);
+      });
+      
+      //mobile on touch events  
+      document.getElementById("sign-in").addEventListener('touchstart', function(e) {
+          e.preventDefault();  
+          self.transitioner.slideDown(self.authDiv);
+      }, false);
+    
+      document.getElementById("home").addEventListener('touchstart', function(e) {
+          e.preventDefault();     
+          self.transitioner.slideDown(self.homeDiv);
+        }, false);
             
-      /*document.getElementById("logout").addEventListener('touchstart', function(e) {
+      document.getElementById("logout").addEventListener('touchstart', function(e) {
         e.preventDefault();
-        this.transitioner(this.authDiv);
+        self.transitioner.slideDown(self.authDiv);
       }, false);
       
       document.getElementById("link-checkin").addEventListener('touchstart', function(e) {
         e.preventDefault();
-        this.transitioner(this.checkinDiv);
+      
+        self.transitioner.slideDown(self.checkinDiv);
+          $('ul#menu').slideToggle('fast', function() {
+
+              $('ul#menu').css({
+               
+              'height': 'auto',
+              'max-height': $(window).height() + 20
+              });
+           });
       }, false);
       
       document.getElementById("link-students").addEventListener('touchstart', function(e) {
         e.preventDefault();
-        this.transitioner(this.studentsDiv);
+        $('ul#menu').slideToggle('fast', function() {
+
+              $('ul#menu').css({
+               
+              'height': 'auto',
+              'max-height': $(window).height() + 20
+              });
+           });
+        self.transitioner.slideDown(self.studentsDiv);
       }, false);
       
       document.getElementById("link-events").addEventListener('touchstart', function(e) {
         e.preventDefault();
-        this.transitioner(this.eventsDiv);
-      }, false);*/
+        $('ul#menu').slideToggle('fast', function() {
+
+              $('ul#menu').css({
+               
+              'height': 'auto',
+              'max-height': $(window).height() + 20
+              });
+           });
+        self.transitioner.slideDown(self.eventsDiv);
+      }, false);
 
   }
   

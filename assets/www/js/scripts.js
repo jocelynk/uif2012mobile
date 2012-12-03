@@ -38,8 +38,9 @@ $(function() {
   if ($("nav a.btn-navbar").is(":visible")) {
 
     // Making the dropdown magically appear onclick/touch.
-    
+    var obj = $('nav a.btn-navbar').get(0);
     $('nav a.btn-navbar').on('click', function() {
+  // obj.addEventListener('touchstart', function(e) { e.preventDefault();
       $('ul#menu').slideToggle('fast', function() {
         $('ul#menu').css({
 
@@ -56,6 +57,7 @@ $(function() {
     }); // end on.click
 
     // Making the children appear on click/touch
+    console.log($('ul#menu li.hasChildren a'));
     $('ul#menu li.hasChildren a').on('click', function() {
       $(this).parent().children('ul').slideToggle('fast', function() {
 

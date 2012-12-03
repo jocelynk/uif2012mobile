@@ -68,34 +68,6 @@ a
 
 /*Login Form*/
 
-#login
-{
-    margin-top: 60px;
-    position:relative;   
-    background-color: black;
-    padding:40px;
-    background-color: #f8f8f8;
-    background-image: -moz-linear-gradient(top, #ffffff, #ededed);
-    background-image: -ms-linear-gradient(top, #ffffff, #ededed);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from    (#ffffff), to(#ededed));
-    background-image: -webkit-linear-gradient(top, #ffffff, #ededed);
-    background-image: -o-linear-gradient(top, #ffffff, #ededed);
-    background-image: linear-gradient(top, #ffffff, #ededed);
-    background-repeat: repeat-x;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=0);
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    font-family: "Lato", Helvetica, Arial, sans-serif;
-    font-size: 1.5em;
-    width:40%;
-    margin-left: auto ;
-    margin-right: auto ;
-     -moz-border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -khtml-border-radius: 20px;
-    border-radius: 20px;
-}
 
 #login input:nth-child(2), input:nth-child(4)
 {
@@ -103,10 +75,14 @@ a
     height:15px;
 }
 
-#login-submit
+#submit
 {
     font-size:15px;
 }
 
 
-
+#form
+{
+    z-index:100;
+    font-size:40px !important;
+}

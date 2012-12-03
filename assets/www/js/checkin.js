@@ -33,11 +33,7 @@ function getCurrentEvents(token) {
             for (i in data) {
               var row = $('<tr />');
               todays_date = data[i]['event']['date']; 
-<<<<<<< HEAD
-              // row.append('<td>'+data[i]['event']['date']+'</td>');
-=======
               row.append('<td>'+data[i]['event']['date']+'</td>');
->>>>>>> 6432f71155fd78feb50fd06864f3d5721388a930
               row.append('<td>'+data[i]['program']+'</td>');
               var section_list = $('<td/>');
               for(j in data[i]['section']) {
@@ -54,11 +50,7 @@ function getCurrentEvents(token) {
             ev.append(ev_body);
             $('#events_table').append(ev);
             $('#date_header').append(" "+todays_date);
-<<<<<<< HEAD
-           
-=======
-           console.log(ev);
->>>>>>> 6432f71155fd78feb50fd06864f3d5721388a930
+
             return false;
           },
           error: function(err) {

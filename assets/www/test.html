@@ -50,6 +50,7 @@
     <script type="text/javascript" src="js/Authentication.js"></script>
     <script type="text/javascript" src="js/LoaderApp.js"></script>
     <script type="text/javascript" src="js/checkin.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
     <!--link rel="stylesheet" href="jquery.ui.datepicker.mobile.css" /--> 
     <!--script src="jQuery.ui.datepicker.js"></script-->
     <!--script src="jquery.ui.datepicker.mobile.js"></script-->
@@ -65,6 +66,11 @@
         $(document).ready(function() {
             console.log("asdf");
              window.launch();
+             document.getElementById("butt").addEventListener('touchstart', function(e) {
+                     e.preventDefault();
+                     alert("touched")
+                     self.transitioner.slideDown(self.authDiv);
+                   }, false);
         })
         
         window.launch = function() {
@@ -131,12 +137,13 @@
             <!-- //////////////////////////////////////// -->
             <div id="authentication" class="panelUp">
                 <div class="content">
+                               <button id="butt"> Click </button>
                 <div id ="login_flash" class="flash none"></div>
                     <form id="login">
-                        <h3><label for="email">Email:</label></h3>
-                        <input id="email" name="email" type="email" required/>
-                        <h3><label for="password">Password:</label></h3>
-                        <input id="password" name="password" type="password" required/>
+                        <label for="email">Email:</label>
+                        <input id="email" name="email" type="email"/>
+                        <label for="password">Password:</label>
+                        <input id="password" name="password" type="password"/>
                         </br>
                         <input id="login-submit" type="submit" value="Submit" id="submit"/>
                     </form>

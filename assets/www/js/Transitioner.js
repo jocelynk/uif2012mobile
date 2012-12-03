@@ -6,13 +6,11 @@ var Transitioner = function(){
 
 Transitioner.prototype.slideDown = function(newDiv, cb){
         var oldDiv = $(document.getElementsByClassName('panelDown')[0]);
-        console.log(oldDiv.attr('id'));
         if(oldDiv.attr('id') !== newDiv.attr('id')) {
         oldDiv.removeClass('transition');
         
         setTimeout(function(){
             newDiv.addClass('transition');
-            console.log(newDiv instanceof jQuery);
             newDiv.removeClass('panelUp');
             newDiv.addClass('panelDown');
 
@@ -23,7 +21,6 @@ Transitioner.prototype.slideDown = function(newDiv, cb){
                 if (cb !== undefined)
                     cb();
             });
-            console.log(newDiv.attr('class'));
         }, 0);
        }
 }

@@ -42,7 +42,7 @@ Authentication.prototype = {
           type: "POST",
           data: {"email": email, "password": password},
           success: function(data) {
-            console.log(data);
+            console.log(data.token);
             if(typeof data.token !== 'undefined') {
                 self.token = data.token;
                 self.authorized = true;
@@ -51,7 +51,7 @@ Authentication.prototype = {
                     localStorage.setItem('authorized', true);
                     localStorage.setItem('email', email);
                 }         
-                self.transitioner.slideDown($('#checkin'));
+                self.transitioner.slideDown($('#home'));
                 $('#password').val('');
                 $('#email').val('');
                 $('#nav').removeClass('none');
@@ -73,12 +73,13 @@ Authentication.prototype = {
     },
     destroyToken: function(self) {
         var token = self.token;
+        console.log(token);
         $.ajax({
           url: "http://128.237.74.78:3000/destroyToken",
           type: "DELETE",
           data: {"id": token},
           success: function(data) {
-            console.log(data);
+            console.log(data.token);
             if(typeof data.token !== 'undefined') {
                 self.resetAuthDetails();    
                 self.transitioner.slideDown($('#authentication'));

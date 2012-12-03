@@ -1,0 +1,112 @@
+@font-face
+{
+    font-family:lato;
+    src:url('../fonts/Lato-Reg.ttf');; 
+}
+
+@font-face
+{
+    font-family:nobile;
+    src:url('../fonts/nobile.ttf');
+}
+
+/*hide elements*/
+.none {
+    display: none;
+}
+
+/*flash messages*/
+.flash{
+    width:759px;
+    padding-top:8px;
+    padding-bottom:8px;
+    background-color: #fff;
+    font-weight:bold;
+    font-size:20px;-moz-border-radius: 6px;-webkit-border-radius: 6px;
+    background-color: #ccc;
+}
+
+a
+{
+    color:white;
+    text-decoration:none;
+    /*    background-color:red;*/
+}
+
+.panelUp{
+    /*min-width: 100%;
+    height: 80%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: -150%;
+    position: absolute;
+    background: #000;
+    box-shadow: 0px 4px 7px rgba(0,0,0,0.6);
+    z-index: 2;
+    /*-webkit-transition: all .8s ease-in-out;
+    -moz-transition: all .8s ease-in-out;
+    -o-transition: all .8s ease-in-out;
+    transition: all .8s ease-in-out;*/
+    top: -300%;
+    bottom: 100%;
+    position: absolute;
+}
+
+.transition {
+  -webkit-transition: all .8s ease-in-out;
+   -moz-transition: all .8s ease-in-out;
+   -o-transition: all .8s ease-in-out;
+   transition: all .8s ease-in-out;
+}
+.panelDown{
+    top: 0%;
+    position:relative;
+    z-index: -1;
+    background-color: #ffcb00;
+}
+
+
+/*Login Form*/
+
+#login
+{
+    margin-top: 60px;
+    position:relative;   
+    background-color: black;
+    padding:40px;
+    background-color: #f8f8f8;
+    background-image: -moz-linear-gradient(top, #ffffff, #ededed);
+    background-image: -ms-linear-gradient(top, #ffffff, #ededed);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from    (#ffffff), to(#ededed));
+    background-image: -webkit-linear-gradient(top, #ffffff, #ededed);
+    background-image: -o-linear-gradient(top, #ffffff, #ededed);
+    background-image: linear-gradient(top, #ffffff, #ededed);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=0);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+    font-size: 1.5em;
+    width:40%;
+    margin-left: auto ;
+    margin-right: auto ;
+     -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    border-radius: 20px;
+}
+
+#login input:nth-child(2), input:nth-child(4)
+{
+    margin-bottom:30px;
+    height:15px;
+}
+
+#login-submit
+{
+    font-size:15px;
+}
+
+
+

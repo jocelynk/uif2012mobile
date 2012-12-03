@@ -55,13 +55,13 @@ h1, h2, h3, h4
     background-color:white;
     
 }
-
+/*
 #header {
     height: 100px;
     width:100%;
     background-color:#000;
     
-}
+}*/
 
 .container {
 
@@ -202,11 +202,11 @@ background-color:#dfdfdf;
 position:relative;
 }
 */
-
+/*
 #footer {
     width:100%;
     bottom:0 !important;
-    /*might have to change but cool for now*/
+    /*might have to change but cool for now
     position:fixed;
     background-color:black;
     clear: both;
@@ -225,7 +225,7 @@ position:relative;
 #footer li a
 {
     text-shadow: 0px 1px 1px rgba(69, 119, 212,0.9);
-}
+}*/
 
 a
 {
@@ -261,7 +261,6 @@ a
 .panelDown{
     margin-top: 0%;
     position:relative;
-    
     background-color: #ffcb00;
 }
 
@@ -399,11 +398,7 @@ padding-bottom: 30px;
 
 #login-submit
 {
-<<<<<<< HEAD
-    font-size:15px;
-=======
     font-size:50px;
->>>>>>> 6432f71155fd78feb50fd06864f3d5721388a930
 }
 
 #events_table
@@ -411,14 +406,6 @@ padding-bottom: 30px;
 width:10px !important;
 }
 
-<<<<<<< HEAD
-
-
-
-
-
-=======
->>>>>>> 6432f71155fd78feb50fd06864f3d5721388a930
 th {
     font-family:lato;
 	color: #fff;

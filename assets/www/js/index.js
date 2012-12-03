@@ -27,11 +27,22 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        $(document).ready(this.browserReady);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
+    browserReady: function() {
+         $.ajaxSetup({
+            headers: {"X-Requested-With": "XMLHttpRequest"},
+            cache: false
+        });
+        window.util = _UTIL;
+        window.util.patchFnBind();
+        $(document.body).height('100%');
+        new LoaderApp();
+    },
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
     },
@@ -45,5 +56,14 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+        
+        $.ajaxSetup({
+            headers: {"X-Requested-With": "XMLHttpRequest"},
+            cache: false
+        });
+        window.util = _UTIL;
+        window.util.patchFnBind();
+        $(document.body).height('100%');
+        new LoaderApp();
     }
 };

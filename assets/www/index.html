@@ -150,16 +150,15 @@
             <!-- //////////////////////////////////////// -->
             <div id="authentication" class="panelUp">
                 <div class="content">
-                <div id ="login_flash" class="flash none"></div>
+                    <div id ="login_flash" class="flash none"></div>
                     <form id="login">
                         <h3><label for="email">Email:</label></h3>
                         <input id="email" name="email" type="email" required/>
                         <h3><label for="password">Password:</label></h3>
                         <input id="password" name="password" type="password" required/>
-                        </br>
-                        <input id="login-submit" type="submit" value="Submit" id="submit"/>
-                    </form>
-
+                        <br/>
+                        <input id="login-submit" type="submit" value="Submit"/>
+                     </form>
                 </div>
             </div>
 
@@ -201,8 +200,8 @@
                             <ul id="bad_barcodes">
                             </ul>
                         </div>
-                        <div><p><a href="javascript:void(0)" class="btn" onclick="scanCode();">Scan Code</a> </p></div>
-                        <div><p><a href="javascript:void(0)" class="btn" onclick="submitCodes();">Submit Codes</a> </p></div>
+                        <div><p><a href="javascript:void(0)" class="button" onclick="scanCode();">Scan Code</a> </p></div>
+                        <div><p><a href="javascript:void(0)" class="button" onclick="submitCodes();">Submit Codes</a> </p></div>
                     </div>
                 </div>
 
@@ -212,8 +211,9 @@
                 <div id ="students" class="panelUp">
                     <div class="content">
                         <h2>Students</h2>
-                        <p>Some content</p>
-                        <!-- ... -->
+                        <div id ="student_flash" class="flash none"></div>
+                        <div><p><a href="javascript:void(0)" class="button" onclick="scanCode();">Scan Code</a> </p></div>
+
                     </div>
                 </div>
 

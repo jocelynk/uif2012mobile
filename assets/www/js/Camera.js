@@ -1,4 +1,4 @@
-/*var PhotoUpload = function() {};
+var PhotoUpload = function() {};
 
 PhotoUpload.prototype = function() {
     uploadPhoto: function(imageURI) {
@@ -57,4 +57,21 @@ PhotoUpload.prototype = function() {
          }
  
 
+
+var scanCode2 = function() {
+    window.plugins.barcodeScanner.scan(
+        function(result) {
+        $('#barcodes').append('<li>'+result.text+'</li>');
+        eventDetails["barcodes"].push(result.text);
+        console.log(eventDetails["barcodes"]);
+        console.log(eventDetails["event_id"]);
+        //alert(result.text);
+        //alert("Scanned Code: " + result.text 
+               // + ". Format: " + result.format
+               // + ". Cancelled: " + result.cancelled);
+               return false;
+    }, function(error) {
+        alert("Scan failed: " + error);
+    });
+}
 

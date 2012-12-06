@@ -65,6 +65,7 @@ LoaderApp.prototype = {
         getCurrentEvents(self.authentication.token);
         self.transitioner.slideDown(self.checkinDiv);
       });
+      
        
       $("#link-students").click(function(e) {
         e.preventDefault();

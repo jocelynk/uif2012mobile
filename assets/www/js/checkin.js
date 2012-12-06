@@ -78,7 +78,7 @@ var scanCode = function() {
         //alert("Scanned Code: " + result.text 
                // + ". Format: " + result.format
                // + ". Cancelled: " + result.cancelled);
-               return false;
+        return false;
     }, function(error) {
         alert("Scan failed: " + error);
     });

@@ -1,4 +1,7 @@
+//change functions to use bindthis
+
 var LoaderApp = function(){
+    this.test = "testing if this is LoaderApp";
     this.setup();
     this.auth();
     this.nav();
@@ -14,10 +17,12 @@ LoaderApp.prototype = {
     this.studentsDiv = $('#students');
     this.scanDiv = $('#scan_page');
     this.authentication = new Authentication(this.transitioner);
+    this.photoCapture = new Camera();
   },
   
   auth: function() {
     var self = this;
+    console.log(self.test);
     if('localStorage' in window && window['localStorage'] !== null) {
         var temp = localStorage.getItem('token');
         console.log(temp);
@@ -37,10 +42,11 @@ LoaderApp.prototype = {
     $('#login').submit(function(e) { e.preventDefault(); self.authentication.getToken(self.authentication);});
   },
   nav: function() {
-    self = this;
-    //Questions to ask: why is self now Authentcation? b/c it's loading from there?  
+    var self = this;
+    console.log(self.test);    
+    //Questions to ask: why is self now Authentication? b/c it's loading from there?  
     //for browser click events
-    $("#home").click(function(e) {
+    $("#link-home").click(function(e) {
         e.preventDefault(); 
         $('ul#menu').slideUp()
         self.transitioner.slideDown(self.homeDiv);
@@ -85,7 +91,7 @@ LoaderApp.prototype = {
         self.transitioner.slideDown(self.authDiv);
       }, false);
     
-      document.getElementById("home").addEventListener('touchstart', function(e) {
+      document.getElementById("link-home").addEventListener('touchstart', function(e) {
         e.preventDefault();
         $('ul#menu').slideUp()     
         self.transitioner.slideDown(self.homeDiv);
@@ -93,7 +99,8 @@ LoaderApp.prototype = {
             
       document.getElementById("logout").addEventListener('touchstart', function(e) {
         e.preventDefault();
-        $('ul#menu').slideUp()
+        console.log(self);
+        console.log("self is here");
         self.authentication.destroyToken(self.authentication);
         self.transitioner.slideDown(self.authDiv);
       }, false);

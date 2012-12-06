@@ -41,7 +41,7 @@ PhotoUpload.prototype = function() {
          options.params = params;
 
          var ft = new FileTransfer();
-         ft.upload(imageURI, "http://128.237.74.78:3000/getPhoto.json?auth_token="+localStorage.getItem('token'), win, fail, options);
+         ft.upload(imageURI, "http://192.168.1.5:3000/getPhoto.json?auth_token="+localStorage.getItem('token'), win, fail, options);
          }
 
          function win(r) {

@@ -8,40 +8,40 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">  
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" > 
-    
-    
-    
+
+
+
     <!--link rel="stylesheet" href="css/media-queries.css"/-->
     <link rel="stylesheet" href="css/font-awesome.css">
-    
+
     <!-- For all Browsers -->
     <link rel="stylesheet" href="css/normalize.css" media="screen">
     <link rel="stylesheet" href="css/atmosphere.css" media="screen">
     <link rel="stylesheet" href="css/style2.css">
     <link rel="stylesheet" href="css/authentication.css">
-    
+
     <!-- Media Queries -->
     <link rel="stylesheet" href="css/mobile-nav.css" media="screen and (min-width: 320px) and (max-width: 1024px)">
-    
+
     <link rel="stylesheet" href="css/smartphone.css" media="screen and (min-width:320px) and (max-width:480px)">
     <link rel="stylesheet" href="css/tablet.css" media="screen and (min-width: 481px) and (max-width: 767px)">
     <link rel="stylesheet" href="css/ipad.css" media="screen and (min-width: 768px) and (max-width: 1024px)">
-    
+
     <link rel="stylesheet" href="css/desktop.css" media="screen and (min-width: 1025px)">
     <link rel="stylesheet" href="css/flash_messages.css">
     <link rel="stylesheet" href="css/checkin_page.css">
-    
+
     <!--[if lt IE 9]>
     <link rel="stylesheet" href="css/desktop.css" media="screen">
     <![endif]-->
-    
+
     <!--[if (lt IE 9) & (!IEMobile)]>
     <script src="js/selectivizr-1.0.3.min.js"></script>
     <![endif]-->
-    
+
     <meta http-equiv="cleartype" content="on">
-    
-           
+
+
     <script type="text/javascript" src="libs/cordova-2.2.0.js"></script>
     <script type="text/javascript" src="libs/barcodescanner.js"></script>
     <script type="text/javascript" src="libs/jquery-1.8.2.min.js"></script>
@@ -58,202 +58,202 @@
     <!--script src="jQuery.ui.datepicker.js"></script-->
     <!--script src="jquery.ui.datepicker.mobile.js"></script-->
     <!--script type="text/javascript" src="server.js"></script-->
- 
+
 
     <script type="text/javascript">
     //app.initialize();
-        document.addEventListener('deviceready', function() {
-            var camera = document.getElementById('camera');
-            camera.addEventListener('touchstart', function(e) {e.preventDefault();     navigator.camera.getPicture(uploadPhoto,
-                                        function(message) { alert('get picture failed'); },
-                                        { quality: 50, 
-                                        destinationType: navigator.camera.DestinationType.FILE_URI,
-                                        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
-                                        );}, false);
+    document.addEventListener('deviceready', function() {
+        var camera = document.getElementById('camera');
+        camera.addEventListener('touchstart', function(e) {e.preventDefault();     navigator.camera.getPicture(uploadPhoto,
+            function(message) { alert('get picture failed'); },
+            { quality: 50, 
+                destinationType: navigator.camera.DestinationType.FILE_URI,
+                sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
+                );}, false);
                 window.launch();
-        });
-        $(document).ready(function() {
-            console.log("asdf");
-             window.launch();
-          
-        })
-        
-        window.launch = function() {
-            window.util = _UTIL;
-            window.util.patchFnBind();
-            $(document.body).height('100%');
-            $.ajaxSetup({
-               headers: {"X-Requested-With": "XMLHttpRequest"},
-               cache: false
             });
-             new LoaderApp();
-        }
+            $(document).ready(function() {
+                console.log("asdf");
+                window.launch();
 
-    
-    </script>
-</head>
-<body>
-       <script type="text/javascript" src="libs/UTIL.js"></script>
-   
+            })
 
-    <div class="pagewrap">
+            window.launch = function() {
+                window.util = _UTIL;
+                window.util.patchFnBind();
+                $(document.body).height('100%');
+                $.ajaxSetup({
+                    headers: {"X-Requested-With": "XMLHttpRequest"},
+                    cache: false
+                });
+                new LoaderApp();
+            }
 
-        <div class="container">
+
+            </script>
+        </head>
+        <body>
+            <script type="text/javascript" src="libs/UTIL.js"></script>
 
 
-            <!-- //////////////////////////////////////// -->
-            <!-- ///////////// Top Navigation /////////// -->
-            <!-- //////////////////////////////////////// -->
-                <header id="header" role="banner">
-                    <!--a id="link-home" href="javascript:void(0)"><img id="logo" src="img/uif-logo.gif"/></a-->
-                    <!--<div id="sign-in"> <a href="javascript:void(0)"><span>Sign In</span></a></div-->
-                    <!--<div id="logout"> <a href="javascript:void(0)">Log Out</a></div-->
-                    
-                   
-                    <nav>
-                        <h2 id="tagline">Welcome to UIF Mobile</h2>
-                        <span id="sign-in"><a href="javascript:void(0)" class="btn">Sign In</a></span>
-                        <span id="logout"><a href="javascript:void(0)" class="btn">Log Out</a></span>
-                        <a id="nav" class="btn btn-navbar" data-toggle="collapse">
-                            <i id="nav-button" class="icon-chevron-up"> </i>
-                        </a>
-    
-                        <ul id="menu" class="overthrow">
-                            <li><span><a id="link-checkin" href="javascript:void(0) "> Check-In </a></span></li>
-                            <li><span><a id="link-students" href="javascript:void(0) "> Students </a></span></li>
-                            <li><span><a id="link-events" href="javascript:void(0)"> Events </a></span></li>
-                        </ul>
-    
-                    </nav>  
-                    
-                </header>
-                <!--div id="nav">
-                    <ul id="navbar">
-                        <li><a id="link-checkin" href="javascript:void(0) "> Check-In </a></li>
-                        <li><a id="link-students" href="javascript:void(0) "> Students </a></li>
-                        <li><a id="link-events" href="javascript:void(0)"> Events </a></li>
-                    </ul>
-                </div-->
-            <div id="home" class="panelDown transition">
-                <div class="content center">
-                    <h1>Welcome to Urban Impact</h1><h3>Mobile</h3>
-                      <button id="camera">Camera</button>
-                         <img id="image" src=''></img>
-                </div>
-            </div>
+            <div class="pagewrap">
 
-            <!-- //////////////////////////////////////// -->
-            <!-- ///////////// Authentication /////////// -->
-            <!-- //////////////////////////////////////// -->
-            <div id="authentication" class="panelUp">
-                <div class="content">
-                <div id ="login_flash" class="flash none"></div>
-                    <form id="login">
-                        <h3><label for="email">Email:</label></h3>
-                        <input id="email" name="email" type="email" required/>
-                        <h3><label for="password">Password:</label></h3>
-                        <input id="password" name="password" type="password" required/>
-                        </br>
-                        <input id="login-submit" type="submit" value="Submit" id="submit"/>
-                    </form>
+                <div class="container">
 
-                </div>
-            </div>
 
-            <!-- ///////////////////////////////// -->
-            <!-- ///////////// Checkin /////////// -->
-            <!-- ///////////////////////////////// -->
-            <div id ="checkin" class="panelUp">
-                <div id="append" class="content">
-                    <h1>Event Check-In</h1>
-                    <div id="currentEvents">
-                        <h4 id="date-header">Today's Events</h4>
-                        <div id ="events_table"></div>
-                    </div>    
+                    <!-- //////////////////////////////////////// -->
+                    <!-- ///////////// Top Navigation /////////// -->
+                    <!-- //////////////////////////////////////// -->
+                    <header id="header" role="banner">
+                        <!--a id="link-home" href="javascript:void(0)"><img id="logo" src="img/uif-logo.gif"/></a-->
+                        <!--<div id="sign-in"> <a href="javascript:void(0)"><span>Sign In</span></a></div-->
+                            <!--<div id="logout"> <a href="javascript:void(0)">Log Out</a></div-->
 
-                 </div>
-            </div>
-            
 
-         <!-- ////////////////////////////////// -->
-                <!-- ///////////// Scan Page /////////// -->
-                <!-- ////////////////////////////////// -->
-                <div id ="scan_page" class="panelUp">
-                    <div class="content">
-                        <div id ="barcode_flash" class="flash none"></div>
-                        <h3>Scanning for following Sections:</h2>
-                        <ul id="sections"></ul>
-                        <!--css to make this a separate box-->
-                        <hr/>
-                        <div>
-                            <ul id="barcodes">
+                                <nav>
+                                    <h2 id="tagline">Welcome to UIF Mobile</h2>
+                                    <span id="sign-in"><a href="javascript:void(0)" class="btn">Sign In</a></span>
+                                    <span id="logout"><a href="javascript:void(0)" class="btn">Log Out</a></span>
+                                    <a id="nav" class="btn btn-navbar" data-toggle="collapse">
+                                        <i id="nav-button" class="icon-chevron-up"> </i>
+                                    </a>
+
+                                    <ul id="menu" class="overthrow">
+                                        <li><span><a id="link-checkin" href="javascript:void(0) "> Check-In </a></span></li>
+                                        <li><span><a id="link-students" href="javascript:void(0) "> Students </a></span></li>
+                                        <li><span><a id="link-events" href="javascript:void(0)"> Events </a></span></li>
+                                    </ul>
+
+                                </nav>  
+
+                            </header>
+                            <!--div id="nav">
+                            <ul id="navbar">
+                            <li><a id="link-checkin" href="javascript:void(0) "> Check-In </a></li>
+                            <li><a id="link-students" href="javascript:void(0) "> Students </a></li>
+                            <li><a id="link-events" href="javascript:void(0)"> Events </a></li>
                             </ul>
-                        </div>
-                        <!--css to make this a separate section-->
-                        <div>
-                            <h4>Successfully Scanned Students</h4>
-                            <ul id="success_scan">
-                            </ul>
-                            <h4>Bad Barcodes</h4>
-                            <ul id="bad_barcodes">
-                            </ul>
-                        </div>
-                        <div><p><a href="javascript:void(0)" class="btn" onclick="scanCode();">Scan Code</a> </p></div>
-                        <div><p><a href="javascript:void(0)" class="btn" onclick="submitCodes();">Submit Codes</a> </p></div>
-                    </div>
-                </div>
+                            </div-->
+                            <div id="home" class="panelDown transition">
+                                <div class="content center">
+                                    <h1>Welcome to Urban Impact</h1><h3>Mobile</h3>
+                                    <button id="camera">Camera</button>
+                                    <img id="image" src=''></img>
+                                </div>
+                            </div>
 
-                <!-- ////////////////////////////////// -->
-                <!-- ///////////// Students /////////// -->
-                <!-- ////////////////////////////////// -->
-                <div id ="students" class="panelUp">
-                    <div class="content">
-                        <h2>Students</h2>
-                        <p>Some content</p>
-                        <!-- ... -->
-                    </div>
-                </div>
+                            <!-- //////////////////////////////////////// -->
+                            <!-- ///////////// Authentication /////////// -->
+                            <!-- //////////////////////////////////////// -->
+                            <div id="authentication" class="panelUp">
+                                <div class="content">
+                                    <div id ="login_flash" class="flash none"></div>
+                                    <form id="login">
+                                        <h3><label for="email">Email:</label></h3>
+                                        <input id="email" name="email" type="email" required/>
+                                        <h3><label for="password">Password:</label></h3>
+                                        <input id="password" name="password" type="password" required/>
+                                    </br>
+                                    <input id="login-submit" type="submit" value="Submit" id="submit"/>
+                                </form>
 
-
-                <!-- //////////////////////////////// -->
-                <!-- ///////////// Events /////////// -->
-                <!-- //////////////////////////////// -->
-                <div id ="events" class="panelUp">
-                    <div class="content">
-                        <h2>Events</h2>
-
-                        <div class="large-icon">
-                            <i class="icon-plus icon-large"></i>
-                            <h3> Add An Event </h3>
+                            </div>
                         </div>
 
+                        <!-- ///////////////////////////////// -->
+                        <!-- ///////////// Checkin /////////// -->
+                        <!-- ///////////////////////////////// -->
+                        <div id ="checkin" class="panelUp">
+                            <div id="append" class="content">
+                                <h1>Event Check-In</h1>
+                                <div id="currentEvents">
+                                    <h4 id="date-header">Today's Events</h4>
+                                    <div id ="events_table"></div>
+                                </div>    
 
-
-                        <div class="large-icon">
-                            <i class="icon-list-alt icon-large"></i>
-                            <h3> View Events </h3>
+                            </div>
                         </div>
 
 
+                        <!-- ////////////////////////////////// -->
+                        <!-- ///////////// Scan Page /////////// -->
+                        <!-- ////////////////////////////////// -->
+                        <div id ="scan_page" class="panelUp">
+                            <div class="content">
+                                <div id ="barcode_flash" class="flash none"></div>
+                                <h3>Scanning for following Sections:</h2>
+                                    <ul id="sections"></ul>
+                                    <!--css to make this a separate box-->
+                                    <hr/>
+                                    <div>
+                                        <ul id="barcodes">
+                                        </ul>
+                                    </div>
+                                    <!--css to make this a separate section-->
+                                    <div>
+                                        <h4>Successfully Scanned Students</h4>
+                                        <ul id="success_scan">
+                                        </ul>
+                                        <h4>Bad Barcodes</h4>
+                                        <ul id="bad_barcodes">
+                                        </ul>
+                                    </div>
+                                    <div><p><a href="javascript:void(0)" class="btn" onclick="scanCode();">Scan Code</a> </p></div>
+                                    <div><p><a href="javascript:void(0)" class="btn" onclick="submitCodes();">Submit Codes</a> </p></div>
+                                </div>
+                            </div>
 
-                    </div>
-                </div>
+                            <!-- ////////////////////////////////// -->
+                            <!-- ///////////// Students /////////// -->
+                            <!-- ////////////////////////////////// -->
+                            <div id ="students" class="panelUp">
+                                <div class="content">
+                                    <h2>Students</h2>
+                                    <p>Some content</p>
+                                    <!-- ... -->
+                                </div>
+                            </div>
+
+
+                            <!-- //////////////////////////////// -->
+                            <!-- ///////////// Events /////////// -->
+                            <!-- //////////////////////////////// -->
+                            <div id ="events" class="panelUp">
+                                <div class="content">
+                                    <h1>Events</h1>
+
+                                    <div class="large-icon">
+                                        <i class="icon-plus icon-large"></i>
+                                        <h3> Add An Event </h3>
+                                    </div>
 
 
 
-                <!-- //////////////////////////////// -->
-                <!-- ///////////// Footer /////////// -->
-                <!-- //////////////////////////////// -->
-                <footer id="footer">
-                    <ul>
-                        <li><a> About Us </a></li>
-                        <li><a> Urban Impact </a></li>
-                        <li><a> Contact UIF 2012 Team </a></li>
-                    </ul>
-                </footer>
+                                    <div class="large-icon">
+                                        <i class="icon-list-alt icon-large"></i>
+                                        <h3> View Events </h3>
+                                    </div>
 
-                <!-- end of container -->
-            </div>
+
+
+                                </div>
+                            </div>
+
+
+
+                            <!-- //////////////////////////////// -->
+                            <!-- ///////////// Footer /////////// -->
+                            <!-- //////////////////////////////// -->
+                            <footer id="footer">
+                                <ul>
+                                    <li><a> About Us </a></li>
+                                    <li><a> Urban Impact </a></li>
+                                    <li><a> Contact UIF 2012 Team </a></li>
+                                </ul>
+                            </footer>
+
+                            <!-- end of container -->
+                        </div>
 
 <!-- end of pagewrap -->
 </div> 

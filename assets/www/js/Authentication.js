@@ -38,7 +38,7 @@ Authentication.prototype = {
         var password = $('#password').val();
         console.log(email);
         $.ajax({
-          url: "http://128.237.74.78:3000/getToken",
+          url: "http://192.168.1.5:3000/getToken",
           type: "POST",
           cache : false,
           beforeSend: function(xhr, settings){settings.url},
@@ -77,7 +77,7 @@ Authentication.prototype = {
         var token = self.token;
         console.log(token);
         $.ajax({
-          url: "http://128.237.74.78:3000/destroyToken",
+          url: "http://192.168.1.5:3000/destroyToken",
           type: "DELETE",
           cache : false,
           data: {"id": token},

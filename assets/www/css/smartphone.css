@@ -7,9 +7,12 @@ header h1#branding {
 }
 
 header h2#tagline {
-  font-size: 2em;
+  font-size: 1.3em;
+  font-weight:bold;
   line-height: 1.5em;
-  margin: 40px 0 0 0;
+  margin-left:60px;
+  color: #BFBFBF;
+  text-shadow: -2px -2px 2px rgba(255, 255, 255, 0.3);
 }
 
 section.content p {

@@ -31,6 +31,8 @@ body {
   max-width: 1300px;
   background-color:#ffcb00;
   overflow:hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 a:link,
 a:visited {
@@ -50,9 +52,10 @@ a:active {
 
 /* Le Header */
 header {
-  background-color:#000;
+  /*background-color:#000;*/
   padding: 20px 0;
   /*padding-top: 10px*/
+  height:40px;
   position: relative;
 }
 header h1#branding a {
@@ -69,29 +72,28 @@ header h1#branding a:active {
   color: #a67b45;
   text-decoration: none;
 }
-header h2#tagline {
-  text-align: center;
-  font-size: 1em;
+#tagline {
+  font-size: 1.2em !important;
   font-weight: normal;
-  text-transform: uppercase;
-  color: #444;
+  color:white;
+  position:relative;
+  left:0;
 }
 
 /* The common properties in the NAV element */
 header nav {
-  background-color: #f8f8f8;
-  background-image: -moz-linear-gradient(top, #ffffff, #ededed);
-  background-image: -ms-linear-gradient(top, #ffffff, #ededed);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#ededed));
-  background-image: -webkit-linear-gradient(top, #ffffff, #ededed);
-  background-image: -o-linear-gradient(top, #ffffff, #ededed);
-  background-image: linear-gradient(top, #ffffff, #ededed);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=0);
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  font-family: "Lato", Helvetica, Arial, sans-serif;
+  background: rgb(66,69,74); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(66,69,74,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(66,69,74,1)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(66,69,74,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(66,69,74,1) 0%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(66,69,74,1) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(66,69,74,1) 0%,rgba(0,0,0,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#42454a', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+  -webkit-box-shadow: 0 1px 3px rgba(255, 255, 255, 1);
+  -moz-box-shadow: 5px 5px 3px rgba(255, 255, 255, 1);
+  box-shadow: 5px 5px 40px rgba(255, 255, 255, 1);
+  font-family: "Nobile", Helvetica, Arial, sans-serif;
   font-size: 1.5em;
 }
 
@@ -100,7 +102,7 @@ header ul#menu {
   margin: 0 !important;
   padding: 0 !important;
   overflow:hidden;
-  position: relative;
+  position: absolute !important;
 }
 
 /* The content and footer sections */
@@ -141,5 +143,40 @@ footer li
 footer li a
 {
     text-shadow: 0px 1px 1px rgba(69, 119, 212,0.9);
+}
+
+#link-home
+{
+   position:fixed;
+   float:left; 
+   top:0;
+}
+
+img
+{
+    width:auto;
+    height:90px;
+    z-index:10 !important;
+}
+
+
+
+header
+{
+/*    position:absolute !important;
+    top:0;
+    left:0; 
+    right:0;*/
+}
+
+/* typeface */
+h1
+{
+    margin-top:-10px !important;
+    font-size: 45px;
+    padding: 10px 0px 20px 0px;
+    color: #fff;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0px 1px 1px rgba(0,0,0,0.3);
 }
 

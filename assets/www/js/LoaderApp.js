@@ -28,10 +28,10 @@ LoaderApp.prototype = {
         }
     }
     if( this.authentication.authorized === false) {
-       $('#logout').addClass('none');
+       $('#logout a').addClass('none');
        $('#nav').addClass('none');   
     } else {
-       $('#sign-in').addClass('none');
+       $('#sign-in a').addClass('none');
     }
     
     $('#login').submit(function(e) { e.preventDefault(); self.authentication.getToken(self.authentication);});
@@ -98,6 +98,11 @@ LoaderApp.prototype = {
       }, false);
       
       document.getElementById("link-checkin").addEventListener('touchstart', function(e) {
+        var toggle = "";  
+        var icon = $("nav").find("i"); 
+        (icon.attr("class") === "icon-chevron-up")? toggle="icon-chevron-down": toggle="icon-chevron-up"
+        icon.attr("class", toggle);
+        
         e.preventDefault();
         $('ul#menu').slideUp()
         getCurrentEvents(self.authentication.token);
@@ -105,12 +110,22 @@ LoaderApp.prototype = {
       }, false);
       
       document.getElementById("link-students").addEventListener('touchstart', function(e) {
+        var toggle = "";  
+        var icon = $("nav").find("i"); 
+        (icon.attr("class") === "icon-chevron-up")? toggle="icon-chevron-down": toggle="icon-chevron-up"
+        icon.attr("class", toggle);
+        
         e.preventDefault();
         $('ul#menu').slideUp();
         self.transitioner.slideDown(self.studentsDiv);
       }, false);
       
       document.getElementById("link-events").addEventListener('touchstart', function(e) {
+        var toggle = "";  
+        var icon = $("nav").find("i"); 
+        (icon.attr("class") === "icon-chevron-up")? toggle="icon-chevron-down": toggle="icon-chevron-up"
+        icon.attr("class", toggle);
+        
         e.preventDefault();
         $('ul#menu').slideUp()
         self.transitioner.slideDown(self.eventsDiv);

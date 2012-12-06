@@ -40,6 +40,8 @@ Authentication.prototype = {
         $.ajax({
           url: "http://128.237.74.78:3000/getToken",
           type: "POST",
+          cache : false,
+          beforeSend: function(xhr, settings){settings.url},
           data: {"email": email, "password": password},
           success: function(data) {
             console.log(data.token);
@@ -55,8 +57,8 @@ Authentication.prototype = {
                 $('#password').val('');
                 $('#email').val('');
                 $('#nav').removeClass('none');
-                $('#sign-in').addClass('none');
-                $('#logout').removeClass('none');
+                $('#sign-in a').addClass('none');
+                $('#logout a').removeClass('none');
             } else {
                    $("#login_flash").html(data.message);
                    $("#login_flash").fadeIn("slow", function() { $("#login_flash").fadeOut(1600)})
@@ -66,7 +68,7 @@ Authentication.prototype = {
           },
           error: function(err) {
             console.log("ERROR: ");
-            console.log(err);
+            console.log(err.statusText);
           }
         });
         return false;
@@ -77,6 +79,7 @@ Authentication.prototype = {
         $.ajax({
           url: "http://128.237.74.78:3000/destroyToken",
           type: "DELETE",
+          cache : false,
           data: {"id": token},
           success: function(data) {
             console.log(data.token);
@@ -84,8 +87,8 @@ Authentication.prototype = {
                 self.resetAuthDetails();    
                 self.transitioner.slideDown($('#authentication'));
                 $('#nav').addClass('none');
-                $('#sign-in').removeClass('none');
-                $('#logout').addClass('none');
+                $('#sign-in a').removeClass('none');
+                $('#logout a').addClass('none');
             } else {
                 $(".flash").html(data.message);
                 $(".flash").fadeIn("slow", function() { $(".flash").fadeOut(1600)})

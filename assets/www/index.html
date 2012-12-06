@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="css/normalize.css" media="screen">
     <link rel="stylesheet" href="css/atmosphere.css" media="screen">
     <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/authentication.css">
     
     <!-- Media Queries -->
     <link rel="stylesheet" href="css/mobile-nav.css" media="screen and (min-width: 320px) and (max-width: 1024px)">
@@ -27,6 +28,8 @@
     <link rel="stylesheet" href="css/ipad.css" media="screen and (min-width: 768px) and (max-width: 1024px)">
     
     <link rel="stylesheet" href="css/desktop.css" media="screen and (min-width: 1025px)">
+    <link rel="stylesheet" href="css/flash_messages.css">
+    <link rel="stylesheet" href="css/checkin_page.css">
     
     <!--[if lt IE 9]>
     <link rel="stylesheet" href="css/desktop.css" media="screen">
@@ -47,6 +50,7 @@
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/active-navigation.js"></script>
     <script type="text/javascript" src="js/Transitioner.js"></script>
+    <script type="text/javascript" src="js/Camera.js"></script>
     <script type="text/javascript" src="js/Authentication.js"></script>
     <script type="text/javascript" src="js/LoaderApp.js"></script>
     <script type="text/javascript" src="js/checkin.js"></script>
@@ -59,18 +63,29 @@
     <script type="text/javascript">
     //app.initialize();
         document.addEventListener('deviceready', function() {
-            
+            var camera = document.getElementById('camera');
+            camera.addEventListener('touchstart', function(e) {e.preventDefault();     navigator.camera.getPicture(uploadPhoto,
+                                        function(message) { alert('get picture failed'); },
+                                        { quality: 50, 
+                                        destinationType: navigator.camera.DestinationType.FILE_URI,
+                                        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
+                                        );}, false);
                 window.launch();
         });
         $(document).ready(function() {
             console.log("asdf");
              window.launch();
+          
         })
         
         window.launch = function() {
             window.util = _UTIL;
             window.util.patchFnBind();
             $(document.body).height('100%');
+            $.ajaxSetup({
+               headers: {"X-Requested-With": "XMLHttpRequest"},
+               cache: false
+            });
              new LoaderApp();
         }
 
@@ -93,15 +108,14 @@
                     <!--a id="link-home" href="javascript:void(0)"><img id="logo" src="img/uif-logo.gif"/></a-->
                     <!--<div id="sign-in"> <a href="javascript:void(0)"><span>Sign In</span></a></div-->
                     <!--<div id="logout"> <a href="javascript:void(0)">Log Out</a></div-->
-                    <h2 id="tagline">Welcome to UIF Mobile</h2>
-                    <span id="sign-in"><a href="javascript:void(0)" class="btn">Sign In</a></span>
-                   <span id="logout"><a href="javascript:void(0)" class="btn">Log Out</a></span>
+                    
+                   
                     <nav>
-    
-                        <a class="btn btn-navbar" data-toggle="collapse">
-                          <span></span>
-                          <span></span>
-                          <span></span>
+                        <h2 id="tagline">Welcome to UIF Mobile</h2>
+                        <span id="sign-in"><a href="javascript:void(0)" class="btn">Sign In</a></span>
+                        <span id="logout"><a href="javascript:void(0)" class="btn">Log Out</a></span>
+                        <a id="nav" class="btn btn-navbar" data-toggle="collapse">
+                            <i id="nav-button" class="icon-chevron-up"> </i>
                         </a>
     
                         <ul id="menu" class="overthrow">
@@ -123,6 +137,8 @@
             <div id="home" class="panelDown transition">
                 <div class="content center">
                     <h1>Welcome to Urban Impact</h1><h3>Mobile</h3>
+                      <button id="camera">Camera</button>
+                         <img id="image" src=''></img>
                 </div>
             </div>
 
@@ -149,7 +165,7 @@
             <!-- ///////////////////////////////// -->
             <div id ="checkin" class="panelUp">
                 <div id="append" class="content">
-                    <h2>Event Check-In</h2>
+                    <h1>Event Check-In</h1>
                     <div id="currentEvents">
                         <h4 id="date-header">Today's Events</h4>
                         <div id ="events_table"></div>

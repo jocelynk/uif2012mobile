@@ -1,0 +1,87 @@
+/*/////////////////////////////////*/
+/*///////// Events Table //////////*/
+/*/////////////////////////////////*/
+
+#currentEvents{
+  padding-left:10px;
+  padding-right:10px;
+
+}
+
+#events_table {
+
+  top:20px !important;
+  width:100%
+  margin-left:auto center;
+  margin-right:auto center;
+}
+
+table {
+  width:100%  
+}
+
+th {
+    font-family:lato;
+    color: #fff;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+    border-top: 1px solid #C1DAD7;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 6px 6px 6px 12px;
+    background: #4577D4 no-repeat;
+}
+
+th.nobg {
+    border-top: 0;
+    border-left: 0;
+    border-right: 1px solid grey;
+    background: none;
+}
+
+th.spec {   
+    border-left: 1px solid grey;
+    border-top: 0;
+    background: grey no-repeat;
+    /*  font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica,*/
+    sans-serif;
+}
+
+th.specalt {
+    border-left: 1px solid grey;
+    border-top: 0;
+    background: #fff no-repeat;
+    /*  font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica,*/
+    sans-serif;
+    color: #B4AA9D;
+}
+
+td {
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+    background: #fff;
+ /*   padding: 6px 6px 6px 12px;*/
+    height:10px !important;
+    color: black;
+}
+
+td > a
+{
+    color:#4577D4; 
+}
+
+
+td.alt {
+    background: #F5FAFA;
+    color: #B4AA9D;
+}
+
+#scan
+{
+    text-decoration:none !important;
+}
+#scan
+{
+    font-size:25px;
+}

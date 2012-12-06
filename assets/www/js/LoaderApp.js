@@ -94,6 +94,7 @@ LoaderApp.prototype = {
       document.getElementById("logout").addEventListener('touchstart', function(e) {
         e.preventDefault();
         $('ul#menu').slideUp()
+        self.authentication.destroyToken(self.authentication);
         self.transitioner.slideDown(self.authDiv);
       }, false);
       
@@ -132,35 +133,4 @@ LoaderApp.prototype = {
       }, false);
 
   }
-  
-  
-//Nav Auth Links and Custom Click Links
-/*
-function authEvents() {
-    if(authDetails["authorized"]) {
-        window.location.replace("#events"); 
-    } else {
-        $("#login_flash").html(data.message);
-        $("#login_flash").fadeIn("slow", function() {$("#login_flash").fadeOut(1600)});
-    }
-}
-
-function authCheckin() {
-    if(authDetails["authorized"]) {
-        window.location.replace("#checkin"); 
-        getCurrentEvents(authDetails["token"]);
-    } else {
-        $("#login_flash").html(data.message);
-        $("#login_flash").fadeIn("slow", function() { $("#login_flash").fadeOut(1600)});
-    }
-}
-
-function authStudents() {
-    if(authDetails["authorized"]) {
-        window.location.replace("#students"); 
-    } else {
-        $("#login_flash").html(data.message);
-        $("#login_flash").fadeIn("slow", function() { $("#login_flash").fadeOut(1600)});
-    }
-}*/
 }

@@ -42,7 +42,6 @@ $(function() {
    // $('nav a.btn-navbar').on('click', function() {
    console.log(obj);
    obj.addEventListener('touchstart', function(e) { e.preventDefault();
-      console.log(e.target);
       var toggle = "";  
       ($("#nav-button").attr("class") === "icon-chevron-up") ? toggle="icon-chevron-down": toggle="icon-chevron-up"; 
       $("#nav-button").attr("class", toggle);

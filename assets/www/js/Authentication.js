@@ -1,11 +1,4 @@
 //Authentication
-
-/*var authDetails =  {
-    token: '',
-    email: '',
-    authorized: false
-}*/
-
 var Authentication = function(transitioner) {
     this.token =  '';
     this.email =  '';
@@ -108,31 +101,3 @@ Authentication.prototype = {
     
 
 }
-
-
-
-//Page Ready
-/*
-$(document).ready(function() {
-    $.ajaxSetup({
-       headers: {"X-Requested-With": "XMLHttpRequest"},
-       cache: false
-    });
-    if('localStorage' in window && window['localStorage'] !== null) {
-        var temp = localStorage.getItem('token');
-        console.log(temp);
-        if(temp !== null) {
-            authDetails["authorized"] = true;
-            authDetails["token"] = temp;
-            authDetails["email"] = localStorage.getItem('email');
-        }
-    }
-    if(authDetails["authorized"] === false) {
-       $('#logout').addClass('none');
-       $('#nav').addClass('none');   
-    } else {
-       $('#sign-in').addClass('none');
-    }
-    $('#login').submit(getToken);
-        
-})*/

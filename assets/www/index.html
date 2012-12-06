@@ -8,40 +8,40 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">  
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" > 
-    
-    
-    
+
+
+
     <!--link rel="stylesheet" href="css/media-queries.css"/-->
     <link rel="stylesheet" href="css/font-awesome.css">
-    
+
     <!-- For all Browsers -->
     <link rel="stylesheet" href="css/normalize.css" media="screen">
     <link rel="stylesheet" href="css/atmosphere.css" media="screen">
     <link rel="stylesheet" href="css/style2.css">
     <link rel="stylesheet" href="css/authentication.css">
-    
+
     <!-- Media Queries -->
     <link rel="stylesheet" href="css/mobile-nav.css" media="screen and (min-width: 320px) and (max-width: 1024px)">
-    
+
     <link rel="stylesheet" href="css/smartphone.css" media="screen and (min-width:320px) and (max-width:480px)">
     <link rel="stylesheet" href="css/tablet.css" media="screen and (min-width: 481px) and (max-width: 767px)">
     <link rel="stylesheet" href="css/ipad.css" media="screen and (min-width: 768px) and (max-width: 1024px)">
-    
+
     <link rel="stylesheet" href="css/desktop.css" media="screen and (min-width: 1025px)">
     <link rel="stylesheet" href="css/flash_messages.css">
     <link rel="stylesheet" href="css/checkin_page.css">
-    
+
     <!--[if lt IE 9]>
     <link rel="stylesheet" href="css/desktop.css" media="screen">
     <![endif]-->
-    
+
     <!--[if (lt IE 9) & (!IEMobile)]>
     <script src="js/selectivizr-1.0.3.min.js"></script>
     <![endif]-->
-    
+
     <meta http-equiv="cleartype" content="on">
-    
-           
+
+
     <script type="text/javascript" src="libs/cordova-2.2.0.js"></script>
     <script type="text/javascript" src="libs/barcodescanner.js"></script>
     <script type="text/javascript" src="libs/jquery-1.8.2.min.js"></script>
@@ -61,36 +61,36 @@
     <!--script src="jQuery.ui.datepicker.js"></script-->
     <!--script src="jquery.ui.datepicker.mobile.js"></script-->
     <!--script type="text/javascript" src="server.js"></script-->
- 
+
 
     <script type="text/javascript">
     //app.initialize();
+
         document.addEventListener('deviceready', function() {
-          
                 window.launch();
         });
-        $(document).ready(function() {
-            console.log("asdf");
-             window.launch();
-          
-        })
-        
-        window.launch = function() {
-            window.util = _UTIL;
-            window.util.patchFnBind();
-            $(document.body).height('100%');
-            $.ajaxSetup({
-               headers: {"X-Requested-With": "XMLHttpRequest"},
-               cache: false
-            });
-             new LoaderApp();
-        }
 
-    
-    </script>
+        $(document).ready(function() {
+                window.launch();
+
+        })
+
+            window.launch = function() {
+                window.util = _UTIL;
+                window.util.patchFnBind();
+                $(document.body).height('100%');
+                $.ajaxSetup({
+                    headers: {"X-Requested-With": "XMLHttpRequest"},
+                    cache: false
+                });
+                new LoaderApp();
+            }
+
+
+     </script>
 </head>
 <body>
-       <script type="text/javascript" src="libs/UTIL.js"></script>
+    <script type="text/javascript" src="libs/UTIL.js"></script>
    
 
     <div class="pagewrap">
@@ -102,11 +102,7 @@
             <!-- ///////////// Top Navigation /////////// -->
             <!-- //////////////////////////////////////// -->
                 <header id="header" role="banner">
-                    <!--a id="link-home" href="javascript:void(0)"><img id="logo" src="img/uif-logo.gif"/></a-->
-                    <!--<div id="sign-in"> <a href="javascript:void(0)"><span>Sign In</span></a></div-->
-                    <!--<div id="logout"> <a href="javascript:void(0)">Log Out</a></div-->
-                    
-                   
+                  
                     <nav>
                         <h2 id="tagline">Welcome to UIF Mobile</h2>
                         <span id="sign-in"><a href="javascript:void(0)" class="button">Sign In</a></span>
@@ -135,26 +131,42 @@
             <div id="home" class="panelDown transition">
                 <div class="content center">
                     <h1>Welcome to Urban Impact</h1><h3>Mobile</h3>
-                    <!-- put instructions here -->                    
+                    <!-- put instructions here -->
                 </div>
-            </div>
+            </div>                  
 
-            <!-- //////////////////////////////////////// -->
-            <!-- ///////////// Authentication /////////// -->
-            <!-- //////////////////////////////////////// -->
-            <div id="authentication" class="panelUp">
-                <div class="content">
-                    <div id ="login_flash" class="flash none"></div>
-                    <form id="login">
-                        <h3><label for="email">Email:</label></h3>
-                        <input id="email" name="email" type="email" required/>
-                        <h3><label for="password">Password:</label></h3>
-                        <input id="password" name="password" type="password" required/>
-                        <br/>
-                        <input id="login-submit" type="submit" value="Submit"/>
-                     </form>
-                </div>
+
+        <!-- //////////////////////////////////////// -->
+        <!-- ///////////// Authentication /////////// -->
+        <!-- //////////////////////////////////////// -->
+        <div id="authentication" class="panelUp">
+            <div class="content">
+                <div id ="login_flash" class="flash none"></div>
+                <form id="login">
+                    <h3><label for="email">Email:</label></h3>
+                    <input id="email" name="email" type="email" required/>
+                    <h3><label for="password">Password:</label></h3>
+                    <input id="password" name="password" type="password" required/>
+                    </br>
+                    <input id="login-submit" type="submit" value="Submit" id="submit"/>
+                </form>
+
             </div>
+        </div>
+
+        <!-- ///////////////////////////////// -->
+        <!-- ///////////// Checkin /////////// -->
+        <!-- ///////////////////////////////// -->
+        <div id ="checkin" class="panelUp">
+            <div id="append" class="content">
+                <h1>Event Check-In</h1>
+                <div id="currentEvents">
+                    <h4 id="date-header">Today's Events</h4>
+                    <div id ="events_table"></div>
+                </div>    
+    
+            </div>
+        </div>
 
             <!-- ///////////////////////////////// -->
             <!-- ///////////// Checkin /////////// -->
@@ -167,17 +179,17 @@
                         <div id ="events_table"></div>
                     </div>    
 
-                 </div>
+                </div>
             </div>
-            
 
-         <!-- ////////////////////////////////// -->
-                <!-- ///////////// Scan Page /////////// -->
-                <!-- ////////////////////////////////// -->
-                <div id ="scan_page" class="panelUp">
-                    <div class="content">
-                        <div id ="barcode_flash" class="flash none"></div>
-                        <h3>Scanning for following Sections:</h2>
+
+            <!-- ////////////////////////////////// -->
+            <!-- ///////////// Scan Page /////////// -->
+            <!-- ////////////////////////////////// -->
+            <div id ="scan_page" class="panelUp">
+                <div class="content">
+                    <div id ="barcode_flash" class="flash none"></div>
+                    <h3>Scanning for following Sections:</h2>
                         <ul id="sections"></ul>
                         <!--css to make this a separate box-->
                         <hr/>
@@ -224,7 +236,7 @@
                 <!-- //////////////////////////////// -->
                 <div id ="events" class="panelUp">
                     <div class="content">
-                        <h2>Events</h2>
+                        <h1>Events</h1>
 
                         <div class="large-icon">
                             <i class="icon-plus icon-large"></i>

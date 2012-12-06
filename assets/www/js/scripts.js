@@ -39,8 +39,10 @@ $(function() {
 
     // Making the dropdown magically appear onclick/touch.
     var obj = $('nav a.btn-navbar').get(0);
-    $('nav a.btn-navbar').on('click', function() {
-  // obj.addEventListener('touchstart', function(e) { e.preventDefault();
+   // $('nav a.btn-navbar').on('click', function() {
+   console.log(obj);
+   obj.addEventListener('touchstart', function(e) { e.preventDefault();
+      console.log(e.target);
       var toggle = "";  
       ($("#nav-button").attr("class") === "icon-chevron-up") ? toggle="icon-chevron-down": toggle="icon-chevron-up"; 
       $("#nav-button").attr("class", toggle);
@@ -57,8 +59,26 @@ $(function() {
 
       $(this).toggleClass('active');
 
-    }); // end on.click
+    }, false); // end on.click
+   
+    $('nav a.btn-navbar').on('click', function() {
+      var toggle = "";  
+      ($("#nav-button").attr("class") === "icon-chevron-up") ? toggle="icon-chevron-down": toggle="icon-chevron-up"; 
+      $("#nav-button").attr("class", toggle);
+      $('ul#menu').slideToggle('fast', function() {
+        $('ul#menu').css({
 
+        // The height must be fixed for the native-scrolling on iOS
+        'height': $(this).height(),
+
+        // But we don't want the height of the nav to exceed the viewport.
+        'max-height': $(window).height() + 20
+        });
+      });
+
+      $(this).toggleClass('active');
+
+    });
     // Making the children appear on click/touch
     console.log($('ul#menu li.hasChildren a'));
     $('ul#menu li.hasChildren a').on('click', function() {

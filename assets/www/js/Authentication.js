@@ -84,11 +84,14 @@ Authentication.prototype = {
           success: function(data) {
             console.log(data.token);
             if(typeof data.token !== 'undefined') {
+                console.log(data.token);
                 self.resetAuthDetails();    
                 self.transitioner.slideDown($('#authentication'));
+                $('#nav i').addClass('none');
                 $('#nav').addClass('none');
                 $('#sign-in a').removeClass('none');
                 $('#logout a').addClass('none');
+                $('#logout').addClass('none');
             } else {
                 $(".flash").html(data.message);
                 $(".flash").fadeIn("slow", function() { $(".flash").fadeOut(1600)})

@@ -29,7 +29,7 @@ Event.prototype = {
             $('#events_table').html('');
             var ev = $('<table/>')
             var headers = $('<thead />');
-            headers.append('<tr><th>Program</th><th>Sections</th><th>Duration</th><th>Scan</th></tr>');
+            headers.append('<tr><th>Program</th><th>Sections</th><th>Duration</th><th>View</th></tr>');
             ev.append(headers);
             ev_body = $('<tbody/>');
             var todays_date; 
@@ -50,8 +50,7 @@ Event.prototype = {
               button.setAttribute('href','javascript:void(0)');
               button.setAttribute('data-sections',data[i]['section']);
               button.setAttribute('data-event',data[i]['event']['id']);
-              button.setAttribute('class',"button");
-              button.innerHTML = "Scan";
+              button.setAttribute('class','button icon-chevron-right');
               button.addEventListener('touchstart', self.clickScan.bind(self), false );
               button = $(button);
               button.click(self.clickScan.bind(self));

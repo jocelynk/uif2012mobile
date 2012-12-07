@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="css/desktop.css" media="screen and (min-width: 1025px)">
     <link rel="stylesheet" href="css/flash_messages.css">
     <link rel="stylesheet" href="css/checkin_page.css">
+    <link rel="stylesheet" href="css/scan_page.css">
 
     <!--[if lt IE 9]>
     <link rel="stylesheet" href="css/desktop.css" media="screen">
@@ -135,37 +136,23 @@
             </div>                  
 
 
-        <!-- //////////////////////////////////////// -->
-        <!-- ///////////// Authentication /////////// -->
-        <!-- //////////////////////////////////////// -->
-        <div id="authentication" class="panelUp">
-            <div class="content">
-                <div id ="login_flash" class="flash none"></div>
-                <form id="login">
-                    <h3><label for="email">Email:</label></h3>
-                    <input id="email" name="email" type="email" required/>
-                    <h3><label for="password">Password:</label></h3>
-                    <input id="password" name="password" type="password" required/>
-                    </br>
-                    <input id="login-submit" type="submit" value="Submit" id="submit"/>
-                </form>
-
-            </div>
-        </div>
-
-        <!-- ///////////////////////////////// -->
-        <!-- ///////////// Checkin /////////// -->
-        <!-- ///////////////////////////////// -->
-        <div id ="checkin" class="panelUp">
-            <div id="append" class="content">
-                <h1>Event Check-In</h1>
-                <div id="currentEvents">
-                    <h4 id="date-header">Today's Events</h4>
-                    <div id ="events_table"></div>
-                </div>    
+            <!-- //////////////////////////////////////// -->
+            <!-- ///////////// Authentication /////////// -->
+            <!-- //////////////////////////////////////// -->
+            <div id="authentication" class="panelUp">
+                <div class="content">
+                    <div id ="login_flash" class="flash none"></div>
+                    <form id="login">
+                        <h3><label for="email">Email:</label></h3>
+                        <input id="email" name="email" type="email" required/>
+                        <h3><label for="password">Password:</label></h3>
+                        <input id="password" name="password" type="password" required/>
+                        </br>
+                        <input id="login-submit" type="submit" value="Submit" id="submit"/>
+                    </form>
     
+                </div>
             </div>
-        </div>
 
             <!-- ///////////////////////////////// -->
             <!-- ///////////// Checkin /////////// -->
@@ -188,7 +175,7 @@
             <div id ="scan_page" class="panelUp">
                 <div class="content">
                     <div id ="barcode_flash" class="flash none"></div>
-                    <h3>Scanning for following Sections:</h2>
+                    <h1>Scanning for following Sections:</h2>
                         <ul id="sections"></ul>
                         <!--css to make this a separate box-->
                         <hr/>
@@ -198,10 +185,11 @@
                         </div>
                         <!--css to make this a separate section-->
                         <div>
-                            <h4>Successfully Scanned Students</h4>
+                            <h2>Successfully Scanned Students</h4>
                             <ul id="success_scan">
                             </ul>
-                            <h4>Bad Barcodes</h4>
+                            <br/><br/><br/><br/>
+                            <h2>Bad Barcodes</h4>
                             <ul id="bad_barcodes">
                             </ul>
                         </div>

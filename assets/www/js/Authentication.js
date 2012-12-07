@@ -85,10 +85,10 @@ Authentication.prototype = {
                 $('#sign-in a').removeClass('none');
                 $('#logout a').addClass('none');
                 $('#logout').addClass('none');
-            } else {
-                $(".flash").html(data.message);
-                $(".flash").fadeIn("slow", function() { $(".flash").fadeOut(1600)})
-            }
+            } //else {
+              //  $(".flash").html(data.message);
+              //  $(".flash").fadeIn("slow", function() { $(".flash").fadeOut(1600)})
+            //}
            
             return false;
           },

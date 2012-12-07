@@ -46,6 +46,7 @@
     <script type="text/javascript" src="libs/barcodescanner.js"></script>
     <script type="text/javascript" src="libs/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="libs/modernizr-latest.js"></script>
+    <script type="text/javascript" src="libs/UTIL.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/helper.js"></script>
     <script src="js/scripts.js"></script>
@@ -55,8 +56,8 @@
     <script type="text/javascript" src="js/Transitioner.js"></script>
     <script type="text/javascript" src="js/Camera.js"></script>
     <script type="text/javascript" src="js/Authentication.js"></script>
+    <script type="text/javascript" src="js/Event.js"></script>
     <script type="text/javascript" src="js/LoaderApp.js"></script>
-    <script type="text/javascript" src="js/checkin.js"></script>
     <!--link rel="stylesheet" href="jquery.ui.datepicker.mobile.css" /--> 
     <!--script src="jQuery.ui.datepicker.js"></script-->
     <!--script src="jquery.ui.datepicker.mobile.js"></script-->
@@ -77,6 +78,7 @@
 
             window.launch = function() {
                 window.util = _UTIL;
+                console.log('UTIL: ' + window.util);
                 window.util.patchFnBind();
                 $(document.body).height('100%');
                 $.ajaxSetup({
@@ -89,10 +91,7 @@
 
      </script>
 </head>
-<body>
-    <script type="text/javascript" src="libs/UTIL.js"></script>
-   
-
+<body>   
     <div class="pagewrap">
 
         <div class="container">
@@ -206,8 +205,8 @@
                             <ul id="bad_barcodes">
                             </ul>
                         </div>
-                        <div><p><a href="javascript:void(0)" class="button" onclick="scanCode();">Scan Code</a> </p></div>
-                        <div><p><a href="javascript:void(0)" class="button" onclick="submitCodes();">Submit Codes</a> </p></div>
+                        <div><p><a id="scanCode" href="javascript:void(0)" class="button">Scan Code</a> </p></div>
+                        <a id="submitCode" href="javascript:void(0)" class="button">Submit Codes</a>
                     </div>
                 </div>
 

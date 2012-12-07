@@ -19,6 +19,7 @@ _UTIL.isChrome = function(){
 }
 
 _UTIL.patchFnBind = function(){
+    console.log("patchFnBind");
     if (Function.prototype.bind === undefined){
        Function.prototype.bind = function (bind) {
             var self = this;

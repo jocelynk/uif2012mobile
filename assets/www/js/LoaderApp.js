@@ -17,15 +17,15 @@ LoaderApp.prototype = {
     this.studentsDiv = $('#students');
     this.scanDiv = $('#scan_page');
     this.authentication = new Authentication(this.transitioner);
+    this.event = new Event();
     this.photoCapture = new Camera();
   },
   
   auth: function() {
     var self = this;
-    console.log(self.test);
     if('localStorage' in window && window['localStorage'] !== null) {
         var temp = localStorage.getItem('token');
-        console.log(temp);
+        console.log("LocalStorage: " + temp);
         if(temp !== null) {
             this.authentication.authorized = true;
             this.authentication.token = temp;
@@ -43,7 +43,6 @@ LoaderApp.prototype = {
   },
   nav: function() {
     var self = this;
-    console.log(self.test);    
     //Questions to ask: why is self now Authentication? b/c it's loading from there?  
     //for browser click events
     $("#link-home").click(function(e) {
@@ -66,16 +65,19 @@ LoaderApp.prototype = {
         
      $("#link-checkin").click(function(e) {
         e.preventDefault();
-        $('ul#menu').slideUp()
-        console.log(self.authentication.token);
-        getCurrentEvents(self.authentication.token);
+        $('ul#menu').slideUp();
+        self.event.init();
+        self.event.getCurrentEvents(self.authentication.token);
         self.transitioner.slideDown(self.checkinDiv);
       });
       
        
       $("#link-students").click(function(e) {
         e.preventDefault();
-      $('ul#menu').slideUp()
+        $('ul#menu').slideUp();
+        $('#student_result').html('');
+        $('#photo_buttons').addClass('none');
+        $('#image').prop('src', '');
         self.transitioner.slideDown(self.studentsDiv);
       });
         
@@ -100,8 +102,6 @@ LoaderApp.prototype = {
             
       document.getElementById("logout").addEventListener('touchstart', function(e) {
         e.preventDefault();
-        console.log(self);
-        console.log("self is here");
         self.authentication.destroyToken(self.authentication);
         self.transitioner.slideDown(self.authDiv);
       }, false);
@@ -114,7 +114,8 @@ LoaderApp.prototype = {
         
         e.preventDefault();
         $('ul#menu').slideUp()
-        getCurrentEvents(self.authentication.token);
+        self.event.init();
+        self.event.getCurrentEvents(self.authentication.token);
         self.transitioner.slideDown(self.checkinDiv);
       }, false);
       
@@ -123,6 +124,10 @@ LoaderApp.prototype = {
         var icon = $("nav").find("i"); 
         (icon.attr("class") === "icon-chevron-up")? toggle="icon-chevron-down": toggle="icon-chevron-up"
         icon.attr("class", toggle);
+        
+        $('#student_result').html('');
+        $('#photo_buttons').addClass('none');
+        $('#image').prop('src', '');
         
         e.preventDefault();
         $('ul#menu').slideUp();

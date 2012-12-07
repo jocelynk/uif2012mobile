@@ -1,10 +1,75 @@
 #scan_page a
 {
-    margin-top:30px !important;
-    font-size:30px !important;
+    margin-top:18px !important;
+    font-size:18px !important;
 }
 
 #scan_page h1
 {
+    font-size:25px !important;
+    margin-bottom:0;
+    margin-top:-10px !important;
+    padding-bottom: 10px !important;
+}
+
+#scan_page h2
+{
+    margin-bottom:0;
+}
+
+#scanCode
+{
+    margin-left:30px;
+}
+
+#submitCode
+{
+    margin-right:30px;
+}
+
+#scan_page ul {
+    
+    list-style-type: none !important;
+    font-size:20px
+}
+
+#scan_page ul#sections
+{
+    margin: 0px auto;
+    color: #fff;
+   
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+    border-top: 1px solid #C1DAD7;
+    letter-spacing: 2px;
+    padding: 6px 6px 6px 12px;
+    background: #4577D4 no-repeat;
+}
+
+#barcode_result
+{   
+    width:85%;
+    margin: 0px auto;
+    background: #4577D4 no-repeat;
+}
+
+#scan_success
+{   
+    width:85%;
+    margin: 0px auto;
+    background: #4577D4 no-repeat;
+}
+
+#scan_fail
+{   
+    width:85%;
+    margin: 0px auto;
+    background: #4577D4 no-repeat;
+}
+
+.ul-data 
+{   margin:0;
+    padding:0;
+    background: #fff no-repeat;
     font-size:15px !important;
 }

@@ -4,6 +4,7 @@ var Event = function(){
     this.barcodes = [];
     this.sections = [];
     this.event_id = -1;
+    
 };
 
 Event.prototype = {
@@ -17,9 +18,14 @@ Event.prototype = {
         this.barcodes = [];
         this.sections = [];
         this.event_id = -1;
+        $("#barcodes").html('<li class="placeholder">None<li>');
+        $("#bad_barcodes").html('<li class="placeholder">None<li>');
+        $("#success_scan").html('<li class="placeholder">None<li>');
     },
     getCurrentEvents: function(token) {
         var self = this;
+        self.reset();
+        
         $.ajax({
           url: "http://128.237.74.78:3000/getTodaysEvents.json",
           type: "GET",
@@ -72,22 +78,31 @@ Event.prototype = {
         return false;
     },
     scanCode: function(e) {
+        console.log(this.barcodes.length);
+        console.log(this.event_id);
         var self = this;
         e.preventDefault();
-        
-        window.plugins.barcodeScanner.scan(
-            function(result) {
-            $('#barcodes').append('<li>'+result.text+'</li>');
-            self.barcodes.push(result.text);
-            console.log(self.event_id);
-            //alert(result.text);
-            //alert("Scanned Code: " + result.text 
-                   // + ". Format: " + result.format
-                   // + ". Cancelled: " + result.cancelled);
-            return false;
-        }, function(error) {
-            alert("Scan failed: " + error);
-        });
+        $(".placeholder").hide();
+        $('#bad_barcodes').html('');
+        $('#success_scan').html('');
+        if(self.barcodes.length < 11) {
+            if(self.event_id !== -1) {
+                window.plugins.barcodeScanner.scan(
+                    function(result) {           
+                    $('#barcodes').append('<li>'+result.text+'</li>');
+                    self.barcodes.push(result.text);
+                    //alert(result.text);
+                    //alert("Scanned Code: " + result.text 
+                           // + ". Format: " + result.format
+                           // + ". Cancelled: " + result.cancelled);
+                }, function(error) {
+                    alert("Scan failed: " + error);
+                });
+            }
+        } else {
+             $("#barcode_flash").html("Please submit your barcodes before continue scanning");
+             $("#barcode_flash").fadeIn("slow", function() { $("#barcode_flash").fadeOut(1600); return false;})
+        }
     },
     clickScan: function() {
         var transition = new Transitioner();
@@ -120,9 +135,13 @@ Event.prototype = {
                              $('#success_scan').append('No successfully scanned students.')
                         }
                         
-                        if(data.bad_barcodes.length > 0) {
+                        if(data.bad_barcodes.length > 0 || data.already_scanned.length > 0) {
                             for(var j = 0; j<data.bad_barcodes.length; j++) {
                                  $('#bad_barcodes').append('<li>'+data.bad_barcodes[j]+'</li>')
+                            }
+                            
+                            for(var k = 0; k<data.already_scanned.length; k++) {
+                                 $('#bad_barcodes').append('<li>'+data.already_scanned[k]+' was already scanned</li>')
                             }
                         } else {
                              $('#bad_barcodes').append('Every student was scanned.')
@@ -132,7 +151,7 @@ Event.prototype = {
                         $("#barcode_flash").fadeIn("slow", function() { $("#barcode_flash").fadeOut(1600); return false;})
                     }
                     $('#barcodes').html('');
-                    
+                    self.barcodes = [];
                     return false;
                   },
                   error: function(err) {

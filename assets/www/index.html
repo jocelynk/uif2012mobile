@@ -159,7 +159,7 @@
             <!-- ///////////////////////////////// -->
             <div id ="checkin" class="panelUp">
                 <div id="append" class="content">
-                    <h1>Event Check-In</h1>
+                    <div class="title_header"><h1>Event Check-In</h1></div>
                     <div id="currentEvents">
                         <h4 id="date-header">Today's Events</h4>
                         <div id ="events_table"></div>
@@ -175,35 +175,36 @@
             <div id ="scan_page" class="panelUp">
                 <div class="content">
                     <div id ="barcode_flash" class="flash none"></div>
-                    <h1>Scanning for following Sections:</h2>
-                        <ul id="sections"></ul>
-                        <!--css to make this a separate box-->
-                        <hr/>
-                        <div>
-                            <ul id="barcodes">
-                            </ul>
-                        </div>
-                        <!--css to make this a separate section-->
-                        <div>
-                            <h2>Successfully Scanned Students</h4>
-                            <ul id="success_scan">
-                            </ul>
-                            <br/><br/><br/><br/>
-                            <h2>Bad Barcodes</h4>
-                            <ul id="bad_barcodes">
-                            </ul>
-                        </div>
-                        <div><p><a id="scanCode" href="javascript:void(0)" class="button">Scan Code</a> </p></div>
-                        <a id="submitCode" href="javascript:void(0)" class="button">Submit Codes</a>
+                    <div class="title_header">
+                        <h1>Scanning for following Sections:</h2>
                     </div>
+                    <ul id="sections" class="event_sections"><li>None<li/></ul>
+                       
+                    <div id="barcode_result">
+                        <h2>Barcodes</h2>    
+                        <ul id="barcodes" class="ul-data" ><li class="placeholder">None<li/></ul>
+                    </div>
+                    <div id="scan_success">
+                        <h2>Successfully Scanned Students</h2>
+                        <ul id="success_scan" class="ul-data"><li>None<li/></ul>
+                    </div>
+                    <div id="scan_fail">
+                        <h2>Bad Barcodes</h2>
+                        <ul id="bad_barcodes" class="ul-data"><li>None<li/></ul>
+                    </div>
+                    <a id="scanCode" href="javascript:void(0)" class="button left">Scan Code</a>
+                    <a id="submitCode" href="javascript:void(0)" class="button right">Submit Codes</a>
                 </div>
+             </div>
 
                 <!-- ////////////////////////////////// -->
                 <!-- ///////////// Students /////////// -->
                 <!-- ////////////////////////////////// -->
                 <div id ="students" class="panelUp">
                     <div class="content">
-                        <h2>Students</h2>
+                        <div class="title_header">
+                            <h1>Students</h2>
+                        </div>
                         <div id ="student_flash" class="flash none"></div>
                         <div><p><a id="scanCode2" href="javascript:void(0)" class="button">Scan Code</a> </p></div>
                         <span id="student_result"></span>
@@ -223,7 +224,9 @@
                 <!-- //////////////////////////////// -->
                 <div id ="events" class="panelUp">
                     <div class="content">
-                        <h1>Events</h1>
+                        <div class="title_header">
+                            <h1>Events</h1>
+                        </div>
 
                         <div class="large-icon">
                             <i class="icon-plus icon-large"></i>

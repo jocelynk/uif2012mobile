@@ -15,14 +15,17 @@ Camera.prototype = {
     scanCode2: function(e) {
         e.preventDefault();
         var self = this;
+        self.barcode = 1;
         console.log(this.barcode);
-        window.plugins.barcodeScanner.scan(
-            function(result) {
-               console.log(self.barcode);
-               self.barcode = result.text;
-               self.findStudent(result.text)               
-               return false;
-             }, function(error) { alert("Scan failed: " + error);});
+        if(this.barcode != -1) {
+            window.plugins.barcodeScanner.scan(
+                function(result) {
+                   console.log(self.barcode);
+                   self.barcode = result.text;
+                   self.findStudent(result.text)               
+                   return false;
+                 }, function(error) { alert("Scan failed: " + error);});
+        }
     },
     findStudent: function(barcode) {
         var self = this;
@@ -53,18 +56,21 @@ Camera.prototype = {
     },
     uploadFromLibrary: function() {
         var self = this;
-        document.getElementById('lib').addEventListener('touchstart', function(e) {e.preventDefault();     
-        navigator.camera.getPicture(self.uploadPhoto.bind(self), function(message) { alert('get picture failed'); },
-            { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI,
-            sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY });}, false);
+        document.getElementById('lib').addEventListener('touchstart', function(e) {e.preventDefault(); 
+        console.log(self.barcode);
+        if(self.barcode !== -1) {  
+            navigator.camera.getPicture(self.uploadPhoto.bind(self), function(message) { alert('get picture failed'); },
+                { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY })};}, false);
+        
     },
     uploadFromCapture: function() {
       self = this;
       // Take picture using device camera, allow edit  
         document.getElementById('cap').addEventListener('touchstart', function(e) {e.preventDefault();     
+        if(self.barcode != -1) {
         navigator.camera.getPicture(self.uploadPhoto.bind(self), function(message) { alert('get picture failed'); },
             { quality: 20, destinationType: navigator.camera.DestinationType.FILE_URI,
-            allowEdit: true });}, false);
+            allowEdit: true });}}, false);
     },
     uploadPhoto:function(imageURI) {
             $("#image").attr("src", imageURI);

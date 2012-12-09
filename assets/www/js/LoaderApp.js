@@ -66,7 +66,7 @@ LoaderApp.prototype = {
      $("#link-checkin").click(function(e) {
         e.preventDefault();
         $('ul#menu').slideUp();
-        self.event.init();
+        self.event.initCheckin();
         self.event.getCurrentEvents(self.authentication.token);
         self.transitioner.slideDown(self.checkinDiv);
       });
@@ -83,7 +83,10 @@ LoaderApp.prototype = {
         
       $("#link-events").click(function(e) {
         e.preventDefault();    
-        $('ul#menu').slideUp()  
+        $('ul#menu').slideUp()
+        self.event.initEvent(self.authentication.token);
+        self.event.getProgramsAndSections(self.authentication.token);
+          
         self.transitioner.slideDown(self.eventsDiv);
       });
       
@@ -114,7 +117,7 @@ LoaderApp.prototype = {
         
         e.preventDefault();
         $('ul#menu').slideUp()
-        self.event.init();
+        self.event.initCheckin();
         self.event.getCurrentEvents(self.authentication.token);
         self.transitioner.slideDown(self.checkinDiv);
       }, false);
@@ -142,6 +145,8 @@ LoaderApp.prototype = {
         
         e.preventDefault();
         $('ul#menu').slideUp()
+        self.event.getProgramsAndSections(self.authentication.token);
+        //self.event.initEvent(self.authentication.token);
         self.transitioner.slideDown(self.eventsDiv);
       }, false);
 

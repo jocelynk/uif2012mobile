@@ -1,10 +1,10 @@
 //change functions to use bindthis
 
 var LoaderApp = function(){
-    this.test = "testing if this is LoaderApp";
     this.setup();
     this.auth();
     this.nav();
+    console.log(window.plugins.barcodeScanner);
 }
 
 LoaderApp.prototype = {
@@ -56,7 +56,7 @@ LoaderApp.prototype = {
         $('ul#menu').slideUp()
         self.transitioner.slideDown(self.authDiv);
     });
-    
+    /*
     $("#logout").click(function(e) {
         e.preventDefault();
         $('ul#menu').slideUp()
@@ -89,7 +89,7 @@ LoaderApp.prototype = {
           
         self.transitioner.slideDown(self.eventsDiv);
       });
-      
+      */
       //mobile on touch events  
       document.getElementById("sign-in").addEventListener('touchstart', function(e) {
         e.preventDefault(); 
@@ -146,7 +146,7 @@ LoaderApp.prototype = {
         e.preventDefault();
         $('ul#menu').slideUp()
         self.event.getProgramsAndSections(self.authentication.token);
-        //self.event.initEvent(self.authentication.token);
+        self.event.initEvent(self.authentication.token);
         self.transitioner.slideDown(self.eventsDiv);
       }, false);
 

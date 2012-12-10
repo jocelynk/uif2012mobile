@@ -45,8 +45,9 @@
 
     <script type="text/javascript" src="libs/cordova-2.2.0.js"></script>
     <script type="text/javascript" src="libs/barcodescanner.js"></script>
-    <script type="text/javascript" src="libs/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="libs/jquery-1.8.2.min.js"></script>    
     <script type="text/javascript" src="libs/modernizr-latest.js"></script>
+    <script type="text/javascript" src="libs/detectmobilebrowser.js"></script>
     <script type="text/javascript" src="libs/UTIL.js"></script>
     <script type="text/javascript" src="libs/datePickerPlugin.js"></script>
     <script src="js/plugins.js"></script>
@@ -64,7 +65,7 @@
 
     <script type="text/javascript">
     //app.initialize();
-
+    var isMobileBrowser;
         document.addEventListener('deviceready', function() {
                 window.launch();
         });
@@ -83,11 +84,14 @@
                     headers: {"X-Requested-With": "XMLHttpRequest"},
                     cache: false
                 });
-                new LoaderApp();
+                var app = new LoaderApp();
+                mobileTest(navigator.userAgent||navigator.vendor||window.opera);
+                console.log(isMobileBrowser);
             }
 
 
      </script>
+     
 </head>
 <body>   
     <div class="pagewrap">
@@ -224,16 +228,17 @@
                         <div class="title_header">
                             <h1>Events</h1>
                         </div>
-
-                        <div class="large-icon">
+                        <div id ="event_flash" class="flash none"></div>            
+                        <div id="addIcon" class="large-icon">
                             <i class="icon-plus icon-large"></i>
                             <h3> Add An Event </h3>
                         </div>
                         
                         <div id="addEventSection">
-                            <form id="addEventForm">
+                            <form id="addEventForm" class="none">
                                 <label for="program" class="select">Select a Program:</label>
-                                <select name="program" id="program">   
+                                <select name="program" id="program"> 
+                                    <option value="" selected="selected">Choose a Program</option>
                                 </select><br/><br/><br/>
                                 <label for="program_sections" class="select">Select Section(s):</label>
                                 <select name="program_sections" id="program_sections" class="none" multiple="multiple">
@@ -249,7 +254,7 @@
                         </div>
 
 
-                        <div class="large-icon">
+                        <div id="viewIcon" class="large-icon">
                             <i class="icon-list-alt icon-large"></i>
                             <h3> View Events </h3>
                         </div>

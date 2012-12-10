@@ -30,7 +30,7 @@ if (typeof cordova !== "undefined") {
 		}
 		this._callback = cb;
 
-		return cordova.exec(cb, failureCallback, 'DatePickerPlugin', defaults.mode, new Array(defaults));
+		return cordova.exec(cb, failureCallback, 'com.phonegap.plugins.datepicker.DatePickerPlugin', defaults.mode, new Array(defaults));
 	};
 
 	DatePicker.prototype._dateSelected = function(date) {
@@ -43,5 +43,10 @@ if (typeof cordova !== "undefined") {
 		console.log("datePickerPlugin.js failed: " + err);
 	}
 
-	window.datePicker = new DatePicker();
+	if(!window.plugins) {
+    window.plugins = {};
+}
+if (!window.plugins.datePicker) {
+    window.plugins.datePicker = new DatePicker();
+}
 };

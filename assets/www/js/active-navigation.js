@@ -1,11 +1,12 @@
 $(document).ready(function()
 {
-
-     $('.nativedatepicker').click(function(event) {
-        var currentField = $(this);
+     /*console.log($('.nativedatepicker')[0]);
+     $('button.nativedatepicker')[0].addEventListener('touchstart', function(event) {
+        var currentField = $(this); console.log("TOUCHING");
         var myNewDate = Date.parse(currentField.val()) || new Date();
         // Same handling for iPhone and Android
-        window.datePicker.show({
+        console.log("TOUCHING");
+        window.plugins.datePicker.show({
             date : myNewDate,
             mode : 'date', // date or time or blank for both
             allowOldDates : true
@@ -16,18 +17,18 @@ $(document).ready(function()
             // This fixes the problem you mention at the bottom of this script with it not working a second/third time around, because it is in focus.
             currentField.blur();
         });
-    });
+    },false);*/
 /*
-    $('.nativetimepicker').click(function(event) {
+    $('.nativetimepicker')[0].addEventListener('touchstart', function(event) {
         var currentField = $(this);
         var time = currentField.val();
         var myNewTime = new Date();
-
+        console.log("TOUCHING");
         myNewTime.setHours(time.substr(0, 2));
         myNewTime.setMinutes(time.substr(3, 2));
 
         // Same handling for iPhone and Android
-        window.datePicker.show({
+        window.plugins.datePicker.show({
             date : myNewTime,
             mode : 'time', // date or time or blank for both
             allowOldDates : true
@@ -38,7 +39,7 @@ $(document).ready(function()
 
             currentField.blur();
         });
-    });
+    },false);
     */
     // for click devices
     // why this works...i have no idea

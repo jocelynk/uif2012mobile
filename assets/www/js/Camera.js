@@ -15,9 +15,10 @@ Camera.prototype = {
     scanCode2: function(e) {
         e.preventDefault();
         var self = this;
-        self.barcode = 1;
         console.log(this.barcode);
-        if(this.barcode != -1) {
+        if(isMobileBrowser) {
+            alert("Barcoding cannot be accessed from the browser");
+        } else {
             window.plugins.barcodeScanner.scan(
                 function(result) {
                    console.log(self.barcode);

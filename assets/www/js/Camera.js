@@ -6,17 +6,18 @@ var Camera = function() {
 
 Camera.prototype = {
     init: function() {
-        var self = this;
-        $("#scanCode2")[0].addEventListener('touchstart', self.scanCode2.bind(self) , false);
-        $("#lib")[0].addEventListener('touchstart', self.uploadFromLibrary.bind(self) , false);
-        $("#cap")[0].addEventListener('touchstart', self.uploadFromCapture.bind(self) , false);
+        var self = this;      
+        $("#scanCode2").bind('tapone', self.scanCode2.bind(self));
+        $("#lib").bind('tapone', self.uploadFromLibrary.bind(self));
+        $("#cap").bind('tapone', self.uploadFromCapture.bind(self));
         
     },
     scanCode2: function(e) {
         e.preventDefault();
+        e.stopPropagation();
         var self = this;
         console.log(this.barcode);
-        if(isMobileBrowser) {
+        if(!window.phonegap) {
             alert("Barcoding cannot be accessed from the browser");
         } else {
             window.plugins.barcodeScanner.scan(
@@ -57,21 +58,21 @@ Camera.prototype = {
     },
     uploadFromLibrary: function() {
         var self = this;
-        document.getElementById('lib').addEventListener('touchstart', function(e) {e.preventDefault(); 
+       $('#lib').bind('tapone', function(e) {e.preventDefault(); 
         console.log(self.barcode);
         if(self.barcode !== -1) {  
             navigator.camera.getPicture(self.uploadPhoto.bind(self), function(message) { alert('get picture failed'); },
-                { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY })};}, false);
+                { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY })};});
         
     },
     uploadFromCapture: function() {
       self = this;
       // Take picture using device camera, allow edit  
-        document.getElementById('cap').addEventListener('touchstart', function(e) {e.preventDefault();     
+        $('#cap').bind('tapone', function(e) {e.preventDefault();     
         if(self.barcode != -1) {
         navigator.camera.getPicture(self.uploadPhoto.bind(self), function(message) { alert('get picture failed'); },
             { quality: 20, destinationType: navigator.camera.DestinationType.FILE_URI,
-            allowEdit: true });}}, false);
+            allowEdit: true });}});
     },
     uploadPhoto:function(imageURI) {
             $("#image").attr("src", imageURI);

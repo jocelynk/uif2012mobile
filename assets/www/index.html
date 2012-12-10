@@ -47,6 +47,7 @@
     <script type="text/javascript" src="libs/barcodescanner.js"></script>
     <script type="text/javascript" src="libs/jquery-1.8.2.min.js"></script>    
     <script type="text/javascript" src="libs/modernizr-latest.js"></script>
+    <script type="text/javascript" src="libs/jgestures.min.js"></script>
     <script type="text/javascript" src="libs/detectmobilebrowser.js"></script>
     <script type="text/javascript" src="libs/UTIL.js"></script>
     <script type="text/javascript" src="libs/datePickerPlugin.js"></script>
@@ -65,7 +66,8 @@
 
     <script type="text/javascript">
     //app.initialize();
-    var isMobileBrowser;
+        window.phonegap = (document.URL.indexOf("http://") == -1); 
+    
         document.addEventListener('deviceready', function() {
                 window.launch();
         });
@@ -85,8 +87,8 @@
                     cache: false
                 });
                 var app = new LoaderApp();
-                mobileTest(navigator.userAgent||navigator.vendor||window.opera);
-                console.log(isMobileBrowser);
+                //mobileTest(navigator.userAgent||navigator.vendor||window.opera);
+                
             }
 
 

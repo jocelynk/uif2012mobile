@@ -10,7 +10,6 @@ Things That will be added to application for due date of Dec. 14th:
 - code cleanup
 - switch libs to productions version
 - makes things more mobiley
-- change eventListeners to tap library
 
 Description: This application is a complement mobile application to a Ruby on Rails based application we are developing for a local Pittsburgh Organization Urban Impact. These two applications allow the organization to track attendances via barcoding and run statistics on the results to send to the government for funding.
 

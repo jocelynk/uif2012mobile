@@ -11,9 +11,9 @@ var Event = function(){
 Event.prototype = {
     initCheckin: function() {
         //$("#scanCode")[0].addEventListener('touchstart', this.scanCode.bind(this) , false);
-        $("#scanCode").click(this.scanCode.bind(this));
+        $("#scanCode").bind('tapone', this.scanCode.bind(this));
         //$("#submitCode").click(this.submitCodes.bind(this));
-        $("#submitCode")[0].addEventListener('touchend', this.submitCodes.bind(this) , false);
+        $("#submitCode").bind('tapone', this.submitCodes.bind(this));
     },
     initEvent: function(token) {
         var self = this;
@@ -26,7 +26,7 @@ Event.prototype = {
              $('#addIcon').removeClass('none');
         }
         //$('#addIcon').click(function(e) {e.preventDefault(); console.log("afd"); $('form#addEventForm').removeClass('none'); $('#addIcon').addClass('none'); })
-        $('#addIcon')[0].addEventListener('touchstart', function(e){e.preventDefault();  $('form#addEventForm').removeClass('none'); $('#addIcon').addClass('none');}, false);
+        $('#addIcon').bind('tapone', function(e){e.preventDefault();  $('form#addEventForm').removeClass('none'); $('#addIcon').addClass('none');});
         $('form#addEventForm').submit(function(e){e.preventDefault(); self.submitEventForm(token)});
     },
     reset: function() {
@@ -73,12 +73,12 @@ Event.prototype = {
                   button.setAttribute('data-sections',data[i]['section']);
                   button.setAttribute('data-event',data[i]['event']['id']);
                   button.setAttribute('class','button icon-chevron-right');
-                  button.addEventListener('touchstart', self.clickScan.bind(self), false );
+                  //button.addEventListener('touchstart', self.clickScan.bind(self), false );
                   button = $(button);
-                  //button.click(self.clickScan.bind(self));
+                  button.on('tapone',self.clickScan.bind(self));
                   td.append(button);
                   row.append(td);
-                  //row.append('<td><a id="scan" href="javascript:void(0)" onclick="clickScan(this)" data-sections="'+data[i]['section']+'" data-event="'+data[i]['event']['id']+'">Scan</a></td>');
+                  //row.append('<td><a href="javascript:void(0)" onclick="clickScan(this)" data-sections="'+data[i]['section']+'" data-event="'+data[i]['event']['id']+'">Scan</a></td>');
                   ev_body.append(row);             
                 }
                 ev.append(ev_body);
@@ -104,9 +104,11 @@ Event.prototype = {
         $('#bad_barcodes').html('');
         $('#success_scan').html('');
         
-        if(isMobileBrowser) {
+        if(!window.phonegap) {
             alert("Barcoding cannot be accessed from the browser");
         } else { 
+            console.log(self.barcodes.length);
+            console.log("length");
             if(self.barcodes.length < 11) {
                 if(self.event_id !== -1) {
                     window.plugins.barcodeScanner.scan(
@@ -127,10 +129,13 @@ Event.prototype = {
             }
          }
     },
-    clickScan: function() {
+    clickScan: function(e) {
+        e.preventDefault();
+        console.log(e.target);
         var transition = new Transitioner();
         transition.slideDown($('#scan_page'));
         this.event_id = event.target.dataset.event;
+        console.log(event.target.dataset.event);
         this.sections = event.target.dataset.sections.split(',');
         $('#sections').html('');
         for(i in this.sections) {

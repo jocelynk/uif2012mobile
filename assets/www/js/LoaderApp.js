@@ -43,73 +43,28 @@ LoaderApp.prototype = {
   },
   nav: function() {
     var self = this;
-    //Questions to ask: why is self now Authentication? b/c it's loading from there?  
-    //for browser click events
-    $("#link-home").click(function(e) {
-        e.preventDefault(); 
-        $('ul#menu').slideUp()
-        self.transitioner.slideDown(self.homeDiv);
-    });
-    
-    $("#sign-in").click(function(e) {
-        e.preventDefault();
-        $('ul#menu').slideUp()
-        self.transitioner.slideDown(self.authDiv);
-    });
-    /*
-    $("#logout").click(function(e) {
-        e.preventDefault();
-        $('ul#menu').slideUp()
-        self.authentication.destroyToken(self.authentication);
-     });
-        
-     $("#link-checkin").click(function(e) {
-        e.preventDefault();
-        $('ul#menu').slideUp();
-        self.event.initCheckin();
-        self.event.getCurrentEvents(self.authentication.token);
-        self.transitioner.slideDown(self.checkinDiv);
-      });
-      
-       
-      $("#link-students").click(function(e) {
-        e.preventDefault();
-        $('ul#menu').slideUp();
-        $('#student_result').html('');
-        $('#photo_buttons').addClass('none');
-        $('#image').prop('src', '');
-        self.transitioner.slideDown(self.studentsDiv);
-      });
-        
-      $("#link-events").click(function(e) {
-        e.preventDefault();    
-        $('ul#menu').slideUp()
-        self.event.initEvent(self.authentication.token);
-        self.event.getProgramsAndSections(self.authentication.token);
-          
-        self.transitioner.slideDown(self.eventsDiv);
-      });
-      */
+  
       //mobile on touch events  
-      document.getElementById("sign-in").addEventListener('touchstart', function(e) {
+      $("#sign-in").bind('tapone', function(e) {
         e.preventDefault(); 
         $('ul#menu').slideUp() 
         self.transitioner.slideDown(self.authDiv);
-      }, false);
+      });
     
-      document.getElementById("link-home").addEventListener('touchstart', function(e) {
+      $("#link-home").bind('tapone', function(e) {
+        console.log("test");
         e.preventDefault();
         $('ul#menu').slideUp()     
         self.transitioner.slideDown(self.homeDiv);
-      }, false);
+      });
             
-      document.getElementById("logout").addEventListener('touchstart', function(e) {
+      $("#logout").bind('tapone',function(e) {
         e.preventDefault();
         self.authentication.destroyToken(self.authentication);
         self.transitioner.slideDown(self.authDiv);
-      }, false);
+      });
       
-      document.getElementById("link-checkin").addEventListener('touchstart', function(e) {
+      $("#link-checkin").bind('tapone', function(e) {
         var toggle = "";  
         var icon = $("nav").find("i"); 
         (icon.attr("class") === "icon-chevron-up")? toggle="icon-chevron-down": toggle="icon-chevron-up"
@@ -120,9 +75,9 @@ LoaderApp.prototype = {
         self.event.initCheckin();
         self.event.getCurrentEvents(self.authentication.token);
         self.transitioner.slideDown(self.checkinDiv);
-      }, false);
+      });
       
-      document.getElementById("link-students").addEventListener('touchstart', function(e) {
+      $("#link-students").bind('tapone', function(e) {
         var toggle = "";  
         var icon = $("nav").find("i"); 
         (icon.attr("class") === "icon-chevron-up")? toggle="icon-chevron-down": toggle="icon-chevron-up"
@@ -135,9 +90,9 @@ LoaderApp.prototype = {
         e.preventDefault();
         $('ul#menu').slideUp();
         self.transitioner.slideDown(self.studentsDiv);
-      }, false);
+      });
       
-      document.getElementById("link-events").addEventListener('touchstart', function(e) {
+      $("#link-events").bind('tapone', function(e) {
         var toggle = "";  
         var icon = $("nav").find("i"); 
         (icon.attr("class") === "icon-chevron-up")? toggle="icon-chevron-down": toggle="icon-chevron-up"
@@ -148,7 +103,7 @@ LoaderApp.prototype = {
         self.event.getProgramsAndSections(self.authentication.token);
         self.event.initEvent(self.authentication.token);
         self.transitioner.slideDown(self.eventsDiv);
-      }, false);
+      });
 
   }
 }

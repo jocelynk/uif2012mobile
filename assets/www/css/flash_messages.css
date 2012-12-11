@@ -1,13 +1,12 @@
-.flash
-{
-    position:relative;
-    width:100%;
-    text-align:center;
-    color:white;
-    background-color:red;
-    font-weight:bold;
-    font-size:20px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
+.flash {
+  position: absolute;
+  width: 100% ;
+  top:50px;
+  text-align: center;
+  color: white;
+  background-color: red;
+  font-weight: bold;
+  font-size: 20px; 
+  -moz-border-radius: 6px; 
+  -webkit-border-radius: 6px;
 }
-

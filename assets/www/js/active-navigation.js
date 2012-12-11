@@ -1,6 +1,5 @@
-$(document).ready(function()
-{
-     /*console.log($('.nativedatepicker')[0]);
+$(document).ready(function () {
+/*console.log($('.nativedatepicker')[0]);
      $('button.nativedatepicker')[0].addEventListener('touchstart', function(event) {
         var currentField = $(this); console.log("TOUCHING");
         var myNewDate = Date.parse(currentField.val()) || new Date();
@@ -41,19 +40,19 @@ $(document).ready(function()
         });
     },false);
     */
-    // for click devices
-    // why this works...i have no idea
-    $("a.btn-navbar").bind('tapone', function(e) { e.preventDefault();
+  // for click devices
+  // why this works...i have no idea
+  $("a.btn-navbar").bind('tapone', function (e) {
+    e.preventDefault();
     //$("a.btn-navbar").click(function() {
-        var toggle = ""; 
-        console.log("changing touchstart"); 
-        var icon = $(this).find("i"); 
-        (icon.attr("class") === "icon-chevron-up")? toggle="icon-chevron-down": toggle="icon-chevron-up"
-        icon.attr("class", toggle); 
-        ($("#nav-button").attr("class") === "icon-chevron-up") ? toggle="icon-chevron-down": toggle="icon-chevron-up"; 
-        $("#nav-button").attr("class", toggle); 
-    });
+    var toggle = "";
+    console.log("changing touchstart");
+    var icon = $(this).find("i");
+    (icon.attr("class") === "icon-chevron-up") ? toggle = "icon-chevron-down" : toggle = "icon-chevron-up"
+    icon.attr("class", toggle);
+    ($("#nav-button").attr("class") === "icon-chevron-up") ? toggle = "icon-chevron-down" : toggle = "icon-chevron-up";
+    $("#nav-button").attr("class", toggle);
+  });
 
 
 });
-    

@@ -17,23 +17,23 @@
  * under the License.
  */
 var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-        $(document).ready(this.browserReady);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicity call 'app.receivedEvent(...);'
-    /*browserReady: function() {
+  // Application Constructor
+  initialize: function () {
+    this.bindEvents();
+  },
+  // Bind Event Listeners
+  //
+  // Bind any events that are required on startup. Common events are:
+  // 'load', 'deviceready', 'offline', and 'online'.
+  bindEvents: function () {
+    document.addEventListener('deviceready', this.onDeviceReady, false);
+    $(document).ready(this.browserReady);
+  },
+  // deviceready Event Handler
+  //
+  // The scope of 'this' is the event. In order to call the 'receivedEvent'
+  // function, we must explicity call 'app.receivedEvent(...);'
+/*browserReady: function() {
          $.ajaxSetup({
             headers: {"X-Requested-With": "XMLHttpRequest"},
             cache: false
@@ -43,27 +43,29 @@ var app = {
         $(document.body).height('100%');
         new LoaderApp();
     },*/
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+  onDeviceReady: function () {
+    app.receivedEvent('deviceready');
+  },
+  // Update DOM on a Received Event
+  receivedEvent: function (id) {
+    var parentElement = document.getElementById(id);
+    var listeningElement = parentElement.querySelector('.listening');
+    var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+    listeningElement.setAttribute('style', 'display:none;');
+    receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
-        
-        $.ajaxSetup({
-            headers: {"X-Requested-With": "XMLHttpRequest"},
-            cache: false
-        });
-        window.util = _UTIL;
-        window.util.patchFnBind();
-        $(document.body).height('100%');
-        new LoaderApp();
-    }
+    console.log('Received Event: ' + id);
+
+    $.ajaxSetup({
+      headers: {
+        "X-Requested-With": "XMLHttpRequest"
+      },
+      cache: false
+    });
+    window.util = _UTIL;
+    window.util.patchFnBind();
+    $(document.body).height('100%');
+    new LoaderApp();
+  }
 };

@@ -31,7 +31,7 @@ Authentication.prototype = {
     var password = $('#password').val();
     console.log(email);
     $.ajax({
-      url: "http://128.237.196.49:3000/getToken",
+      url: "http://uif2012.herokuapp.com/getToken",
       type: "POST",
       cache: false,
       beforeSend: function (xhr, settings) {
@@ -81,7 +81,7 @@ Authentication.prototype = {
     var token = self.token;
     console.log(token);
     $.ajax({
-      url: "http://128.237.196.49:3000/destroyToken",
+      url: "http://uif2012.herokuapp.com/destroyToken",
       type: "DELETE",
       cache: false,
       data: {

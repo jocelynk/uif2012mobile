@@ -56,7 +56,7 @@ Event.prototype = {
     self.reset();
     $('#events_table').html('');
     $.ajax({
-      url: "http://128.237.196.49:3000/getTodaysEvents.json",
+      url: "http://uif2012.herokuapp.com/getTodaysEvents.json",
       type: "GET",
       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       data: {
@@ -206,7 +206,7 @@ Event.prototype = {
     if (this.event_id !== -1) {
       if (this.barcodes.length > 0) {
         $.ajax({
-          url: "http://128.237.196.49:3000/createAttendances",
+          url: "http://uif2012.herokuapp.com/createAttendances",
           type: "POST",
           data: {
             "barcodes": self.barcodes,
@@ -264,7 +264,7 @@ Event.prototype = {
   getProgramsAndSections: function (token) {
     var self = this;
     $.ajax({
-      url: "http://128.237.196.49:3000/getProgramsAndSections.json",
+      url: "http://uif2012.herokuapp.com/getProgramsAndSections.json",
       type: "GET",
       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       data: {
@@ -330,7 +330,7 @@ Event.prototype = {
     var end_time = $("#end_time").val();
     console.log(sections);
     $.ajax({
-      url: "http://128.237.196.49:3000/createEvent",
+      url: "http://uif2012.herokuapp.com/createEvent",
       type: "POST",
       cache: false,
       beforeSend: function (xhr, settings) {

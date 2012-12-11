@@ -35,7 +35,7 @@ Camera.prototype = {
   findStudent: function (barcode) {
     var self = this;
     $.ajax({
-      url: "http://128.237.196.49:3000/searchForStudent.json",
+      url: "http://uif2012.herokuapp.com/searchForStudent.json",
       type: "GET",
       cache: false,
       beforeSend: function (xhr, settings) {
@@ -112,7 +112,7 @@ Camera.prototype = {
     options.params = params;
 
     var ft = new FileTransfer();
-    ft.upload(imageURI, "http://128.237.196.49:3000/getPhoto.json?auth_token=" + localStorage.getItem('token'), this.success, this.failure, options);
+    ft.upload(imageURI, "http://uif2012.herokuapp.com/getPhoto.json?auth_token=" + localStorage.getItem('token'), this.success, this.failure, options);
   },
   success: function (r) {
     console.log("Code = " + r.responseCode);

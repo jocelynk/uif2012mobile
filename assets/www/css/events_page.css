@@ -5,33 +5,13 @@
 
 #addIcon{
   left:0 !important;
+  height:90px !important;
 }
 #viewIcon{
   right:0 !important;
-}
-#addIcon, #viewIcon{
-  -moz-box-shadow:inset 4px 7px 20px 2px #94b6ff;
-  -webkit-box-shadow:inset 4px 7px 15px 2px #94b6ff;
-  box-shadow:inset 4px 7px 15px 2px #94b6ff;
-  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #b6cdff), color-stop(1, #b6cdff) );
-  background:-moz-linear-gradient( center top, #b6cdff 5%, #b6cdff 100% );
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b6cdff', endColorstr='#b6cdff');
-  background-color:#b6cdff;
-  -moz-border-radius:9px;
-  -webkit-border-radius:9px;
-  border-radius:9px;
-  border:2px solid #7097eb;
-  display:inline-block;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
-  font-family:arial;
-  font-size:20px;
-  font-weight:bold;
-  padding:26px 21px;
-  width:90px !important;
   height:90px !important;
-  text-decoration:none;
 }
+
 #addIcon:hover{
   background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #b6cdff), color-stop(1, #b6cdff) );
   background:-moz-linear-gradient( center top, #b6cdff 5%, #b6cdff 100% );

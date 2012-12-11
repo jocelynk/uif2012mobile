@@ -28,9 +28,7 @@ body{
   overflow: auto;
   max-width: 1300px;
   background-color:#ffcb00;
-  overflow:hidden;
   overflow-x: hidden;
-  overflow-y: hidden;
 }
 a:link,
 a:visited{
@@ -138,19 +136,13 @@ footer{
   /*might have to change but cool for now*/
   background-color:black;
   clear: both;
-  height:30px;
+  height:40px;
   z-index:3;
   position:fixed;
-}
-footer li{
-  margin-left:10px;
-  font-size:80%;
-  display:inline;
-  width:33.3%;
-}
-footer li a{
+  color:white;
   text-shadow: 0px 1px 1px rgba(69, 119, 212,0.9);
 }
+
 img{
   width:auto;
   height:90px;
@@ -249,4 +241,8 @@ color:white !important;
   background-image:linear-gradient(90deg, rgb(182, 205, 255), rgb(255, 255, 255));
   background-image:-webkit-gradient(linear, 50% 100%, 50% 0%, from(rgb(182, 205, 255)), to(rgb(255, 255, 255)));
   background-image:-moz-linear-gradient(90deg, rgb(182, 205, 255), rgb(255, 255, 255));
+}
+
+ul {
+    list-style: none;
 }

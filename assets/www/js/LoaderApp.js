@@ -32,12 +32,19 @@ LoaderApp.prototype = {
       }
     }
     if (this.authentication.authorized === false) {
-      $('#logout a').addClass('none');
-      $('#nav').addClass('none');
-      $('#username').html('');
+      if(!$('#logout').hasClass('none')) {
+        $('#logout').addClass('none');
+        $('#logout a').addClass('none');
+        $('#nav').addClass('none');
+        $('#nav i').addClass('none');
+        $('#username').html('');
+      }
     } else {
-      $('#user').html(this.authentication.email)
-      $('#sign-in a').addClass('none');
+      if(!$('#sign-in').hasClass('none')) {  
+          $('#user').html(this.authentication.email)
+          $('#sign-in').addClass('none');
+          $('#sign-in a').addClass('none');
+      }
     }
 
     $('#login').submit(function (e) {

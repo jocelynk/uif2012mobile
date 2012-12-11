@@ -31,7 +31,7 @@ Authentication.prototype = {
     var password = $('#password').val();
     console.log(email);
     $.ajax({
-      url: "http://128.237.74.78:3000/getToken",
+      url: "http://128.237.196.49:3000/getToken",
       type: "POST",
       cache: false,
       beforeSend: function (xhr, settings) {
@@ -55,7 +55,10 @@ Authentication.prototype = {
           $('#password').val('');
           $('#email').val('');
           $('#nav').removeClass('none');
+          $('#nav i').removeClass('none');
+          $('#sign-in').addClass('none');
           $('#sign-in a').addClass('none');
+          $('#logout').removeClass('none');
           $('#logout a').removeClass('none');
         } else {
           $("#login_flash").html(data.message);
@@ -78,7 +81,7 @@ Authentication.prototype = {
     var token = self.token;
     console.log(token);
     $.ajax({
-      url: "http://128.237.74.78:3000/destroyToken",
+      url: "http://128.237.196.49:3000/destroyToken",
       type: "DELETE",
       cache: false,
       data: {
@@ -91,6 +94,7 @@ Authentication.prototype = {
           self.resetAuthDetails();
           $('#nav i').addClass('none');
           $('#nav').addClass('none');
+          $('#sign-in').removeClass('none');
           $('#sign-in a').removeClass('none');
           $('#logout a').addClass('none');
           $('#logout').addClass('none');

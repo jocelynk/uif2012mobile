@@ -56,7 +56,7 @@ Event.prototype = {
     self.reset();
     $('#events_table').html('');
     $.ajax({
-      url: "http://128.237.74.78:3000/getTodaysEvents.json",
+      url: "http://128.237.196.49:3000/getTodaysEvents.json",
       type: "GET",
       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       data: {
@@ -64,7 +64,49 @@ Event.prototype = {
       },
       success: function (data) {
         if (!jQuery.isEmptyObject(data)) {
-          $('#events_table').html('');
+          $('#events_ul').html('');
+          var todays_date = '';
+          for (var i in data) {
+          todays_date = data[i]['event']['date'];
+  
+              var li = $('<li/>');
+              var h2 = $('<h2/>');
+              h2.html(data[i]['program']);
+              
+              var p = $('<p/>');
+              p.addClass("desc");
+              var str = '';  
+              for(var j in data[i]['section']) {
+                 if(j != data[i]['section'].length -1) {
+                   str+= data[i]['section'][j]+", ";     
+                 } else {
+                     str+= ' ' +data[i]['section'][j];
+                 }
+              }
+              p.html(str);
+              
+              var span=$('<span/>');
+              var start_time = data[i]['event']['start_time'].slice(0, data[i]['event']['start_time'].indexOf('+'));
+              var end_time = data[i]['event']['end_time'].slice(0, data[i]['event']['end_time'].indexOf('+'));
+
+              var start_arr = start_time.split(/[- T :]/);
+              var start = new Date(start_arr[0], start_arr[1], start_arr[2], start_arr[3], start_arr[4], start_arr[5]);
+                console.log(start_arr);
+                var end_arr = end_time.split(/[- T :]/);
+                var end = new Date(end_arr[0], end_arr[1], end_arr[2], end_arr[3], end_arr[4], end_arr[5]);
+
+                span.html(formatTime(start) + " - " + formatTime(end));
+
+                li.append(h2);
+                li.append(p);
+                li.append(span);
+                $('#events_ul').append(li);
+                jQuery.data(li[0], "data", { "sections": data[i]['section'], "event": data[i]['event']['id']});
+                li.on('tapone', self.clickScan.bind(self));
+          
+          }
+          $('#date-header').html("Events for: " + todays_date);
+          /*
           var ev = $('<table/>')
           var headers = $('<thead />');
           headers.append('<tr><th>Program</th><th>Sections</th><th>Duration</th><th>View</th></tr>');
@@ -73,7 +115,7 @@ Event.prototype = {
           var todays_date;
           for (i in data) {
             var row = $('<tr />');
-            var todays_date = data[i]['event']['date'];
+           
             row.append('<td>' + data[i]['program'] + '</td>');
             var section_list = $('<td/>');
             for (j in data[i]['section']) {
@@ -82,7 +124,6 @@ Event.prototype = {
             row.append(section_list);
             var start_time = data[i]['event']['start_time'].slice(0, data[i]['event']['start_time'].indexOf('+'));
             var end_time = data[i]['event']['end_time'].slice(0, data[i]['event']['end_time'].indexOf('+'));
-
             var start_arr = start_time.split(/[- T :]/);
             var start = new Date(start_arr[0], start_arr[1], start_arr[2], start_arr[3], start_arr[4], start_arr[5]);
             console.log(start_arr);
@@ -106,10 +147,10 @@ Event.prototype = {
           }
           ev.append(ev_body);
           $('#events_table').append(ev);
-          $('#date_header').append(" " + todays_date);
+          $('#date_header').append(" " + todays_date);*/
           return false;
         } else {
-          $('#events_table').append('<h4>There are no events for today. Create a new one on the Events page.</h4>');
+          $('#events_ul').append('<li>There are no events for today. Create a new one on the Events page.</li>');
         }
       },
       error: function (err) {
@@ -131,9 +172,6 @@ Event.prototype = {
     if (!window.phonegap) {
       alert("Barcoding cannot be accessed from the browser");
     } else {
-      console.log(self.barcodes.length);
-      console.log("length");
-      if (self.barcodes.length < 11) {
         if (self.event_id !== -1) {
           window.plugins.barcodeScanner.scan(
 
@@ -148,13 +186,6 @@ Event.prototype = {
             alert("Scan failed: " + error);
           });
         }
-      } else {
-        $("#barcode_flash").html("Please submit your barcodes before continue scanning");
-        $("#barcode_flash").fadeIn("slow", function () {
-          $("#barcode_flash").fadeOut(1600);
-          return false;
-        })
-      }
     }
   },
   clickScan: function (e) {
@@ -175,7 +206,7 @@ Event.prototype = {
     if (this.event_id !== -1) {
       if (this.barcodes.length > 0) {
         $.ajax({
-          url: "http://128.237.74.78:3000/createAttendances",
+          url: "http://128.237.196.49:3000/createAttendances",
           type: "POST",
           data: {
             "barcodes": self.barcodes,
@@ -225,16 +256,15 @@ Event.prototype = {
         $("#barcode_flash").fadeIn("slow", function () {
           $("#barcode_flash").fadeOut(1600);
           return false;
-        })
+        });
         return false;
       }
     }
-    return false;
   },
   getProgramsAndSections: function (token) {
     var self = this;
     $.ajax({
-      url: "http://128.237.74.78:3000/getProgramsAndSections.json",
+      url: "http://128.237.196.49:3000/getProgramsAndSections.json",
       type: "GET",
       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       data: {
@@ -300,7 +330,7 @@ Event.prototype = {
     var end_time = $("#end_time").val();
     console.log(sections);
     $.ajax({
-      url: "http://128.237.74.78:3000/createEvent",
+      url: "http://128.237.196.49:3000/createEvent",
       type: "POST",
       cache: false,
       beforeSend: function (xhr, settings) {

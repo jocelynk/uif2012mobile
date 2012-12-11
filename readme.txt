@@ -4,12 +4,13 @@ Aderinsola Akintilo (aakintil)
 Things That will be added to application for due date of Dec. 14th:
 - Ability to view and add more events
 - Updated Home page
-- Change table to list
 - UI improvements (not sure what this would entail as of now)
-- Phonegap lifecycle events to mimic Android Activity LifeCycle
 - code cleanup
 - switch libs to productions version
 - makes things more mobiley
+- better transitions
+- cooler nav
+- nav at bottom
 
 Description: This application is a complement mobile application to a Ruby on Rails based application we are developing for a local Pittsburgh Organization Urban Impact. These two applications allow the organization to track attendances via barcoding and run statistics on the results to send to the government for funding.
 

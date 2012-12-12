@@ -14,7 +14,7 @@ Camera.prototype = {
   },
   scanCode2: function (e) {
     e.preventDefault();
-    e.stopPropagation();
+    e.stopImmediatePropagation();
     var self = this;
     console.log(this.barcode);
     if (!window.phonegap) {
@@ -118,8 +118,8 @@ Camera.prototype = {
     console.log("Code = " + r.responseCode);
     console.log("Response = " + r.response);
     console.log("Sent = " + r.bytesSent);
-    $("#image").attr("src", '');
-    $("#image").hide();
+    $("#image").hide().attr("src", '');
+    $("#image").show();
     $('#photo_buttons').addClass('none');
     $('#student_result').html('');
     alert("Your image was successfully uploaded");

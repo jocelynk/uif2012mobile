@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugins>
-    <plugin name="DatePickerPlugin" value="com.phonegap.plugins.datepicker.DatePickerPlugin"/>
-    <plugin name="BarcodeScanner" value="com.phonegap.plugins.barcodescanner.BarcodeScanner"/>
-    
+    <plugin name="BarcodeScanner" value="com.phonegap.plugins.barcodescanner.BarcodeScanner"/>   
 </plugins>

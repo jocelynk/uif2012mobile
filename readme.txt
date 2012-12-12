@@ -2,7 +2,7 @@ Jocelyn Kong (jocelynk)
 Aderinsola Akintilo (aakintil)
 
 Things That will be added to application for due date of Dec. 14th:
-- Ability to view and add more events
+
 - Updated Home page
 - UI improvements (not sure what this would entail as of now)
 - code cleanup
@@ -11,6 +11,8 @@ Things That will be added to application for due date of Dec. 14th:
 - better transitions
 - cooler nav
 - nav at bottom
+- caching
+- allow input barcode manually
 
 Description: This application is a complement mobile application to a Ruby on Rails based application we are developing for a local Pittsburgh Organization Urban Impact. These two applications allow the organization to track attendances via barcoding and run statistics on the results to send to the government for funding.
 

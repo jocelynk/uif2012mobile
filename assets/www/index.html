@@ -13,21 +13,20 @@
     <!-- Libs CSS -->
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/normalize.css" media="screen">
-
+    <link href="css/mobiscroll-2.3.custom.min.css" rel="stylesheet" type="text/css" />
+      
     <!-- For all Browsers -->
-   
     <link rel="stylesheet" href="css/atmosphere.css" media="screen">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/authentication.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/mobile-nav.css" media="screen and (min-width: 320px) and (max-width: 1024px)">
-
     <link rel="stylesheet" href="css/smartphone.css" media="screen and (min-width:320px) and (max-width:480px)">
     <link rel="stylesheet" href="css/tablet.css" media="screen and (min-width: 481px) and (max-width: 767px)">
     <link rel="stylesheet" href="css/ipad.css" media="screen and (min-width: 768px) and (max-width: 1024px)">
-
     <link rel="stylesheet" href="css/desktop.css" media="screen and (min-width: 1025px)">
+    
     <link rel="stylesheet" href="css/flash_messages.css">
     <link rel="stylesheet" href="css/checkin_page.css">
     <link rel="stylesheet" href="css/scan_page.css">
@@ -52,6 +51,12 @@
     <script type="text/javascript" src="libs/jgestures.min.js"></script>
     <script type="text/javascript" src="libs/detectmobilebrowser.js"></script>
     <script type="text/javascript" src="libs/UTIL.js"></script>
+    <script type="text/javascript" src="libs/mobiscroll-2.3.custom.min.js" ></script>
+  
+    
+    
+    
+    
     
     <!-- Custom JS -->
     <script src="js/plugins.js"></script>
@@ -211,8 +216,9 @@
                         <div class="title_header">
                             <h1>Students</h2>
                         </div>
-                        <div id ="student_flash" class="flash none"></div>
-                        <div><p><a id="scanCode2" href="javascript:void(0)" class="icon">Scan Code</a> </p></div>
+                        <div id ="student_flash" class="flash"></div>       
+                        <div><p><a id="scanCode2" href="javascript:void(0)" class="icon">Find by Barcode</a> </p></div>
+                        <img id="image" class="polaroid" alt="Upload an image to a Student" src=''></img>
                         <span id="student_result"></span>
                         <br/><br/><br/><br/>
                         <div id="photo_buttons" class="none">
@@ -220,7 +226,7 @@
                             <h2><p>OR</p></h2>
                             <a id="cap" href="javascript:void(0)" class="icon">Capture Photo</a>
                             <p></p>
-                            <img id="image" src=''></img>
+                            
                         </div>
                     </div>
                 </div>
@@ -238,7 +244,7 @@
                                
                         <div id="addIcon" class="large-icon icon">
                             <i class="icon-plus icon-large"></i>
-                            <h3> Add An Event </h3>
+                            <h3> Add An Event for Today</h3>
                         </div>
                         
                         <div id="addEventSection">
@@ -252,21 +258,12 @@
                                 <br/></div><label for="locations" class="select formspacing">Select a Location:</label>
                                 <select name="locations" id="locations" class="rounded formspacing"> </select><br/>
                                 <label for="start_time">Start Time:</label>
-                                <input id="start_time" value="time" type="time" class="rounded formspacing"/><br/> 
+                                <input id="start_time" value="time" type="text" class="timescroller rounded formspacing"/><br/> 
                                 <label for="end_time">End Time:</label>
-                                <input id="end_time" value="time" type="time" class="rounded formspacing"/><br/> 
+                                <input id="end_time" value="time" type="text" class="timescroller rounded formspacing"/><br/> 
                                 <input type="submit" value="Submit" class="submit" id="events-submit"/>
                             </form>
                         </div>
-
-
-                        <div id="viewIcon" class="large-icon icon">
-                            <i class="icon-list-alt icon-large"></i>
-                            <h3> View Events </h3>
-                        </div>
-
-
-
                     </div>
                 </div>
 

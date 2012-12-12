@@ -130,8 +130,8 @@ footer{
 
 img{
   width:auto;
-  height:90px;
-  z-index:10 !important;
+  height:100px;
+
 }
 
 /* typeface */
@@ -251,7 +251,21 @@ ul {
   font-size:20px;
   font-weight:bold;
   padding:26px 21px;
-  width:90px !important;
-  height:50px !important;
   text-decoration:none;
+}
+
+.polaroid {
+    background: #fff;
+    width: 200px;
+    padding: 7px;
+    margin: 10px;
+    text-align: center; 
+    -moz-box-shadow: 1px 1px 3px #222;
+    -moz-transform: rotate(-5deg);
+    -webkit-box-shadow: 1px 1px 3px #222;
+    -webkit-transform: rotate(-5deg);
+    box-shadow: 1px 1px 3px #222;
+    -o-transform: rotate(-5deg);
+    transform: rotate(-5deg);
+    z-index:-10;
 }

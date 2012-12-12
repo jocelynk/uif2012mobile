@@ -9,9 +9,7 @@ var Event = function () {
 
 Event.prototype = {
   initCheckin: function () {
-    //$("#scanCode")[0].addEventListener('touchstart', this.scanCode.bind(this) , false);
     $("#scanCode").bind('tapone', this.scanCode.bind(this));
-    //$("#submitCode").click(this.submitCodes.bind(this));
     $("#submitCode").bind('tapone', this.submitCodes.bind(this));
   },
   initEvent: function (token) {
@@ -23,7 +21,6 @@ Event.prototype = {
 
     if ($('#addIcon').hasClass('none')) {
        $('#addIcon').removeClass('none');
-       $('#viewIcon').removeClass('none');
        $(".icon-large").removeClass('none');
        $("#events h3").removeClass('none');
     }
@@ -31,7 +28,6 @@ Event.prototype = {
       e.preventDefault();
       $('form#addEventForm').removeClass('none');
       $('#addIcon').addClass('none');
-      $('#viewIcon').addClass('none');
       $(".icon-large").addClass('none');
       $("#events h3").addClass('none');
       if(!$("#ps").hasClass('none')) {
@@ -40,6 +36,7 @@ Event.prototype = {
     });
     $('form#addEventForm').submit(function (e) {
       e.preventDefault();
+      e.stopImmediatePropagation();
       self.submitEventForm(token)
     });
   },
@@ -90,64 +87,22 @@ Event.prototype = {
               var end_time = data[i]['event']['end_time'].slice(0, data[i]['event']['end_time'].indexOf('+'));
 
               var start_arr = start_time.split(/[- T :]/);
-              var start = new Date(start_arr[0], start_arr[1], start_arr[2], start_arr[3], start_arr[4], start_arr[5]);
-                console.log(start_arr);
-                var end_arr = end_time.split(/[- T :]/);
-                var end = new Date(end_arr[0], end_arr[1], end_arr[2], end_arr[3], end_arr[4], end_arr[5]);
+              var start = new Date(Date.UTC(start_arr[0], start_arr[1], start_arr[2], start_arr[3], start_arr[4], start_arr[5]));
+              var end_arr = end_time.split(/[- T :]/);
+              var end = new Date(Date.UTC(end_arr[0], end_arr[1], end_arr[2], end_arr[3], end_arr[4], end_arr[5]));
+              console.log("start-time: " + start);
+              span.html(formatTime(start) + " - " + formatTime(end));
 
-                span.html(formatTime(start) + " - " + formatTime(end));
-
-                li.append(h2);
-                li.append(p);
-                li.append(span);
-                $('#events_ul').append(li);
-                jQuery.data(li[0], "data", { "sections": data[i]['section'], "event": data[i]['event']['id']});
-                li.on('tapone', self.clickScan.bind(self));
+              li.append(h2);
+              li.append(p);
+              li.append(span);
+              $('#events_ul').append(li);
+              jQuery.data(li[0], "data", { "sections": data[i]['section'], "event": data[i]['event']['id']});
+              li.on('tapone', self.clickScan.bind(self));
           
           }
           $('#date-header').html("Events for: " + todays_date);
-          /*
-          var ev = $('<table/>')
-          var headers = $('<thead />');
-          headers.append('<tr><th>Program</th><th>Sections</th><th>Duration</th><th>View</th></tr>');
-          ev.append(headers);
-          ev_body = $('<tbody/>');
-          var todays_date;
-          for (i in data) {
-            var row = $('<tr />');
-           
-            row.append('<td>' + data[i]['program'] + '</td>');
-            var section_list = $('<td/>');
-            for (j in data[i]['section']) {
-              section_list.append('<span>' + data[i]['section'][j] + '</span><br/>')
-            }
-            row.append(section_list);
-            var start_time = data[i]['event']['start_time'].slice(0, data[i]['event']['start_time'].indexOf('+'));
-            var end_time = data[i]['event']['end_time'].slice(0, data[i]['event']['end_time'].indexOf('+'));
-            var start_arr = start_time.split(/[- T :]/);
-            var start = new Date(start_arr[0], start_arr[1], start_arr[2], start_arr[3], start_arr[4], start_arr[5]);
-            console.log(start_arr);
-            var end_arr = end_time.split(/[- T :]/);
-            var end = new Date(end_arr[0], end_arr[1], end_arr[2], end_arr[3], end_arr[4], end_arr[5]);
-
-            row.append('<td>' + formatTime(start) + " - " + formatTime(end) + '</td>');
-            var td = $('<td/>');
-            var button = document.createElement('a');
-            button.setAttribute('href', 'javascript:void(0)');
-            button.setAttribute('class', 'button icon-chevron-right');
-            button = $(button);
-            jQuery.data(button[0], "data", {
-              "sections": data[i]['section'],
-              "event": data[i]['event']['id']
-            });
-            button.on('tapone', self.clickScan.bind(self));
-            td.append(button);
-            row.append(td);
-            ev_body.append(row);
-          }
-          ev.append(ev_body);
-          $('#events_table').append(ev);
-          $('#date_header').append(" " + todays_date);*/
+         
           return false;
         } else {
           $('#events_ul').append('<li>There are no events for today. Create a new one on the Events page.</li>');
@@ -354,7 +309,6 @@ Event.prototype = {
           $("#end_time").val('');
           $("#addEventForm").addClass("none");
           $("#addIcon").removeClass("none");
-          $('#viewIcon').removeClass('none');
           $(".icon-large").removeClass("none");
           $("#events h3").removeClass("none");
         } else {

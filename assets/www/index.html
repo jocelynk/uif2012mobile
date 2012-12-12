@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="css/scan_page.css">
     <link rel="stylesheet" href="css/events_page.css">
     <link rel="stylesheet" href="css/students_page.css">
+    <link rel="stylesheet" href="css/home_page.css">
     
     <!--[if lt IE 9]>
     <link rel="stylesheet" href="css/desktop.css" media="screen">
@@ -139,8 +140,18 @@
                 </div-->
             <div id="home" class="panelDown transition">
                 <div class="content center">
-                    <h1>Welcome to Urban Impact</h1><h3>Mobile</h3>
-                    <!-- put instructions here -->
+                    <h1>Welcome to</h1>
+                    <img id="logo" src="img/uif-logo.gif">
+                    <h1>Mobile</h1>
+                    
+                    <div>
+                    <h2> Getting Started </h2>
+                    <p> In order to begin, sign in and then tap on the vertical carrot on </br>
+                        the top right hand side. This will open up </br>
+                        navigation for you. within it you have 4 choices: </br>
+                     Home, Checkin, Students, and Events
+                    </p>
+                    </div>
                 </div>
             </div>                  
 
@@ -157,7 +168,7 @@
                         <h3><label for="password">Password:</label></h3>
                         <input id="password" name="password" type="password" required/>
                         </br>
-                        <input id="login-submit" class="submit" type="submit" value="Submit""/>
+                        <input id="login-submit" class="submit" type="submit" value="Submit"/>
                     </form>
     
                 </div>
@@ -217,7 +228,7 @@
                             <h1>Students</h2>
                         </div>
                         <div id ="student_flash" class="flash"></div>       
-                        <div><p><a id="scanCode2" href="javascript:void(0)" class="icon">Find by Barcode</a> </p></div>
+                        <div class="large-icon icon"><i class="icon-barcode icon-large"></i> <h3><a id="scanCode2" href="javascript:void(0)">Find By Barcode</a></h3></div>
                         <img id="image" class="polaroid" alt="Upload an image to a Student" src=''></img>
                         <span id="student_result"></span>
                         <br/><br/><br/><br/>
@@ -257,11 +268,11 @@
                                 </select>
                                 <br/></div><label for="locations" class="select formspacing">Select a Location:</label>
                                 <select name="locations" id="locations" class="rounded formspacing"> </select><br/>
-                                <label for="start_time">Start Time:</label>
+                                <label for="start_time" class="label-display">Start Time:</label>
                                 <input id="start_time" value="time" type="text" class="timescroller rounded formspacing"/><br/> 
-                                <label for="end_time">End Time:</label>
+                                <br/><label for="end_time" class="label-display">End Time:</label>
                                 <input id="end_time" value="time" type="text" class="timescroller rounded formspacing"/><br/> 
-                                <input type="submit" value="Submit" class="submit" id="events-submit"/>
+                                <br/><input type="submit" value="Submit" class="submit" id="events-submit"/>
                             </form>
                         </div>
                     </div>

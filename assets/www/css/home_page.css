@@ -1,0 +1,28 @@
+#home h1:first-child {
+    margin-top:20px;
+}
+
+#logo {
+    height:150px;
+    width:auto;
+    margin-top:-60px;
+    margin-bottom:-30px;
+}
+
+#home h1 {
+    font-size:40px;
+}
+
+#home h2 {
+    color:#b6cdff;
+    font-size:30px;
+    margin-bottom:-20px;
+    text-shadow:1px 1px 1px black;
+}
+
+#home p {
+    font-size:15px;
+    text-align:left;
+    padding:10px;
+}
+

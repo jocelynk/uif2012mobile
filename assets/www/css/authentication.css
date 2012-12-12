@@ -10,10 +10,13 @@
 }
 
 #login h3{
-  font-size:20px !important;
-  margin-bottom:2px !important;
+   text-align:left;
+   font-size:18px !important;
+   margin-bottom:5px !important;
 }
 #login h3+input{
+  position:relative;
+  left:0;
   font-size:13px !important;
   width:150px !important;
   height:25px !important;
@@ -26,5 +29,21 @@
   height:15px;
 }
 #login-submit{
-  font-size:19px;
+  font-size:17px;
+}
+
+#authentication .submit
+{
+    position:relative;
+    left:-40px !important;
+    padding: 5px 10px 5px 10px;
+    color:white !important;
+    text-shadow:1px 1px 1px #000;
+    /* old browsers */
+     background: -moz-linear-gradient(top, #B4CAFE 0%, #6d88b7 100%);
+     /* firefox */
+     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#B4CAFE), color-stop(100%,#6d88b7));
+     /* webkit */
+     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b8c6df', endColorstr='#6d88b7',GradientType=0 );
+     /* ie */
 }

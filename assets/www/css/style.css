@@ -46,6 +46,7 @@ a{
 #sign-in{
   position:fixed;
   top:0px;
+  left:0px;
   display: inline-block;
   outline: none;
   cursor: pointer;
@@ -53,6 +54,7 @@ a{
   text-decoration: none;
   padding:12px;
 }
+
 #logout{
   position:fixed;
   top:0px;
@@ -78,14 +80,13 @@ a.button{
   padding: 0.5em 1em;
   background: #b8c6df;
   /* old browsers */
-  background: -moz-linear-gradient(top, #b8c6df 0%, #6d88b7 100%);
+  background: -moz-linear-gradient(top, #B4CAFE 0%, #6d88b7 100%);
   /* firefox */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b8c6df), color-stop(100%,#6d88b7));
-  /* webkit */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#B4CAFE), color-stop(100%,#6d88b7));  /* webkit */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b8c6df', endColorstr='#6d88b7',GradientType=0 );
   /* ie */
   zoom: 1;
-  border-radius: 10px;
+  border-radius: 5px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   -box-shadow: 0 1px 3px rgba(0,0,0,0.5);

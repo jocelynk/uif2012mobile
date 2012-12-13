@@ -30,10 +30,10 @@ a{
   position: absolute;
 }
 .transition{
-  -webkit-transition: visibility .8s ease-in-out;
-  -moz-transition: visibility .8s ease-in-out;
-  -o-transition: visibility .8s ease-in-out;
-  transition: visibility .8s ease-in-out opacity;
+  -webkit-transition: all .8s ease-in-out;
+  -moz-transition: all .8s ease-in-out;
+  -o-transition: all .8s ease-in-out;
+  transition: all .8s ease-in-out opacity;
 }
 .panelDown{
   visibility:visible;

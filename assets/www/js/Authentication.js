@@ -56,6 +56,7 @@ Authentication.prototype = {
           $('#email').val('');
           $('#nav').removeClass('none');
           $('#nav i').removeClass('none');
+          $('#user').html(localStorage.getItem('email'));
           $('#sign-in').addClass('none');
           $('#sign-in a').addClass('none');
           $('#logout').removeClass('none');
@@ -98,6 +99,7 @@ Authentication.prototype = {
           $('#sign-in a').removeClass('none');
           $('#logout a').addClass('none');
           $('#logout').addClass('none');
+          $('#user').html('');
           self.transitioner.slideDown($('#authentication'));
           
         } 

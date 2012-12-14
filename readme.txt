@@ -1,6 +1,8 @@
 Jocelyn Kong (jocelynk)
 Aderinsola Akintilo (aakintil)
 
+http://www.youtube.com/watch?v=pFexrnXun3I&feature=youtu.be
+
 Things That will be added to application for due date of Dec. 14th:
 
 - Updated Home page

@@ -3,7 +3,6 @@ var LoaderApp = function () {
     this.setup();
     this.auth();
     this.nav();
-    console.log(window.plugins.barcodeScanner);
   }
 
 LoaderApp.prototype = {
@@ -24,7 +23,6 @@ LoaderApp.prototype = {
     var self = this;
     if ('localStorage' in window && window['localStorage'] !== null) {
       var temp = localStorage.getItem('token');
-      console.log("LocalStorage: " + temp);
       if (temp !== null) {
         this.authentication.authorized = true;
         this.authentication.token = temp;
@@ -63,7 +61,6 @@ LoaderApp.prototype = {
     });
 
     $("#link-home").bind('tapone', function (e) {
-      console.log("test");
       e.preventDefault();
       $('ul#menu').slideUp()
       self.transitioner.slideDown(self.homeDiv);
@@ -93,9 +90,10 @@ LoaderApp.prototype = {
       var icon = $("nav").find("i");
       (icon.attr("class") === "icon-chevron-up") ? toggle = "icon-chevron-down" : toggle = "icon-chevron-up"
       icon.attr("class", toggle);
-
+      
+      $("#scanCode2").show();  
       $('#photo_buttons').addClass('none');
-      $('#image').prop('src', '');
+      $('#image').prop('src', './img/uif-logo.gif');
 
       e.preventDefault();
       $('ul#menu').slideUp();

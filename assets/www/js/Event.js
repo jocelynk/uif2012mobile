@@ -90,7 +90,6 @@ Event.prototype = {
               var start = new Date(Date.UTC(start_arr[0], start_arr[1], start_arr[2], start_arr[3], start_arr[4], start_arr[5]));
               var end_arr = end_time.split(/[- T :]/);
               var end = new Date(Date.UTC(end_arr[0], end_arr[1], end_arr[2], end_arr[3], end_arr[4], end_arr[5]));
-              console.log("start-time: " + start);
               span.html(formatTime(start) + " - " + formatTime(end));
 
               li.append(h2);
@@ -127,8 +126,6 @@ Event.prototype = {
       alert("Barcoding cannot be accessed from the browser");
     } else {
         if (self.event_id !== -1) {
-          console.log(this.barcodes.length);
-    console.log(this.event_id);
           window.plugins.barcodeScanner.scan(
     
           function (result) {
@@ -149,7 +146,6 @@ Event.prototype = {
     var transition = new Transitioner();
     transition.slideDown($('#scan_page'));
     this.event_id = jQuery.data(e.target, "data").event;
-    console.log(jQuery.data(e.target, "data").sections);
     this.sections = jQuery.data(e.target, "data").sections;
     $('#sections').html('');
     for (i in this.sections) {

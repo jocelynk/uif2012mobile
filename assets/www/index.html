@@ -54,11 +54,6 @@
     <script type="text/javascript" src="libs/UTIL.js"></script>
     <script type="text/javascript" src="libs/mobiscroll-2.3.custom.min.js" ></script>
   
-    
-    
-    
-    
-    
     <!-- Custom JS -->
     <script src="js/plugins.js"></script>
     <script src="js/helper.js"></script>
@@ -74,29 +69,31 @@
     
 
     <script type="text/javascript">
-    //app.initialize();
         window.phonegap = (document.URL.indexOf("http://") == -1); 
-    
-        document.addEventListener('deviceready', function() {
+        
+        
+        if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
+            document.addEventListener('deviceready', function() {
                 window.launch();
-        });
+            },false);
+            console.log('deviceready')
+        } else {
+            $(document).ready(function() {window.launch();});
+            console.log('document.ready');
+        }       
+        
 
-        $(document).ready(function() {
-                window.launch();
-
-        })
-
-            window.launch = function() {
-                window.util = _UTIL;
-                window.util.patchFnBind();
-                $(document.body).height('100%');
+        window.launch = function() {
+            window.util = _UTIL;
+            window.util.patchFnBind();
+            $(document.body).height('100%');
                 $.ajaxSetup({
                     headers: {"X-Requested-With": "XMLHttpRequest"},
                     cache: false
                 });
-                var app = new LoaderApp();
+            var app = new LoaderApp();
                 
-            }
+        }
 
 
      </script>
@@ -104,15 +101,12 @@
 </head>
 <body>   
     <div class="pagewrap">
-
         <div class="container">
-
 
             <!-- //////////////////////////////////////// -->
             <!-- ///////////// Top Navigation /////////// -->
             <!-- //////////////////////////////////////// -->
-                <header id="header" role="banner">
-                  
+                <header id="header" role="banner">  
                     <nav>
                         <h2 id="tagline">Welcome to UIF Mobile <br/><span id="user"></span></h2>
                         <span id="sign-in"><a href="javascript:void(0)" class="button">Sign In</a></span>
@@ -128,8 +122,7 @@
                             <li><span><a id="link-events" href="javascript:void(0)"> Events </a></span></li>
                         </ul>
     
-                    </nav>  
-                    
+                    </nav>      
                 </header>
                 <!--div id="nav">
                     <ul id="navbar">
@@ -229,10 +222,11 @@
                         </div>
                         
                         <div id ="student_flash" class="flash"></div>       
-                        <div id="avatar"><img id="image" class="polaroid" alt="Upload an image to a Student" src=''></img><br/>
+                        <div id="student_result">Search for a student by barcode. Upload a picture.</div>
+                        <div id="avatar"><img id="image" class="polaroid" alt="Upload an image to a Student" src='img/uif-logo.gif'></img><br/>
                       <a id="scanCode2" href="javascript:void(0)"> <div class="large-icon icon"><i class="icon-barcode icon-large"></i>&nbsp;&nbsp;Find By Barcode</div></a>
                         </div>
-                        <div id="student_result">Search for a student by barcode. Upload a picture.</div>
+                        
                         <br/><br/><br/><br/>
                         <div id="photo_buttons" class="none">
                             <a id="lib" href="javascript:void(0)" class="icon">Upload From Library</a>

@@ -29,7 +29,6 @@ Authentication.prototype = {
     var email = $('#email').val();
     self.email = email;
     var password = $('#password').val();
-    console.log(email);
     $.ajax({
       url: "http://uif2012.herokuapp.com/getToken",
       type: "POST",
@@ -42,7 +41,6 @@ Authentication.prototype = {
         "password": password
       },
       success: function (data) {
-        console.log(data.token);
         if (typeof data.token !== 'undefined') {
           self.token = data.token;
           self.authorized = true;
@@ -80,7 +78,6 @@ Authentication.prototype = {
   },
   destroyToken: function (self) {
     var token = self.token;
-    console.log(token);
     $.ajax({
       url: "http://uif2012.herokuapp.com/destroyToken",
       type: "DELETE",
@@ -89,9 +86,7 @@ Authentication.prototype = {
         "id": token
       },
       success: function (data) {
-        console.log(data.token);
         if (typeof data.token !== 'undefined') {
-          console.log(data.token);
           self.resetAuthDetails();
           $('#nav i').addClass('none');
           $('#nav').addClass('none');

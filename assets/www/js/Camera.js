@@ -10,20 +10,19 @@ Camera.prototype = {
     $("#scanCode2").bind('tapone', self.scanCode2.bind(self));
     $("#lib").bind('tapone', self.uploadFromLibrary.bind(self));
     $("#cap").bind('tapone', self.uploadFromCapture.bind(self));
+    
 
   },
   scanCode2: function (e) {
     e.preventDefault();
     e.stopImmediatePropagation();
     var self = this;
-    console.log(this.barcode);
     if (!window.phonegap) {
       alert("Barcoding cannot be accessed from the browser");
     } else {
       window.plugins.barcodeScanner.scan(
 
       function (result) {
-        console.log(self.barcode);
         self.barcode = result.text;
         self.findStudent(result.text)
         return false;
@@ -70,7 +69,6 @@ Camera.prototype = {
   uploadFromLibrary: function (e) {
     var self = this;
       e.preventDefault();
-      console.log(self.barcode);
       if (self.barcode !== -1) {
         navigator.camera.getPicture(self.uploadPhoto.bind(self), function (message) {
           alert('get picture failed');
@@ -97,7 +95,6 @@ Camera.prototype = {
       }
   },
   uploadPhoto: function (imageURI) {
-    $("#student_result").hide();
     $("#image").css("height", "auto");
     $("#image").attr("src", imageURI);
     var options = new FileUploadOptions();
@@ -118,17 +115,20 @@ Camera.prototype = {
     console.log("Code = " + r.responseCode);
     console.log("Response = " + r.response);
     console.log("Sent = " + r.bytesSent);  
-    $("#scanCode2").show();
-    $("#image").css("height", '40%');
-    $('#photo_buttons').addClass('none');
-    $('#student_result').html('');
     alert("Your image was successfully uploaded");
+    $("#scanCode2").show();
+    $("#image").prop('src', './img/uif-logo.gif');
+    $('#photo_buttons').addClass('none'); 
+    $('#student_result').html('Search for a student by barcode. Upload a picture.');
   },
   failure: function (error) {
     console.log("An error has occurred: Code = " + error.code);
     console.log("upload error source " + error.source);
     console.log("upload error target " + error.target);
-    $("#image").prop("src", '');
     alert("Unsuccessful upload");
+    $("#scanCode2").show();
+    $('#student_result').html('Search for a student by barcode. Upload a picture.');
+    $("#image").prop("src", './img/uif-logo.gif');
+    
   }
 }

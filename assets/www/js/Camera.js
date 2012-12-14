@@ -47,11 +47,14 @@ Camera.prototype = {
       success: function (data) {
         if (typeof data.message == 'undefined') {
           $('#student_result').html('Are you searching for ' + data.first_name + ' ' + data.last_name + '? If not, press the scan button again.');
+          $("#student_result").show();
+          $("#scanCode2").hide();
           $('#photo_buttons').removeClass('none');
         } else {
           $("#student_flash").html(data.message);
+          $("#student_result").show();
           $("#student_flash").fadeIn("slow", function () {
-            $("#student_flash").fadeOut(1600)
+          $("#student_flash").fadeOut(1600)
           })
         }
         return false;
@@ -94,8 +97,9 @@ Camera.prototype = {
       }
   },
   uploadPhoto: function (imageURI) {
+    $("#student_result").hide();
+    $("#image").css("height", "auto");
     $("#image").attr("src", imageURI);
-    $("#image").show();
     var options = new FileUploadOptions();
     options.chunkedMode = false;
     options.fileKey = "file";
@@ -113,9 +117,9 @@ Camera.prototype = {
   success: function (r) {
     console.log("Code = " + r.responseCode);
     console.log("Response = " + r.response);
-    console.log("Sent = " + r.bytesSent);
-    $("#image").hide().attr("src", '');
-    $("#image").show();
+    console.log("Sent = " + r.bytesSent);  
+    $("#scanCode2").show();
+    $("#image").css("height", '40%');
     $('#photo_buttons').addClass('none');
     $('#student_result').html('');
     alert("Your image was successfully uploaded");
@@ -124,7 +128,7 @@ Camera.prototype = {
     console.log("An error has occurred: Code = " + error.code);
     console.log("upload error source " + error.source);
     console.log("upload error target " + error.target);
-    $("#image").attr("src", '');
+    $("#image").prop("src", '');
     alert("Unsuccessful upload");
   }
 }

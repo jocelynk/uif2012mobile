@@ -15,7 +15,6 @@
    margin-bottom:5px !important;
 }
 #login h3+input{
-  position:relative;
   left:0;
   font-size:13px !important;
   width:150px !important;
@@ -34,7 +33,6 @@
 
 #authentication .submit
 {
-    position:relative;
     left:-40px !important;
     padding: 5px 10px 5px 10px;
     color:white !important;

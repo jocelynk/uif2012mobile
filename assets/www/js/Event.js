@@ -37,7 +37,7 @@ Event.prototype = {
     $('form#addEventForm').submit(function (e) {
       e.preventDefault();
       e.stopImmediatePropagation();
-      self.submitEventForm(token)
+      self.submitEventForm(token);
     });
   },
   reset: function () {
@@ -51,7 +51,7 @@ Event.prototype = {
   getCurrentEvents: function (token) {
     var self = this;
     self.reset();
-    $('#events_table').html('');
+    $('#events_ul').html('');
     $.ajax({
       url: "http://uif2012.herokuapp.com/getTodaysEvents.json",
       type: "GET",
@@ -60,8 +60,8 @@ Event.prototype = {
         "auth_token": token
       },
       success: function (data) {
-        if (!jQuery.isEmptyObject(data)) {
-          $('#events_ul').html('');
+        $('#events_ul').html('');
+        if (!jQuery.isEmptyObject(data)) { 
           var todays_date = '';
           for (var i in data) {
           todays_date = data[i]['event']['date'];
@@ -105,7 +105,7 @@ Event.prototype = {
          
           return false;
         } else {
-          $('#events_ul').append('<li>There are no events for today. Create a new one on the Events page.</li>');
+          $('#events_ul').append('<li><h2>There are no events for today. Create a new one on the Events page.</h2></li>');
         }
       },
       error: function (err) {
@@ -116,8 +116,7 @@ Event.prototype = {
     return false;
   },
   scanCode: function (e) {
-    console.log(this.barcodes.length);
-    console.log(this.event_id);
+    
     var self = this;
     e.preventDefault();
     $(".placeholder").hide();
@@ -128,8 +127,10 @@ Event.prototype = {
       alert("Barcoding cannot be accessed from the browser");
     } else {
         if (self.event_id !== -1) {
+          console.log(this.barcodes.length);
+    console.log(this.event_id);
           window.plugins.barcodeScanner.scan(
-
+    
           function (result) {
             $('#barcodes').append('<li>' + result.text + '</li>');
             self.barcodes.push(result.text);
@@ -278,12 +279,12 @@ Event.prototype = {
     }
   },
   submitEventForm: function (token) {
+    var self = this;
     var program = $("select#program :selected").val();
     var sections = $("select#program_sections").val();
     var location = $("select#locations :selected").val();
     var start_time = $("#start_time").val();
     var end_time = $("#end_time").val();
-    console.log(sections);
     $.ajax({
       url: "http://uif2012.herokuapp.com/createEvent",
       type: "POST",
@@ -311,6 +312,9 @@ Event.prototype = {
           $("#addIcon").removeClass("none");
           $(".icon-large").removeClass("none");
           $("#events h3").removeClass("none");
+          var transition = new Transitioner();
+          self.getCurrentEvents(token);
+          transition.slideDown($('#checkin'));
         } else {
           $("#event_flash").html(data.error);
           $("#event_flash").fadeIn("slow", function () {

@@ -4,13 +4,36 @@
 }
 
 #student_result{
-  font-size:15px;
+  position:absolute;
+  font-size:20px;
+  font-weight: bold;
+  right:27%;
+  width:45%;
+  top:35%;
   padding:5px;
+  z-index: -10;
+  background-color: red;
+  color:rgba(255, 255, 255, 0.9);  
   
 }
 
 #scanCode2{
   color:rgba(255, 255, 255, 0.9);  
   text-decoration:none;
-  text-shadow:0px 1px 1px rgba(0,0,0, 1);    
+  text-shadow:0px 1px 1px rgba(0,0,0, 1);
+}
+
+/*#avatar {
+   position: relative;
+   top:100%;
+   right:8%;
+   z-index:-100;
+}*/
+
+#students img{
+   position: relative;
+   top:100%;
+   z-index:-100;
+   width:50%;
+   height:40%;
 }

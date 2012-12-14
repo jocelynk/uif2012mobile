@@ -94,7 +94,6 @@ LoaderApp.prototype = {
       (icon.attr("class") === "icon-chevron-up") ? toggle = "icon-chevron-down" : toggle = "icon-chevron-up"
       icon.attr("class", toggle);
 
-      $('#student_result').html('');
       $('#photo_buttons').addClass('none');
       $('#image').prop('src', '');
 

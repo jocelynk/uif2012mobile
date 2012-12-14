@@ -28,7 +28,6 @@ $(document).ready(function () {
   // for click devices
   $("a.btn-navbar").bind('tapone', function (e) {
     e.preventDefault();
-    //$("a.btn-navbar").click(function() {
     var toggle = "";
     console.log("changing touchstart");
     var icon = $(this).find("i");

@@ -39,8 +39,6 @@ $(function () {
 
     // Making the dropdown magically appear onclick/touch.
     var obj = $('nav a.btn-navbar').get(0);
-    // $('nav a.btn-navbar').on('click', function() {
-    console.log(obj);
     obj.addEventListener('touchstart', function (e) {
       e.preventDefault();
       var toggle = "";
@@ -79,7 +77,6 @@ $(function () {
 
     });
     // Making the children appear on click/touch
-    console.log($('ul#menu li.hasChildren a'));
     $('ul#menu li.hasChildren a').on('click', function () {
       $(this).parent().children('ul').slideToggle('fast', function () {
 
